@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Measuring C# Performance with BenchmarkDotNet | Red Peregrine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
+<meta name="keywords" content="BenchmarkDotNet,LINQPad,C#,Win2d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Measuring C# Performance with BenchmarkDotNet">
+<meta property="og:url" content="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/index.html">
+<meta property="og:site_name" content="Red Peregrine">
+<meta property="og:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png">
+<meta property="og:updated_time" content="2017-12-23T05:36:16.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Measuring C# Performance with BenchmarkDotNet">
+<meta name="twitter:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
+<meta name="twitter:image" content="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Red Peregrine" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Red Peregrine</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="What are you looking for?" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc?s=128" />
+            <h2 id="name">Carl Scarlett</h2>
+            <h3 id="title">Designer, Developer, Dreamer, Doer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Perth, Western Australia</span>
+            <a id="follow" target="_blank" href="https://github.com/ZodmanPerth">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                1
+                <span>post</span>
+            </div>
+            <div class="article-info-block">
+                4
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZodmanPerth" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/ZodmanPerth" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.youtube.com/user/ZodmanPerth" target="_blank" title="youtube" class=tooltip>
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-measuring-csharp-perf-with-benchmarkdotnet" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-420.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Measuring C# Performance with BenchmarkDotNet
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/">
+            <time datetime="2017-12-10T09:12:47.000Z" itemprop="datePublished">2017-12-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a>, <a class="tag-link" href="/tags/C/">C#</a>, <a class="tag-link" href="/tags/LINQPad/">LINQPad</a>, <a class="tag-link" href="/tags/Win2d/">Win2d</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>I’m measuring optimal C# code implementations for a game engine I’m building.<br><a id="more"></a></p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>I recently took on a “little side project” to pursue a lifelong dream: designing, creating (and releasing!) a computer game.  Though I’ve had the desire to do this for more than three and a half decades, I never <em>quite</em> got around to making a consistent, concerted effort.  It’s not because I’m lazy, I’ve just managed to pack a whole bunch of experiences into my life so far and, until recently, couldn’t find enough time to devote to the cause.</p>
+<p>By “little side project” I’m being a sarchastic of course.  I knew when I started this journey that building a game is no trivial feat, and there would be unknown unknowns that would arise and need to be dealt with along the way.  That discovery was part of the exciting thing for me because I love learning new things.  However, because I <em>really</em> enjoy a challenge (and from the necessity of my circumstances), I made the decision to write the game engine as well; <em>from scratch</em>. </p>
+<p>Fortunately I’d pursued life experiences that included all the ingredients I would need to pull off such a feat from both a creative and practical standpoint, including a lengthy career in software engineering and commercial experience in UX design.</p>
+<p>I’ll explore the circumstances that drove those initial decisions another time.  Right now, it’s enough to know that the game engine is written in C# on UWP using Win2D, and targets Windows tablets and phones that have acellerometer sensors and touch screens.  The game is a top-down 2D space shoot ‘em up with a retro arcade look.</p>
+<h1 id="Build-A-Game-Engine-in-C-…Are-You-Crazy"><a href="#Build-A-Game-Engine-in-C-…Are-You-Crazy" class="headerlink" title="Build A Game Engine in C#…Are You Crazy?"></a>Build A Game Engine in C#…Are You Crazy?</h1><p>When people talk of building game engines, C# and .NET aren’t terribly popular choices.  The .NET framework, while a much loved and carefully crafted platform, hasn’t exactly been built for the demands of a high-performing game engine in mind.  I don’t think my engine will be <em>too</em> demanding though, so using .NET is a feasible option.  Win2D is a powerful ally here, being a finely tuned wrapper over DirectX that <em>is</em> built for performance.  Win2D also provides a game-loop that gracefully handles the complexity of loop timing management, so that’s one less thing I needed to worry about.</p>
+<p>This leaves the game engine “merely” doing some user input handling, phsyics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f600.png?v7" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
+<h1 id="Performance-Front-and-Centre"><a href="#Performance-Front-and-Centre" class="headerlink" title="Performance Front and Centre"></a>Performance Front and Centre</h1><p>I was <em>reasonably</em> sure I could make something decent with my technology choices, and a few test applications later I committed to the task ahead.  With a freshly read copy of Bob Nystrom’s amazing eBook <a href="http://gameprogrammingpatterns.com" target="_blank" rel="noopener">Game Programming Patterns</a> up my sleeve, years of mentally constructed game systems and designs that were eager to escape my mind, and the skills I had nurtured over my career, I figured I had a decent shot at a solid result.</p>
+<p>But confidence alone was never going to be enough.  Going into development of the engine I knew I would have to make every nanosecond count. While the architecture was wholly under my control and I trusted my skills, there was one concern that still hung heavy on my mind; <em>would the .NET Framework itself be performant enough?</em></p>
+<p>There was only one way to know for sure; I was going to have to write performance tests for the framework itself.  And when you want to know the performance of .NET code I know of nothing more suited to the task than <a href="https://github.com/dotnet/BenchmarkDotNet" target="_blank" rel="noopener">BenchmarkDotNet</a>.</p>
+<h1 id="BenchmarkDotNet-and-LINQPad"><a href="#BenchmarkDotNet-and-LINQPad" class="headerlink" title="BenchmarkDotNet and LINQPad"></a>BenchmarkDotNet and LINQPad</h1><p>I’m a heavy <a href="https://www.linqpad.net/" target="_blank" rel="noopener">LINQPad</a> user from way back.  Among other things, LINQPad enables me to test  hypotheses quickly away from the complexity of my larger code bases.  Once I’m happy, I move the validated code into the main codebase and do some manual integration tests.  This process works really well for me, so when I found myself needing to test different C# implementation patterns in isolation, LINQPad was a natural choice.</p>
+<p>Fortunately for me my timing was just right; BenchmarkDotNet had just added support for running inside LINQPad, and LINQPad had just added support for hosting BenchmarkDotNet.  While the road since has been a little bumpy, the state of both tools was good enough to provide what I needed.</p>
+<h1 id="Testing-Different-Iterator-Patterns-in-NET"><a href="#Testing-Different-Iterator-Patterns-in-NET" class="headerlink" title="Testing Different Iterator Patterns in .NET"></a>Testing Different Iterator Patterns in .NET</h1><p>I really enjoyed writing my own collision detection system; it’s the kind of challenge I relish.  My starting point was an excellent tutorial by Nilson Suoto called <a href="https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects" target="_blank" rel="noopener">Collision Detection for Solid Objects</a>, and after a lot of experimentation I had a really tight system.  I had a Sort and Sweep service using cheap AABB checks to find collections of objects with potential collisions (the broad phase), which were used to discover the actual collisions using Minkowski Sums and Convex Hulls of object geometries (the narrow phase).  We’re not covering the details of the implementation here, but you should know the narrow phase contains expensive CPU operations and I’ve spent an appropriate amount of time optimising the hell out of them.</p>
+<p>Codewise, the Collision Detection system drives the Sort and Sweep service using an iterator pattern.  You probably know this pattern from implementing <code>IEnumerable&lt;T&gt;</code>; <code>GetEnumerator()</code> methods that <code>yield</code> appropriate results.  This is how I implemented it at first, and it made for some nice, readable code.</p>
+<p>However, I had a hunch that this generic interface may not be the most performant way to drive the service, so I devised a plan to test different implementations of the iterator pattern to see if I could find time savings.  I also had concerns that the use of generics would add pressure to the .NET Garbage Collector, and as such I was interested in verifying this measuring memory aspects of each implementation as well.</p>
+<h1 id="Initial-Benchmarks"><a href="#Initial-Benchmarks" class="headerlink" title="Initial Benchmarks"></a>Initial Benchmarks</h1><p>Switching to LINQPad, I wrote up a <code>Worker</code> class to simulate the Collision Detection system doing expensive work by summing the values yielded by a <code>Driver</code> class, which represented the Sort And Sweep service.  <code>Main()</code> simply called the benchmark runner to run with the <code>Worker</code> type.  I marked up the <code>Worker</code> with a <code>MemoryDiagnoser</code> to report on memory consumption, and because of my cross device intentions I thought it’s prudent to explore 32bit and 64bit generated code.</p>
+<p>The code looked a little like this:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MemoryDiagnoser</span>]</span><br><span class="line">[<span class="meta">RyuJitX64Job, LegacyJitX86Job</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Worker</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Benchmark</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">NormalEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        Driver driver = <span class="keyword">new</span> Driver();</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">int</span> i <span class="keyword">in</span> driver)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Driver : IEnumerable&lt;int&gt;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> _size = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>[] _array;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Driver</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        _array = <span class="keyword">new</span> <span class="keyword">int</span>[_size];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            _array[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator&lt;<span class="keyword">int</span>&gt; <span class="title">GetEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> _array[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    IEnumerator IEnumerable.GetEnumerator()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> GetEnumerator();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BenchmarkRunner.Run&lt;Worker&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As well as the usual output appearing in LINQPad’s results window, running this produced a nice set of reports in various file formats in the subfolder <code>\BenchmarkDotNet.Artifacts\results</code> where LINQPad was executing.</p>
+<div class="admonition note"><p class="admonition-title">Note</p><p>You will probably need to run LINQPad as an admin to get it to work.</p>
+</div>
+<p>Here’s an extract from a report running this code:</p>
+<p><img src="table-1.png" alt="First Run"></p>
+<p>From this I was able to reason a few things about a single implementation of an iterator pattern on a small sample size of 10 items.  This was a good start and served as proof that the concept of measuring performance in this way worked.</p>
+<h1 id="Many-Rivers-to-Cross"><a href="#Many-Rivers-to-Cross" class="headerlink" title="Many Rivers to Cross"></a>Many Rivers to Cross</h1><p>Thinking ahead, I knew I had challenges to face.</p>
+<p>First, an array size of 10 probably wasn’t representative of how big the object arrays would end up in my game.  I wasn’t sure how many objects I would need, but I knew performance rarely scales linearly.  I wanted to test the same implementations of iterator patterns on array sizes with various orders of magnitude.  Unfortunately BenchmarkDotNet didn’t support marking up benchmark methods with injectable parameters (array size in this case), so I had to roll my own solution.</p>
+<p>Second, while I knew I could have different implementations inside a single <code>Worker</code>, I would need to be careful not to let the sharing of code scope compromise what I was measuring; the implementations could not affect one another.</p>
+<p>Third, the way I simulated actual work in the implementations had to correctly represent code in my original code base that hadn’t been written yet!  Without attention to this detail it would be easy for my abstraction to stray from what would be reality, influencing the implementation and not representing a realistic scenario.</p>
+<p>Fourth, the implementation code should be reasonably easy to read.  I would need to discover where the line was between performance and readability while I thought of innovative implementations.</p>
+<p>Fifth, I wanted to explore iterators over different kinds of objects such as value types, reference types, and generic types.  The result would guide the object structure forming the basis of my collision detection system.</p>
+<p>Finally, I wanted all these tests to run on a single execution run and roll into a single report table.  I figured I would use Excel for final analysis so it would be best if the results were automatically collected together so I didn’t have to do any manual amalgamations every time I completed a test run and wanted explored the results.</p>
+<h1 id="The-Usual-Black-Box-Challenges"><a href="#The-Usual-Black-Box-Challenges" class="headerlink" title="The Usual Black-Box Challenges"></a>The Usual Black-Box Challenges</h1><p>I very quickly discovered that when I performed multiple tests over a single <code>Worker</code> type within the same run, the naming convention BenchmarkDotNet used to create the filenames would result in the overwrite of previous reports.  I created a helper class to create backups of report files on disk and track the generated file names.  I then added amalgamation of the final report using these backup files using <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener">AngleSharp</a> (an open source HTML parser) to rip apart the tables in these files and create my own HTML report.</p>
+<p>Along the way I also discovered that LINQPad’s <code>Dump()</code> methods weren’t available when BenchmarkDotNet was running, and would cause a terminating exception.  This hampered my ability to verify that iterator implementations were working properly (i.e. actually <em>iterating</em>), so I added a “runmode” state to the helper class that allowed me to switch between manual verification of code (where code is executed using LINQPad and not via BenchmarkDotNet) and producing the benchmark reports (where BenchmarkDotNet controlled the execution and not LINQPad).  The “runmode” also let me avoid throwing exceptions by isolating calls to <code>Dump()</code> behind conditional checks.</p>
+<p>Finally, I created a state machine that looped through the various implementations, changing the size of the array each time.  The state of the machine was another addition to the helper class.  The report backup system hooked into this state to generate unique report names, which were used in turn to create the column values in the amalgamated report.</p>
+<h1 id="Different-Implementations-to-Test"><a href="#Different-Implementations-to-Test" class="headerlink" title="Different Implementations to Test"></a>Different Implementations to Test</h1><p>I thought of 4 different iterator implementations to try out:</p>
+<ol>
+<li><strong>NormalEnumerator</strong><br>This was the <code>IEnumerable&lt;T&gt;</code> implementation I already had using <code>GetEnumerator()</code> methods and <code>yield</code> to return results at appropriate points.</li>
+<li><strong>HandCrankedEnumerator</strong><br>This implementation is a POCO with <code>Reset()</code> and <code>MoveNext()</code> methods and an <code>EOF</code> property for controlling the loop.  Would removing a broad, generic implementation improve performance and reduce memory usage?</li>
+<li><strong>HandCrankedWithMoveNextState</strong><br>This a variation of the previous implementation that eliminated the <code>EOF</code> and returned feedback from <code>Reset()</code> and <code>MoveNext()</code>.  This reduced the number of statements required to drive the iterator which I suspected would translate into better performance.</li>
+<li><strong>ResultSetFullyCalculated</strong><br>This avoided iterating altogether, replacing it with a big synchronous operation calculating all the results in one pass and exposing a <code>Results</code> array.  Obviously this would have higher memory requirements, but would it perform better?</li>
+</ol>
+<div class="admonition note"><p class="admonition-title">Note</p><p>My game engine runs on a single thread.  Multi-threaded concerns such as the timing of the read and write of values from different threads did not need to be considered.</p>
+</div>
+<p>Here’s a gist containing a copy of the final LINQPad code:</p>
+<script src="https://gist.github.com/ZodmanPerth/12711f70d8db12cf4af80ee7df7f641e.js"></script>
+
+<h1 id="Amalgamated-Report"><a href="#Amalgamated-Report" class="headerlink" title="Amalgamated Report"></a>Amalgamated Report</h1><p>Once I was sure all the implementations were working correctly I switched on all the benchmarking options I wanted, plugged in some array sizes, and let it run.  On my Surface Pro with an i5 processor this took about 42 minutes, but was worth the wait because the data is rich and dense.</p>
+<p>Here’s the amalgamated report from one such run.</p>
+<p><img src="table-full.png" alt="Amalgamated Report"></p>
+<p>If you’re used to the usual output columns BenchmarkDotNet produces you’ll recognise where I’ve inserted the other relevant data.  The <code>Type</code> and <code>Size</code> columns correspond to the type of Worker (<code>IntegerWorker</code> for value type tests, <code>ItemWorker</code> for reference type tests, and <code>GenericWorkder</code> for generic type tests), and the size of the array used to produce the result.  The other columns come straight from the BenchmarkDotNet reports.</p>
+<h1 id="Analysing-with-Excel"><a href="#Analysing-with-Excel" class="headerlink" title="Analysing with Excel"></a>Analysing with Excel</h1><p>With all the data is in one place I wanted to use Excel’s analysis tools to help me compare the results and derive conclusions.  Copy and paste as text did the trick, though I did have to strip the alphabetical characters from the numeric columns and change their cell format to a number.  Once that was done I used a red-green colour scale conditional formatting on the numeric data to create a performance heat map, and used table filters and sorting to do the analysis.</p>
+<p>Here’s the same amalgamated report formatted this way in Excel:</p>
+<p><img src="1-full.png" alt="It&#39;s beginning to look a lot like Christmas"></p>
+<p>Looking at the <code>Mean</code> column there was an obvious candidate for being too slow; the red cells.  Turns out the <code>NormalEnumerator</code> method (the implementation I was already using) was the worst performing, taking almost twice as long as the other methods.</p>
+<p><img src="2-normalEnumerator.png" alt="Roxanne, you don&#39;t have to put on the red light"></p>
+<p>I filtered that method out and dug deeper.</p>
+<p><img src="3-withoutNormalEnumerator.png" alt="Mmmmm...lemon and lime"></p>
+<p>When I looked at the fasted results in each <code>Size</code> group (those with the greenest <code>Mean</code> values), I could see that the <code>ResultSetFullyCalculated</code> method looked suspiciously slow. I checked each <code>ResultSetFullyCalculated</code> method against the other methods in the same <code>Size</code> group by eye and confirmed it; calculating the results in one hit was slower than flowing back and forth between the <code>Worker</code> and the <code>Driver</code>.</p>
+<div class="admonition aside"><p class="admonition-title">aside</p><p>This <em>was</em> a pleasant surprise.  I had expected a higher memory footprint and a lower execution time.  This kind of result is exactly why you need to validate early; it’s much cheaper to build things right the “first time” instead of trying to refactor once you’ve built a whole bunch of stuff on top of a false assumption.  I had a real Adam Savage moment with this finding.  Science!</p>
+</div>
+<p>Let’s filter out the <code>ResultSetFullyCalculated</code> method and keep digging.</p>
+<p><img src="4-withoutResultSetEnumerator.png" alt="Digging for gold...or in this case, green"></p>
+<p>Now we get down to the pointy end of the analysis.  With only two methods remaining to compare against each other, there’s nothing much to do but check each pair individually.  The results are really close, and difficult to compare due to the variance in <code>Error</code> and <code>StdDev</code>.  However the <code>HandCrankedEnumerator</code> is marginally faster in almost every pair.  This was a bit of a surprise given I had assumed less statements in the caller would mean less execution time, but without checking the final generated code you can never be sure how such assumptions pan out.  The performance difference isn’t significant enough for me to take my investigation that far, so I’ll happily settle on the variant that’s easier to read, maintain, and is generally faster.</p>
+<p><img src="5-finalResult.png" alt="Et voilà! The final result"></p>
+<h1 id="How-Bad-is-Your-Memory"><a href="#How-Bad-is-Your-Memory" class="headerlink" title="How Bad is Your Memory?"></a>How Bad is Your Memory?</h1><p>Did you notice I haven’t talked at all about the memory usage by any of the implementations?  Well, throughout my analysis I was giving them the occasional, cursory glance.  The fact is, there wasn’t anything significant to worry about. There was only very small <code>Gen 0</code> in all implementations apart from <code>NormalEnumerator</code>, which was always the highest memory user in each group and always puts the most pressure on the Garbage Collector.  </p>
+<p>The general rule of thumb I’ll be taking forward is that for balancing performance and memory concerns, always go with a POCO.  Of course, when it counts I’ll still be testing assumptions of course!</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>In the end, because of my findings, I refactored my Sort and Sweep service to be a POCO with <code>Reset()</code> and <code>MoveNext()</code> methods and an <code>EOF</code> property for controlling the loop as per the <code>HandCrankedEnumerator</code> test implementation.  It really didn’t take long to convert it over, and I now feel confident and satisfied that through my due diligence I’ve squeezed a little more performance out of a crucial game subsystem.</p>
+<p>Onward and upward!</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjbj03b200000houu27duzvop" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png)" alt="Measuring C# Performance with BenchmarkDotNet" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a></p>
+                            <p class="item-title"><a href="/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/" class="title">Measuring C# Performance with BenchmarkDotNet</a></p>
+                            <p class="item-date"><time datetime="2017-12-10T09:12:47.000Z" itemprop="datePublished">2017-12-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.linqpad.net/">LINQPad</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Icarus theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/';
+        
+        this.page.identifier = 'measuring-csharp-perf-with-benchmarkdotnet';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

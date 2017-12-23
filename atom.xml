@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Red Peregrine</title>
+  
+  <subtitle>Carl Scarlett&#39;s Blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.redperegrine.net/"/>
+  <updated>2017-12-23T05:36:16.176Z</updated>
+  <id>http://www.redperegrine.net/</id>
+  
+  <author>
+    <name>Carl Scarlett</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Measuring C# Performance with BenchmarkDotNet</title>
+    <link href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
+    <id>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
+    <published>2017-12-10T09:12:47.000Z</published>
+    <updated>2017-12-23T05:36:16.176Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’m measuring optimal C# code implementations for a game engine I’m building.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
+    
+      <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
+    
+      <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
+    
+    
+      <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/BenchmarkDotNet/"/>
+    
+      <category term="LINQPad" scheme="http://www.redperegrine.net/tags/LINQPad/"/>
+    
+      <category term="C#" scheme="http://www.redperegrine.net/tags/C/"/>
+    
+      <category term="Win2d" scheme="http://www.redperegrine.net/tags/Win2d/"/>
+    
+  </entry>
+  
+</feed>
