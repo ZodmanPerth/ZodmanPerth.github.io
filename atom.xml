@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2017-12-23T05:36:16.176Z</updated>
+  <updated>2017-12-24T00:40:57.840Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Measuring C# Performance with BenchmarkDotNet</title>
-    <link href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
-    <id>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
-    <published>2017-12-10T09:12:47.000Z</published>
-    <updated>2017-12-23T05:36:16.176Z</updated>
+    <link href="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/"/>
+    <id>http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/</id>
+    <published>2017-12-23T09:12:47.000Z</published>
+    <updated>2017-12-24T00:40:57.840Z</updated>
     
     <summary type="html">
     
