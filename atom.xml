@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2017-12-24T00:58:37.301Z</updated>
+  <updated>2018-03-30T00:55:00.073Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Changes of a Cosmic Scale</title>
+    <link href="http://www.redperegrine.net/2018/03/30/changing-everything/"/>
+    <id>http://www.redperegrine.net/2018/03/30/changing-everything/</id>
+    <published>2018-03-29T23:47:31.000Z</published>
+    <updated>2018-03-30T00:55:00.073Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’ve reached a critical juncture in the development of my game and engine.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+    
+      <category term="gameblog" scheme="http://www.redperegrine.net/tags/gameblog/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Measuring C# Performance with BenchmarkDotNet</title>
     <link href="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/"/>
     <id>http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/</id>
     <published>2017-12-23T09:12:47.000Z</published>
-    <updated>2017-12-24T00:58:37.301Z</updated>
+    <updated>2018-03-29T10:17:41.180Z</updated>
     
     <summary type="html">
     

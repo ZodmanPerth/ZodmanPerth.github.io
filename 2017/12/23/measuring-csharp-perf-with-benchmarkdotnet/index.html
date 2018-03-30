@@ -14,7 +14,7 @@
 <meta property="og:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png">
-<meta property="og:updated_time" content="2017-12-24T00:58:37.301Z">
+<meta property="og:updated_time" content="2018-03-29T10:17:41.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Measuring C# Performance with BenchmarkDotNet">
 <meta name="twitter:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
@@ -153,15 +153,15 @@
             <h2 id="name">Carl Scarlett</h2>
             <h3 id="title">Designer, Developer, Dreamer, Doer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Perth, Western Australia</span>
-            <a id="follow" target="_blank" href="https://github.com/ZodmanPerth">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://twitter.com/ZodmanPerth">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                1
-                <span>post</span>
+                2
+                <span>posts</span>
             </div>
             <div class="article-info-block">
-                4
+                5
                 <span>tags</span>
             </div>
         </div>
@@ -256,11 +256,11 @@
             
             <p>I’m measuring optimal C# code implementations for a game engine I’m building.<br><a id="more"></a></p>
 <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>I recently took on a “little side project” to pursue a lifelong dream: designing, creating (and releasing!) a computer game.  Though I’ve had the desire to do this for more than three and a half decades, I never <em>quite</em> got around to making a consistent, concerted effort.  It’s not because I’m lazy, I’ve just managed to pack a whole bunch of experiences into my life so far and, until recently, couldn’t find enough time to devote to the cause.</p>
-<p>By “little side project” I’m being a sarchastic of course.  I knew when I started this journey that building a game is no trivial feat, and there would be unknown unknowns that would arise and need to be dealt with along the way.  That discovery was part of the exciting thing for me because I love learning new things.  However, because I <em>really</em> enjoy a challenge (and from the necessity of my circumstances), I made the decision to write the game engine as well; <em>from scratch</em>. </p>
+<p>By “little side project” I’m being a sarcastic of course.  I knew when I started this journey that building a game is no trivial feat, and there would be unknown unknowns that would arise and need to be dealt with along the way.  That discovery was part of the exciting thing for me because I love learning new things.  However, because I <em>really</em> enjoy a challenge (and from the necessity of my circumstances), I made the decision to write the game engine as well; <em>from scratch</em>. </p>
 <p>Fortunately I’d pursued life experiences that included all the ingredients I would need to pull off such a feat from both a creative and practical standpoint, including a lengthy career in software engineering and commercial experience in UX design.</p>
-<p>I’ll explore the circumstances that drove those initial decisions another time.  Right now, it’s enough to know that the game engine is written in C# on UWP using Win2D, and targets Windows tablets and phones that have acellerometer sensors and touch screens.  The game is a top-down 2D space shoot ‘em up with a retro arcade look.</p>
+<p>I’ll explore the circumstances that drove those initial decisions another time.  Right now, it’s enough to know that the game engine is written in C# on UWP using Win2D, and targets Windows tablets and phones that have accelerometer sensors and touch screens.  The game is a top-down 2D space shoot ‘em up with a retro arcade look.</p>
 <h1 id="Build-A-Game-Engine-in-C-…Are-You-Crazy"><a href="#Build-A-Game-Engine-in-C-…Are-You-Crazy" class="headerlink" title="Build A Game Engine in C#…Are You Crazy?"></a>Build A Game Engine in C#…Are You Crazy?</h1><p>When people talk of building game engines, C# and .NET aren’t terribly popular choices.  The .NET framework, while a much loved and carefully crafted platform, hasn’t exactly been built for the demands of a high-performing game engine in mind.  I don’t think my engine will be <em>too</em> demanding though, so using .NET is a feasible option.  Win2D is a powerful ally here, being a finely tuned wrapper over DirectX that <em>is</em> built for performance.  Win2D also provides a game-loop that gracefully handles the complexity of loop timing management, so that’s one less thing I needed to worry about.</p>
-<p>This leaves the game engine “merely” doing some user input handling, phsyics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f600.png?v7" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
+<p>This leaves the game engine “merely” doing some user input handling, physics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f600.png?v8" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
 <h1 id="Performance-Front-and-Centre"><a href="#Performance-Front-and-Centre" class="headerlink" title="Performance Front and Centre"></a>Performance Front and Centre</h1><p>I was <em>reasonably</em> sure I could make something decent with my technology choices, and a few test applications later I committed to the task ahead.  With a freshly read copy of Bob Nystrom’s amazing eBook <a href="http://gameprogrammingpatterns.com" target="_blank" rel="noopener">Game Programming Patterns</a> up my sleeve, years of mentally constructed game systems and designs that were eager to escape my mind, and the skills I had nurtured over my career, I figured I had a decent shot at a solid result.</p>
 <p>But confidence alone was never going to be enough.  Going into development of the engine I knew I would have to make every nanosecond count. While the architecture was wholly under my control and I trusted my skills, there was one concern that still hung heavy on my mind; <em>would the .NET Framework itself be performant enough?</em></p>
 <p>There was only one way to know for sure; I was going to have to write performance tests for the framework itself.  And when you want to know the performance of .NET code I know of nothing more suited to the task than <a href="https://github.com/dotnet/BenchmarkDotNet" target="_blank" rel="noopener">BenchmarkDotNet</a>.</p>
@@ -332,7 +332,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjbk2hk3m0002s4uu9wfp52m8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjezdwo130000fsuu28qvqv0k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -407,6 +407,20 @@
     </div>
     
         
+<nav id="article-nav">
+    
+        <a href="/2018/03/30/changing-everything/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Changes of a Cosmic Scale
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
 
     
 </article>
@@ -431,6 +445,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/30/changing-everything/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/03/30/changing-everything/crystal-saga-france-thumb.jpg)" alt="Changes of a Cosmic Scale" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/03/30/changing-everything/" class="title">Changes of a Cosmic Scale</a></p>
+                            <p class="item-date"><time datetime="2018-03-29T23:47:31.000Z" itemprop="datePublished">2018-03-30</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -460,7 +493,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -469,7 +502,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -478,7 +511,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -515,8 +548,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Icarus theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2018 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
