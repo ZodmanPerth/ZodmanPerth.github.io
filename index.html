@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                9
+                10
                 <span>tags</span>
             </div>
         </div>
@@ -176,6 +176,12 @@
                     <td>
                         <a href="https://twitter.com/ZodmanPerth" target="_blank" title="twitter" class=tooltip>
                             <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/carlscarlett/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
                         </a>
                     </td>
                     
@@ -200,6 +206,149 @@
 
             
             <section id="main">
+    <article id="post-say-gday-to-godot" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2018/08/21/say-gday-to-godot/" itemprop="url">
+            <img src="/2018/08/21/say-gday-to-godot/hogan-wide-420.png" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/21/say-gday-to-godot/">Saying G&#39;day to Godot</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/21/say-gday-to-godot/">
+            <time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/GDScript/">GDScript</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>I’ve taken my first steps to developing a game on the Godot 3 game engine.<br></p>
+            <p class="article-more-link">
+                <a href="/2018/08/21/say-gday-to-godot/">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/" data-id="cjl3pi8bm0000a4uus7rqa37j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-choosing-a-new-game-engine" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -252,7 +401,7 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>I’d decided to use someone else’s engine, but how would I choose?<br></p>
+            <p><p>I’d decided to use someone else’s engine, but how would I choose which one?<br></p>
             <p class="article-more-link">
                 <a href="/2018/05/08/choosing-a-new-game-engine/">Read More</a>
             </p>
@@ -265,7 +414,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/" data-id="cjgvyzjfu000h94uuasak0d0u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/" data-id="cjl3nul8e0007jsuulh0lc23u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -408,7 +557,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/03/30/changing-everything/" data-id="cjeze3k2q0014fsuuti3mlrh2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/03/30/changing-everything/" data-id="cjl3nul6z0002jsuuhmfudxnf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -551,7 +700,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjezdwo130000fsuu28qvqv0k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjl3nul8g0008jsuuzn1fd8n1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -642,6 +791,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/08/21/say-gday-to-godot/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/08/21/say-gday-to-godot/hogan-square.png)" alt="Saying G&#39;day to Godot" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/08/21/say-gday-to-godot/" class="title">Saying G&#39;day to Godot</a></p>
+                            <p class="item-date"><time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/05/08/choosing-a-new-game-engine/" class="thumbnail">
     
     
@@ -705,7 +873,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -714,7 +882,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -723,7 +891,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/">Godot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDScript/">GDScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/">Godot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -733,6 +901,10 @@
         <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
+                
+                    <li>
+                        <a href="https://godotengine.org/">Godot</a>
+                    </li>
                 
                     <li>
                         <a href="https://github.com/Microsoft/Win2D">Win2D</a>

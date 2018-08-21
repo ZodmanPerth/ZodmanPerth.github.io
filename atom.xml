@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2018-05-08T12:51:34.946Z</updated>
+  <updated>2018-08-21T13:09:13.606Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -17,15 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Saying G&#39;day to Godot</title>
+    <link href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
+    <id>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
+    <published>2018-08-21T13:09:17.000Z</published>
+    <updated>2018-08-21T13:09:13.606Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’ve taken my first steps to developing a game on the Godot 3 game engine.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+    
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Choosing a Game Engine</title>
     <link href="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/"/>
     <id>http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/</id>
     <published>2018-05-08T12:47:17.000Z</published>
-    <updated>2018-05-08T12:51:34.946Z</updated>
+    <updated>2018-05-08T12:53:32.861Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;I’d decided to use someone else’s engine, but how would I choose?&lt;br&gt;
+      &lt;p&gt;I’d decided to use someone else’s engine, but how would I choose which one?&lt;br&gt;
     
     </summary>
     
@@ -33,9 +61,9 @@
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -89,11 +117,11 @@
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
     
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/BenchmarkDotNet/"/>

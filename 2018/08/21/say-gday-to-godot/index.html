@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Saying G&#39;day to Godot | Red Peregrine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
+<meta name="keywords" content="Godot,GDScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Saying G&#39;day to Godot">
+<meta property="og:url" content="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/index.html">
+<meta property="og:site_name" content="Red Peregrine">
+<meta property="og:description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/hogan-square.png">
+<meta property="og:updated_time" content="2018-08-21T13:09:13.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Saying G&#39;day to Godot">
+<meta name="twitter:description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
+<meta name="twitter:image" content="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/hogan-square.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Red Peregrine" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Red Peregrine</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="What are you looking for?" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc?s=128" />
+            <h2 id="name">Carl Scarlett</h2>
+            <h3 id="title">Designer, Developer, Dreamer, Doer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Perth, Western Australia</span>
+            <a id="follow" target="_blank" href="https://twitter.com/ZodmanPerth">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                4
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                10
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZodmanPerth" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/ZodmanPerth" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/carlscarlett/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.youtube.com/user/ZodmanPerth" target="_blank" title="youtube" class=tooltip>
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-say-gday-to-godot" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/2018/08/21/say-gday-to-godot/hogan-wide-420.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Saying G&#39;day to Godot
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/21/say-gday-to-godot/">
+            <time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/GDScript/">GDScript</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>I’ve taken my first steps to developing a game on the Godot 3 game engine.<br><a id="more"></a></p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Following a thorough selection process outlined in <a href="my-last-post">my last post</a> I selected Godot 3 as the game engine I would build a game with.  The game is a top down 2D shooter, and much of the design had been created previously as I was developing it on an engine I was building myself at the same time.  Things didn’t work out with the OS I was targeting, and I’m now planning to build it with Godot 3 for mobile and tablet devices on the Android and (probably) iOS platforms.  Check out my previous posts which cover the journey so far in more detail.</p>
+<div class="admonition info"><p class="admonition-title">info</p><p>How does one pronounce “Godot”?  I’ve seen and heard a lot of discussion this topic. The game engine is named after the play “Waiting for Godot”, whose admirers also have strong sentiment about correct pronunciation of the word.  I couldn’t find any conclusive answers, so I’m going with the first pronunciation I heard; the “g” sound from the word “green” followed by a “doh” sound as in the “dough”.  I very, very slightly pronounce the first “o” as well but it’s barely noticable.  In fact, it sounds almost the same way we Australians pronounce the word “G’day”, hence the name of this blog post.</p>
+</div>
+<h1 id="What-to-Build-First"><a href="#What-to-Build-First" class="headerlink" title="What to Build First?"></a>What to Build First?</h1><p>Given I’m effectively back where I was when I started on my own engine, it makes sense to rebuild the same capability tests I had to ensure Godot was able to accommodate the game features I have in mind. As well as helping me to learn Godot, it’s also an opportunity to compare the performance of Godot over my own engine by implementing the same tests.  I expect to find Godot performs much faster than my own engine as it’s much closer to the metal than I was working previously, but it will be great to see this in practice.</p>
+<p>I chose to port my touch manipulation capability test first.  Touch input is the area I have the most concern with in Godot, and my test should be relatively simple to port.  My game uses touch and gestures for controls, and the touch manipulation capability test allows me to explore the touch features in Godot.</p>
+<p>The test is simple; three coloured boxes that can me moved by a drag gesture, scaled by pinch and zoom, and rotated with a twist of two or more touch points. The boxes are selectable, so once selected you don’t have to be touching the object to continue manipulating it.</p>
+<p>Here’s a video of the completed test on my former engine (running on Windows Phone) to show how this works:</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/42dvNVfrrA0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Touch manipulation capability test on my former engine</span></p>
+<h1 id="Coding-with-Godot"><a href="#Coding-with-Godot" class="headerlink" title="Coding with Godot"></a>Coding with Godot</h1><p>With Godot there are several language choices, including C# (which I have most of my experience in).  However I chose to start with Godot’s own scripting language; GDScript.  This language was developed specifically for Godot by their core development team and I felt it would be much easier for Godot to convert my intentions into native code on my choice of target platforms if I used it.  Besides, new Godot features would probably appear in GDScript first and I’d prefer they be available for me if I need them.</p>
+<p>There was also the opportunity to use external editors for coding.  My favourite code editor is VS Code and it already had multiple extensions for working with GDScript. After running with both the Godot editor and VS Code for a while, I found the convenience of working inside the Godot editor far outweighed the features the editor lacks (touch scrolling the code window and multi-line editing for example) and I went all in with the built in editor.</p>
+<p>When creating objects in Godot you define a “scene” which is a composition of a hierarchy of “nodes”, each with it’s own purpose. It took me a while to find the right nodes to use for this test, and after a while I realised I was implementing my objects at the wrong level.  I was misled by the word “scene” and thought it was synonymous with “view”, and while you probably can work this way it’s not how Godot is designed to work.  A scene is more synonymous with “class” or “entity”, and a view is just a scene that composes multiple other scenes together.  </p>
+<p>Nodes are like characteristics or behaviours of the scene and it’s the combination of composing nodes into a scene that defines the object.  Nodes can contain any number of other nodes, and nodes can be instances of scenes.  This allows the kind of encapsulation and inheritance heirarchies you would expect from an object oriented language, so all the OO coding patterns and techniques still apply.</p>
+<p>It was relatively easy to become familiar with the way scenes and nodes work together to form larger pieces, and I quickly became confident with dealing with problems as they arose.  Of course, I still needed to familiarise myself with what all the built in nodes were for, so I continued to watch youTube tutorials to see how other people solved the problems I would be coming across as I build out my game.</p>
+<h1 id="Input-with-Godot"><a href="#Input-with-Godot" class="headerlink" title="Input with Godot"></a>Input with Godot</h1><p>Godot has a comprehensive input event system where input events are propagated through all nodes in a scene on every cycle of the game loop.  Various events on nodes are fired until the event is marked as handled or passes all the way through, allowing several ways to accommodate different input processing methods.  As well as raw input information, a built in input map system allows you define maps from various input devices (keyboards, joysticks, mice, console controllers, etc).  Input maps abstract the controller away from the event handlers and simplifies your code.</p>
+<p><a href="http://docs.godotengine.org/en/3.0/tutorials/inputs/inputevent.html" target="_blank" rel="noopener"><br><img src="godot_input_event_flow.png" alt="Godot&#39;s documentation; as comprehensive as the InputEvent itself"><br></a></p>
+<p>In my capability test, touch input was my focus.  While simple touch gestures allow “click” and “double-click” control out of the box, more complex manipulations need to be constructed from raw “screen touch” and “screen drag” events.  This was in contrast to where my original test was written, as UWP has a built-in manipulations class that supports all sorts of gestures.</p>
+<p>While creating custom gesture handling can be frustrating, it can also be beneficial. Even though I lost some time developing the gestures I needed, I know I’m not having to employ a bloated built in node containing gestures I don’t need.  Further, as more and more people adopt touch devices and Godot 3, there’s opportunity to share community-built solutions such as this to speed up the development process for everyone.</p>
+<p>It’s worth mentioning that while I did search for and find some pre-existing touch handling code for Godot, it wasn’t in a format I preferred and I wasn’t sure if it was performant.  I decided to use writing my own handler as a step to learning to code in Godot and use existing material for reference to help solve my problem.</p>
+<h1 id="Manipulations-in-Godot"><a href="#Manipulations-in-Godot" class="headerlink" title="Manipulations in Godot"></a>Manipulations in Godot</h1><p>In the previous version of my capability test on UWP I found the <code>delta</code> events of manipulations worked very well when consuming the events.  Delta translation, rotation, and scale values are easily applied to matrix transforms on objects, so my <code>touchController</code> (as I called it) would definitely expose these events in signals somehow.  To get to this point I would need to process the raw <code>InputEventScreenTouch</code> and <code>InputEventScreenDrag</code> events from Godot and apply some logic to convert into my manipulations into signal data.</p>
+<p>I started with simple <code>touchStarted</code> and <code>touchStopped</code> signals that would fire whenever a finger started touching and stopped touching the screen.  This essentially echoed the Godot <code>InputEventScreenTouch</code> event’s <code>pressed</code> property, but allowed me to start creating a <code>touchInput</code> scene with the controller signals connected up to a debug label for testing.</p>
+<h1 id="Selectable-Boxes"><a href="#Selectable-Boxes" class="headerlink" title="Selectable Boxes"></a>Selectable Boxes</h1><p>Next I needed to draw the coloured boxes to be manipulated on the screen.  Godot doesn’t have any vector shape nodes that I could find, so I ended up creating a <code>colourBox</code> scene with a custom draw method to draw squares with borders.  I draw two squares on top of the other (first with the border colour, then a smaller one with the fill colour) which ensures the border looks crisp and doesn’t antialias/bleed when the box is scaled.</p>
+<p>I added some variables for the border and fill colour, and for the size of the box and the width of the border.  Then I created a generic function to create instances of the 3 boxes in my scene (red, green, and blue).</p>
+<script src="https://gist.github.com/ZodmanPerth/fa5dd4b800f1237f3de8dfe58a4a5951.js?file=colourBox.gd"></script>
+
+<p>Now I wanted to make the boxes selectable.  I was expecting the built-in input system would provide a way to determine the top-most object under a point on the screen but it appeared not to be so. After discussing the issue on the <a href="https://discordapp.com/invite/zH7NUgz" target="_blank" rel="noopener">Godot Discord</a> and toying with a few approaches it seemed the best approach in my circumstances was to allow the boxes themselves to set some state if they were touched and have a controller in the parent scene determine which shape should be selected if multiple hits were reported.</p>
+<p>While this felt a little clunky and over-specified at first, it did lend itself to developing a <code>selectionController</code> that isolated the selection of boxes from the rest of the parent scene to hide most of the clutter. I considered going a step further and creating a behaviour node that would be added to boxes when they are registered with the <code>selectionController</code> to encapsulate the input logic, but I don’t know if I’d ever reuse that code so I’ve left it as is for now.</p>
+<p>All that remained is for the <code>selectionController</code> to work out which node is selected by looping through the registered boxes, examining whether they were being touched, and assigning to a variable for use in the main scene.</p>
+<script src="https://gist.github.com/ZodmanPerth/fa5dd4b800f1237f3de8dfe58a4a5951.js?file=selectionController.gd"></script>
+
+<h1 id="Translation-Manipulation"><a href="#Translation-Manipulation" class="headerlink" title="Translation Manipulation"></a>Translation Manipulation</h1><p>Now that I had selectable objects it was time to create the manipulations I needed.  I went for the easiest one first; the translation.</p>
+<p>From my experiment with creating <code>touchStarted</code> and <code>touchStopped</code> signals I knew that each touch point would be assigned it’s own ID (called “index”), and those indexes are created using an increasing integer.  When a touch starts I add the index, origin, and position to a dictionary of touch points for tracking.  I also record the index of the highest touch point seen, which I use later to form the manipulations loop.</p>
+<p>During <code>InputEventScreenDrag</code> events from Godot I update the position of the stored touch points in the tracking dictionary.  If the event drag is on the point with the highest index I call a manipulation handler, forming the manipulation loop.  When touch stops (the <code>InputEventScreenTouch</code> event with <code>event.pressed</code> equal to false), I remove the point from the tracking dictionary (and update the highest index if required).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">func _input(event):</span><br><span class="line">    <span class="keyword">if</span> event <span class="keyword">is</span> InputEventScreenTouch:</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.pressed:</span><br><span class="line">            <span class="comment"># add point to register</span></span><br><span class="line">            var tp = &#123; <span class="string">"index"</span>: event.index, <span class="string">"origin"</span>: event.position, <span class="string">"position"</span>: event.position &#125;</span><br><span class="line">            touchPoints[event.index] = tp</span><br><span class="line">            touchPointCount = touchPoints.size()</span><br><span class="line">            <span class="comment"># remember highest index for synchronising manipulation signals</span></span><br><span class="line">            maxIndex = event.index</span><br><span class="line">            <span class="comment"># signals</span></span><br><span class="line">            emit_signal(<span class="string">"touchStarted"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># remove points</span></span><br><span class="line">            lastTouchPoints.erase(event.index)</span><br><span class="line">            touchPoints.erase(event.index)</span><br><span class="line">            <span class="comment"># update maxIndex if necessary</span></span><br><span class="line">            touchPointCount = touchPoints.size()</span><br><span class="line">            <span class="keyword">if</span> maxIndex == event.index:</span><br><span class="line">                <span class="keyword">if</span> touchPointCount != <span class="number">0</span>:</span><br><span class="line">                    maxIndex = touchPoints.keys()[touchPointCount - <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    maxIndex = <span class="number">-1</span></span><br><span class="line">            <span class="comment"># signals</span></span><br><span class="line">            emit_signal(<span class="string">"touchStopped"</span>)</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">elif</span> event <span class="keyword">is</span> InputEventScreenDrag:</span><br><span class="line">        <span class="comment"># update position of this touch point</span></span><br><span class="line">        var tp = touchPoints[event.index]</span><br><span class="line">        tp.position = event.position</span><br><span class="line">        <span class="comment"># Start manipulation loop if all points have been synchronised</span></span><br><span class="line">        <span class="keyword">if</span> event.index == maxIndex:</span><br><span class="line">            handleManipulation()</span><br></pre></td></tr></table></figure>
+<p>All that remained was to calculate the delta translation (vector) using the change in position of one or many touch points.  For each touch point in the tracking dictionary, the vector from its current position to its position on the previous pass through the manipulation loop are added together.  The result is divided by the number of touch points to calculate the average value.  This is the translation delta.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func handleManipulation() :</span><br><span class="line">  <span class="comment"># Calculate translation delta</span></span><br><span class="line">    var deltaPosition = Vector2(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> lastTouchPoints.size() != <span class="number">0</span>:</span><br><span class="line">        var lastManipulationCentre = Vector2(<span class="number">0</span>, <span class="number">0</span>) <span class="comment"># the last centre of all touch points</span></span><br><span class="line">        var thisManipulationCentre = Vector2(<span class="number">0</span>, <span class="number">0</span>) <span class="comment"># the new  centre of all touch points</span></span><br><span class="line">        var tpCount = <span class="number">0</span>	</span><br><span class="line">        <span class="keyword">for</span> tpKey <span class="keyword">in</span> touchPoints:</span><br><span class="line">            <span class="keyword">if</span> lastTouchPoints.has(tpKey):</span><br><span class="line">                tpCount += <span class="number">1</span></span><br><span class="line">                lastManipulationCentre += lastTouchPoints[tpKey].position</span><br><span class="line">                thisManipulationCentre += touchPoints[tpKey].position</span><br><span class="line">        <span class="comment"># calculate the last and current manipulation point</span></span><br><span class="line">        lastManipulationCentre /= tpCount</span><br><span class="line">        thisManipulationCentre /= tpCount</span><br><span class="line">        <span class="comment"># calculate delta position</span></span><br><span class="line">        deltaPosition = thisManipulationCentre - lastManipulationCentre</span><br></pre></td></tr></table></figure>
+<p>Once calculated I simply emit a <code>manipulationChanged</code> signal from the controller containing a <code>delta</code> with a <code>translation</code> property containing this translation delta value.  In the parent scene I consume this signal by simply adding the <code>delta.translation</code> to the selected node’s <code>position</code> and the “drag” manipulation is complete.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># continuation of `func handleManipulation()`</span></span><br><span class="line"><span class="comment"># signal</span></span><br><span class="line">emit_signal(<span class="string">"manipulationChanged"</span>, &#123; </span><br><span class="line">    <span class="string">"delta"</span>: &#123; </span><br><span class="line">        <span class="string">"position"</span>: deltaPosition</span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="Rotation-Manipulation"><a href="#Rotation-Manipulation" class="headerlink" title="Rotation Manipulation"></a>Rotation Manipulation</h1><p>Next I tackled rotation manipulation.  The logic for this is different because to create rotation you need (at least) two touch points, and use the angle between them to calculate the delta.  If there are more than two touch points, the angle between each neighbouring pair of touch points is added together and averaged.  I use another tracking dictionary, keyed by the indexes of the point pair, to compare the change in angle between subsequent passes of the manipulation loop.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># inside `func handleManipulation()`</span></span><br><span class="line"><span class="comment"># calculate angles between touch point pairs (if required)</span></span><br><span class="line">var deltaAngle = <span class="number">0</span></span><br><span class="line">var touchPointCount = touchPoints.size()</span><br><span class="line">touchPairs.clear()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> touchPointCount &gt; <span class="number">1</span>:</span><br><span class="line">    var angle</span><br><span class="line">    var thisTotalAngle = <span class="number">0</span></span><br><span class="line">    var lastTotalAngle = <span class="number">0</span></span><br><span class="line">    var pairCount = <span class="number">0</span></span><br><span class="line">    var pairKey</span><br><span class="line">    var lastPair</span><br><span class="line">    var thisPoint </span><br><span class="line">    var nextPoint = touchPoints.values()[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, touchPointCount):</span><br><span class="line">        thisPoint = nextPoint</span><br><span class="line">        nextPoint = touchPoints.values()[i]</span><br><span class="line">        pairKey = Vector2(thisPoint.index, nextPoint.index)</span><br><span class="line">        <span class="comment"># calculate touch pair data</span></span><br><span class="line">        angle = fposmod(baseVector.angle_to(nextPoint.position - thisPoint.position), <span class="number">2</span> * PI)</span><br><span class="line">        touchPairs[pairKey] = &#123; angle = angle &#125;</span><br><span class="line">        <span class="comment"># check if pair is relevant (was present in last pass)</span></span><br><span class="line">        <span class="keyword">if</span> lastTouchPairs.has(pairKey):</span><br><span class="line">            lastPair = lastTouchPairs[pairKey]</span><br><span class="line">            pairCount += <span class="number">1</span></span><br><span class="line">            <span class="comment"># get angle details for calculating delta angle</span></span><br><span class="line">            thisTotalAngle += angle</span><br><span class="line">            lastTotalAngle += lastPair.angle</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># calculate delta angle</span></span><br><span class="line">    <span class="keyword">if</span> pairCount != <span class="number">0</span>:</span><br><span class="line">        deltaAngle = (thisTotalAngle - lastTotalAngle) / pairCount</span><br></pre></td></tr></table></figure>
+<p>This angle delta is inserted into the delta object in the <code>manipulationChanged</code> signal, and consumed by adding the value to the selected node’s <code>rotation</code> property. This completes the implementation of this manipulation.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># inside `func handleManipulation()`</span></span><br><span class="line"><span class="comment"># signal</span></span><br><span class="line">emit_signal(<span class="string">"manipulationChanged"</span>, &#123; </span><br><span class="line">    <span class="string">"delta"</span>: &#123; </span><br><span class="line">        <span class="string">"position"</span>: deltaPosition, </span><br><span class="line">        <span class="string">"angle"</span>: deltaAngle</span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<div class="admonition note"><p class="admonition-title">Coexisting Manipulations</p><p>Note how the logic to calculate the translation and rotation work independently on the same group of touch points.  This means you can put all five digits of your hand on the screen (for example), and both drag and rotate at the same time.  This produces the effect you would intuitively expect and feels very natural.</p>
+</div>
+<h1 id="Scale-Manipulation"><a href="#Scale-Manipulation" class="headerlink" title="Scale Manipulation"></a>Scale Manipulation</h1><p>The final manipulation is often called “pinch and zoom” and in my sample project it is used to scale the size of a box up and down.  The logic is a lot like the logic for rotation and shares a lot of the code; it requires (at least) two touch points, and the change in distance between each neighbouring pair is averaged to produce the scale delta.  The same tracking dictionary is used to track this distance for each point pair between passes of the manipulation loop.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># inside `func handleManipulation()`; merging scale with angle calculation</span></span><br><span class="line"><span class="comment"># calculate distances and angles between touch point pairs (if required)</span></span><br><span class="line">var deltaAngle = <span class="number">0</span></span><br><span class="line">var deltaScale = <span class="number">0</span></span><br><span class="line">var touchPointCount = touchPoints.size()</span><br><span class="line">touchPairs.clear()</span><br><span class="line"><span class="keyword">if</span> touchPointCount &gt; <span class="number">1</span>:</span><br><span class="line">    var angle</span><br><span class="line">    var thisTotalAngle = <span class="number">0</span></span><br><span class="line">    var lastTotalAngle = <span class="number">0</span></span><br><span class="line">    var pairCount = <span class="number">0</span></span><br><span class="line">    var distance</span><br><span class="line">    var thisTotalDistance = <span class="number">0</span></span><br><span class="line">    var lastTotalDistance = <span class="number">0</span></span><br><span class="line">    var pairKey</span><br><span class="line">    var lastPair</span><br><span class="line">    var thisPoint </span><br><span class="line">    var nextPoint = touchPoints.values()[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, touchPointCount):</span><br><span class="line">        </span><br><span class="line">        thisPoint = nextPoint</span><br><span class="line">        nextPoint = touchPoints.values()[i]</span><br><span class="line">        pairKey = Vector2(thisPoint.index, nextPoint.index)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># calculate touch pair data</span></span><br><span class="line">        angle = fposmod(baseVector.angle_to(nextPoint.position - thisPoint.position), <span class="number">2</span> * PI)</span><br><span class="line">        distance = thisPoint.position.distance_to(nextPoint.position)</span><br><span class="line">        touchPairs[pairKey] = &#123; angle = angle, distance = distance &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># check if pair is relevant (was present in last pass)</span></span><br><span class="line">        <span class="keyword">if</span> lastTouchPairs.has(pairKey):</span><br><span class="line">            lastPair = lastTouchPairs[pairKey]</span><br><span class="line">            pairCount += <span class="number">1</span></span><br><span class="line">            <span class="comment"># get angle details for calculating delta angle</span></span><br><span class="line">            thisTotalAngle += angle</span><br><span class="line">            lastTotalAngle += lastPair.angle</span><br><span class="line">            <span class="comment"># add distance details for calculating delta scale</span></span><br><span class="line">            thisTotalDistance += distance</span><br><span class="line">            lastTotalDistance += lastPair.distance</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># calculate delta angle</span></span><br><span class="line">    <span class="keyword">if</span> pairCount != <span class="number">0</span>:</span><br><span class="line">        deltaAngle = (thisTotalAngle - lastTotalAngle) / pairCount</span><br><span class="line"></span><br><span class="line">    <span class="comment"># calculate delta scale</span></span><br><span class="line">    <span class="keyword">if</span> lastTotalDistance != <span class="number">0</span>:</span><br><span class="line">        deltaScale = (thisTotalDistance - lastTotalDistance) / lastTotalDistance</span><br></pre></td></tr></table></figure>
+<p>The scale delta value is inserted into the delta object in the <code>manipulationChanged</code> signal.  Consuming it is slightly different, as this value is multiplied by the selected node’s <code>scale</code> property to produce the intuitive affect.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># signal</span></span><br><span class="line">emit_signal(<span class="string">"manipulationChanged"</span>, &#123; </span><br><span class="line">    <span class="string">"delta"</span>: &#123; </span><br><span class="line">        <span class="string">"position"</span>: deltaPosition, </span><br><span class="line">        <span class="string">"scale"</span>: deltaScale,</span><br><span class="line">        <span class="string">"angle"</span>: deltaAngle</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<div class="admonition note"><p class="admonition-title">Coexisting Manipulations</p><p>Note again that the way this manipulation works does not interfere with the other two manipulations, and produces an intuitive, natural way to manipulate objects using the same touch points.</p>
+</div>
+<h1 id="Manipulations-and-Inertia"><a href="#Manipulations-and-Inertia" class="headerlink" title="Manipulations and Inertia"></a>Manipulations and Inertia</h1><p>In the original demo I could flick boxes around manipulations whereas in my Godot version I cannot.  In UWP, the built in manipulation system had an inertia feature that I chose not to implement in my Godot version. I don’t require this feature for my current game, however if I ever need to add inertia manipulations I think it would be relatively trivial to add the logic to my <code>touchController</code>.</p>
+<h1 id="Ship-it"><a href="#Ship-it" class="headerlink" title="Ship it!"></a>Ship it!</h1><p>My touch manipulation capability test was now complete. While things worked great running this test on my Surface, I really wanted to see it on mobile (at least on Android).  I wanted to ensure that when Godot translated to a different set of binaries the behaviour of the manipulations wouldn’t change.</p>
+<p>At the time I was using Godot 3.0 and setting up to deploy to Android was a pretty convoluted and painful. This was mostly due to having to install tooling and configuration outside Godot, as the config inside Godot itself was relatively easy.  Since then a lot has happened, with some changes with the way the Google app store treats Godot applications, and decisions about how Godot supports Android exports, and I’m happy to say there appears to be plans to simplify things a lot for Godot 3.1 (or at least in a near-future version).</p>
+<p>Once Godot (and my development machine, and my Android phone) were correctly configured, exporting to Android wsa a breeze.  When I connect my phone to my Surface, an option appears in Godot to deploy to Android at the press of a button.  A few brief moments later and my capability test was running on my Android phone and working in every way it did on my Surface.  You beauty!</p>
+<p><a href="https://gist.github.com/ZodmanPerth/fa5dd4b800f1237f3de8dfe58a4a5951" target="_blank" rel="noopener"><br><img src="github-gist.png" alt="See all the code on my Github Gist"><br></a></p>
+<h1 id="Final-thoughts"><a href="#Final-thoughts" class="headerlink" title="Final thoughts"></a>Final thoughts</h1><p>While it was initially disappointing that I had to build my own manipulation system in Godot, I’m satisfied with the result.  The performance of this capability test, at least measured through my own observation, appears on par or better than the previous version.  I’ve deployed a Godot app to an Android device, and everything works the way it should, which was a relief.</p>
+<p>I’m happy that things are progressing and I can move on to the next task.  Here’s a video showing the new capability test running on Godot.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/09dHZ7G-xTw" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Touch manipulation capability test on Godot</span></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/" data-id="cjl3pi8bm0000a4uus7rqa37j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/05/08/choosing-a-new-game-engine/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Choosing a Game Engine</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/21/say-gday-to-godot/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/08/21/say-gday-to-godot/hogan-square.png)" alt="Saying G&#39;day to Godot" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/08/21/say-gday-to-godot/" class="title">Saying G&#39;day to Godot</a></p>
+                            <p class="item-date"><time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/05/08/choosing-a-new-game-engine/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/05/08/choosing-a-new-game-engine/pixel2-sample-credit-allison-johnson-256.jpg)" alt="Choosing a Game Engine" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/05/08/choosing-a-new-game-engine/" class="title">Choosing a Game Engine</a></p>
+                            <p class="item-date"><time datetime="2018-05-08T12:47:17.000Z" itemprop="datePublished">2018-05-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/30/changing-everything/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/03/30/changing-everything/crystal-saga-france-thumb.jpg)" alt="Changes of a Cosmic Scale" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/03/30/changing-everything/" class="title">Changes of a Cosmic Scale</a></p>
+                            <p class="item-date"><time datetime="2018-03-29T23:47:31.000Z" itemprop="datePublished">2018-03-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png)" alt="Measuring C# Performance with BenchmarkDotNet" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" class="title">Measuring C# Performance with BenchmarkDotNet</a></p>
+                            <p class="item-date"><time datetime="2017-12-23T09:12:47.000Z" itemprop="datePublished">2017-12-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDScript/">GDScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/">Godot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://godotengine.org/">Godot</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.linqpad.net/">LINQPad</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://www.redperegrine.net/2018/08/21/say-gday-to-godot/';
+        
+        this.page.identifier = 'say-gday-to-godot';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
