@@ -6,7 +6,7 @@
     <title>Saying G&#39;day to Godot | Red Peregrine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
-<meta name="keywords" content="Godot,GDScript">
+<meta name="keywords" content="Godot,Sensor,GDScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Saying G&#39;day to Godot">
 <meta property="og:url" content="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/index.html">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/hogan-square.png">
-<meta property="og:updated_time" content="2018-08-21T13:09:13.606Z">
+<meta property="og:updated_time" content="2018-09-03T08:54:58.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Saying G&#39;day to Godot">
 <meta name="twitter:description" content="I’ve taken my first steps to developing a game on the Godot 3 game engine.">
@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                4
+                5
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                10
+                11
                 <span>tags</span>
             </div>
         </div>
@@ -243,13 +243,13 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GDScript/">GDScript</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>
+        <a class="tag-link" href="/tags/GDScript/">GDScript</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>, <a class="tag-link" href="/tags/Sensor/">Sensor</a>
     </div>
 
                     </div>
@@ -261,7 +261,7 @@
         
             
             <p>I’ve taken my first steps to developing a game on the Godot 3 game engine.<br><a id="more"></a></p>
-<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Following a thorough selection process outlined in <a href="my-last-post">my last post</a> I selected Godot 3 as the game engine I would build a game with.  The game is a top down 2D shooter, and much of the design had been created previously as I was developing it on an engine I was building myself at the same time.  Things didn’t work out with the OS I was targeting, and I’m now planning to build it with Godot 3 for mobile and tablet devices on the Android and (probably) iOS platforms.  Check out my previous posts which cover the journey so far in more detail.</p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Following a thorough selection process outlined in <a href="/2018/03/30/changing-everything">my last post</a> I selected Godot 3 as the game engine I would build a game with.  The game is a top down 2D shooter, and much of the design had been created previously as I was developing it on an engine I was building myself at the same time.  Things didn’t work out with the OS I was targeting, and I’m now planning to build it with Godot 3 for mobile and tablet devices on the Android and (probably) iOS platforms.  Check out my previous posts which cover the journey so far in more detail.</p>
 <div class="admonition info"><p class="admonition-title">info</p><p>How does one pronounce “Godot”?  I’ve seen and heard a lot of discussion this topic. The game engine is named after the play “Waiting for Godot”, whose admirers also have strong sentiment about correct pronunciation of the word.  I couldn’t find any conclusive answers, so I’m going with the first pronunciation I heard; the “g” sound from the word “green” followed by a “doh” sound as in the “dough”.  I very, very slightly pronounce the first “o” as well but it’s barely noticable.  In fact, it sounds almost the same way we Australians pronounce the word “G’day”, hence the name of this blog post.</p>
 </div>
 <h1 id="What-to-Build-First"><a href="#What-to-Build-First" class="headerlink" title="What to Build First?"></a>What to Build First?</h1><p>Given I’m effectively back where I was when I started on my own engine, it makes sense to rebuild the same capability tests I had to ensure Godot was able to accommodate the game features I have in mind. As well as helping me to learn Godot, it’s also an opportunity to compare the performance of Godot over my own engine by implementing the same tests.  I expect to find Godot performs much faster than my own engine as it’s much closer to the metal than I was working previously, but it will be great to see this in practice.</p>
@@ -328,7 +328,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/" data-id="cjl3pi8bm0000a4uus7rqa37j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/" data-id="cjlry60p0001oc0uujqt5qh13" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -405,6 +405,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2018/09/09/instrumenting-the-accelerometer/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Instrumenting the Accelerometer
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/05/08/choosing-a-new-game-engine/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -441,6 +450,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/09/09/instrumenting-the-accelerometer/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png)" alt="Instrumenting the Accelerometer" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/09/09/instrumenting-the-accelerometer/" class="title">Instrumenting the Accelerometer</a></p>
+                            <p class="item-date"><time datetime="2018-09-09T10:08:52.000Z" itemprop="datePublished">2018-09-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/08/21/say-gday-to-godot/" class="thumbnail">
     
     
@@ -451,7 +479,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
                             <p class="item-title"><a href="/2018/08/21/say-gday-to-godot/" class="title">Saying G&#39;day to Godot</a></p>
                             <p class="item-date"><time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time></p>
                         </div>
@@ -470,7 +498,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
                             <p class="item-title"><a href="/2018/05/08/choosing-a-new-game-engine/" class="title">Choosing a Game Engine</a></p>
                             <p class="item-date"><time datetime="2018-05-08T12:47:17.000Z" itemprop="datePublished">2018-05-08</time></p>
                         </div>
@@ -489,7 +517,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
                             <p class="item-title"><a href="/2018/03/30/changing-everything/" class="title">Changes of a Cosmic Scale</a></p>
                             <p class="item-date"><time datetime="2018-03-29T23:47:31.000Z" itemprop="datePublished">2018-03-30</time></p>
                         </div>
@@ -508,7 +536,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
                             <p class="item-title"><a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" class="title">Measuring C# Performance with BenchmarkDotNet</a></p>
                             <p class="item-date"><time datetime="2017-12-23T09:12:47.000Z" itemprop="datePublished">2017-12-23</time></p>
                         </div>
@@ -523,7 +551,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/">indiedev</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/indiedev/gameengine/">gameengine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -532,7 +560,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -541,7 +569,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDScript/">GDScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/">Godot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDScript/">GDScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/">Godot</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQPad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 

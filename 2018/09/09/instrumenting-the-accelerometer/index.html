@@ -3,18 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Red Peregrine</title>
+    <title>Instrumenting the Accelerometer | Red Peregrine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Red Peregrine is the blog site of Carl Scarlett">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Red Peregrine">
-<meta property="og:url" content="http://www.redperegrine.net/index.html">
+    <meta name="description" content="Converting my accelerometer capability test from UWP to Godot 3.">
+<meta name="keywords" content="Godot,Sensor,GDScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Instrumenting the Accelerometer">
+<meta property="og:url" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/index.html">
 <meta property="og:site_name" content="Red Peregrine">
-<meta property="og:description" content="Red Peregrine is the blog site of Carl Scarlett">
+<meta property="og:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png">
+<meta property="og:updated_time" content="2018-09-09T10:08:59.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Red Peregrine">
-<meta name="twitter:description" content="Red Peregrine is the blog site of Carl Scarlett">
+<meta name="twitter:title" content="Instrumenting the Accelerometer">
+<meta name="twitter:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
+<meta name="twitter:image" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png">
     
 
     
@@ -205,15 +209,12 @@
 </aside>
 
             
-            <section id="main">
-    <article id="post-instrumenting-the-accelerometer" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-instrumenting-the-accelerometer" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             
 	
-		<a href="/2018/09/09/instrumenting-the-accelerometer/" itemprop="url">
-            <img src="/2018/09/09/instrumenting-the-accelerometer/acceleration-420.png" class="article-banner" />
-        </a>
+		<img src="/2018/09/09/instrumenting-the-accelerometer/acceleration-420.png" class="article-banner" />
 	
 
 
@@ -223,8 +224,8 @@
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/09/09/instrumenting-the-accelerometer/">Instrumenting the Accelerometer</a>
+        <h1 class="article-title" itemprop="name">
+            Instrumenting the Accelerometer
         </h1>
     
 
@@ -258,10 +259,53 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>Converting my accelerometer capability test from UWP to Godot 3.<br></p>
-            <p class="article-more-link">
-                <a href="/2018/09/09/instrumenting-the-accelerometer/">Read More</a>
-            </p>
+            
+            <p>Converting my accelerometer capability test from UWP to Godot 3.<br><a id="more"></a></p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Having successfully ported my touch manipulation capability test from UWP to Godot 3 (the subject of <a href="/2018/08/21/say-gday-to-godot\">my last post</a>) it was time to prove the capability of another sensor using Godot; the accelerometer.  I haven’t posted about this test before (even on my <a href="https://www.youtube.com/channel/UCnH_0IE9-uVdAv5Ku1UazeQ" target="_blank" rel="noopener">you-tube channel</a>), so let me set the scene for you.</p>
+<p>The game I’m developing will be controlled by tilting a smartphone or tablet in the real world.  Even in their cheapest form, these devices tend to have an accelerometer sensor.  Some expensive ones have additional sensors such as gyroscopes and magnetometers which can also be used to determine/enhance how the device is tilted in space.  Though prior research and testing I discovered I can get the degree of control I need for the game I’m building using the accelerometer alone.  Initially this was revealed with a capability test (the remake of which is the subject of this post), but also later when I developed playable parts of the game on the previous game engine I was developing myself (see <a href="http://localhost:4000/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet" target="_blank" rel="noopener">my first post</a>).</p>
+<h1 id="Accelerometer-Crash-Course"><a href="#Accelerometer-Crash-Course" class="headerlink" title="Accelerometer Crash Course"></a>Accelerometer Crash Course</h1><p>Imagine the screen you’re reading this on is a device with an accelerometer.  The accelerometer in this device defines it’s movement through real world space using a 3D cartesian coordinate system.  It defines an x, y, and z axis through the screen as follows:</p>
+<ul>
+<li>the x axis passes across the face of the screen from left to right</li>
+<li>the y axis passes across the face of the screen from top to bottom</li>
+<li>the z axis passes through the screen from back (behind) to front</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">Note</p><p>If you’re wondering, the origin of the axes (the point where all three axes intersect) is the top-left hand corner of the screen.  However that doesn’t matter when we are talking about readings from the accelerometer.</p>
+</div>
+<p>The accelerometer measures the acceleration of the device in real world space on these three axes at the time a reading is taken.  Readings from the accelerometer are split into x, y, and z values.  The accelerometer sensor is constantly measuring so it can provide values any time you take a reading.</p>
+<h1 id="The-Gravity-of-the-Situation"><a href="#The-Gravity-of-the-Situation" class="headerlink" title="The Gravity of the Situation"></a>The Gravity of the Situation</h1><p>The key thing to understand is that gravity is always affecting these readings.  Unless you’re lucky enough to be holding this device in outer-space or on another world, the force of Earth’s gravity is constantly accelerating the device towards the centre of the Earth.  If the device is placed on a stationary table and you read the accelerometer you’ll find a force of 9.8 meters per second towards the centre of the Earth being reflected in the results.  That’s the amount of force gravity is exerting on the device and the direction in which it is being exerted.</p>
+<p>This fact can be used to determine the orientation of the device in the real world, and therefore how much the device is tilting.  This amount of tilt is what is used to control the game.</p>
+<h1 id="Visualising-the-Reading"><a href="#Visualising-the-Reading" class="headerlink" title="Visualising the Reading"></a>Visualising the Reading</h1><p>For the purpose of this capability test, the screen is a 2D surface on which I want to show the 3D reading from the accelerometer sensor.  I chose to represent the x and y component of each reading as a line from the centre of the screen pointing in the same x and y direction, with a length reflecting the strength of the reading in that direction.  I also chose to draw a circle around the screen centre to indicate where a force of 9.8 metres per second is, so that if the screen was perfectly stationary and upright (where z == 0) the line would terminate at the circle.  This lets me demonstrate rotation around the device’s z axis.</p>
+<p>For showing the z value of the reading I needed to be creative.  I chose to represent the z component by changing the fill colour of the circle.  When the z reading is zero, the circle is transparent.  When the screen is facing the centre of the Earth, the circle is solid green.  When the screen is facing away from the centre of the Earth, the circle is solid red.  As the screen tilts towards and away from the centre of the Earth, the colour gradually changes between these three colour values.</p>
+<p>The end result is that it becomes easy to see which direction the centre of the Earth is on the device as you tilt it through space.  It’s quite difficult to explain in words, so let’s jump ahead and see a video of this in action after this capability test has been implemented.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/HXTu3S-CrmE" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot on my Android phone</span></p>
+<h1 id="Reading-the-Accelerometer-in-Godot"><a href="#Reading-the-Accelerometer-in-Godot" class="headerlink" title="Reading the Accelerometer in Godot"></a>Reading the Accelerometer in Godot</h1><p>In UWP the accelerometer sensor is exposed in the <code>Windows.Devices.Sensors</code>.  You define the interval at which readings will be taken, and an event handler that will receive each readings.  In the previous implementation of this capability test I wrapped this sensor object in a service that stored the values as readings came in, and the application simply read from this service when it is was ready to take a reading.</p>
+<p>In Godot 3, the accelerometer sensor is exposed as a function <code>get_accelerometer()</code> on the <code>Input</code> singleton, which returns a <code>Vector3</code> containing the x, y, and z values.  At the time I was coding, the Godot help system described the functionality of this method as:</p>
+<blockquote><p>If the device has an accelerometer, this will return the movement.</p>
+</blockquote>
+<p>I knew my Surface Pro (where I do all my coding) had an accelerometer from when I wrote my UWP version of the capability test.  When I read the sensor in Godot however, I was only getting zeros.  Confused and unable to figure it out myself, I turned to <a href="https://discordapp.com/invite/zH7NUgz" target="_blank" rel="noopener">Godot Discord</a> for help.</p>
+<p>Some friends there did some digging and found the <code>get_accelerometer()</code> method only returns values when you export your code and run it on a device where an implementation has been written.  Though it’s fortunate that both UWP and Android (my primary targets) have this implementation, being forced to export the code to test it every time is far from ideal.  Unless I came up with a plan, I wouldn’t have a tight development loop and progress on my entire game would be painstakingly slow.</p>
+<div class="admonition note"><p class="admonition-title">Making it better</p><p>The documentation totally misled me here but there’s a couple of things I can do to make it better.  The first is to submit a pull request on the documentation to write better text and prevent confusion.  The second is to request for the Godot development team (or community contributor) to implement accelerometer support within the editor (if the device supports it).  I plan to take an action on these.</p>
+</div>
+<h1 id="Tightening-the-Development-Loop"><a href="#Tightening-the-Development-Loop" class="headerlink" title="Tightening the Development Loop"></a>Tightening the Development Loop</h1><p>I wanted to simulate moving the device in real space while in the editor, but I knew <code>get_accelerometer()</code> would only return zeroes when running there.  However I could make an accelerometer sensor node (a facade) that exposed readings from <code>get_accelerometer()</code> when it was returning values, and create touch controls to manually update the values when <code>get_accelerometer()</code> wasn’t returning values.  Then if I only consume the facade my application would work in both scenarios.</p>
+<p>I designed a touchscreen vertical slider for the left edge of the screen whose value controlled the x and y readings on the sensor facade.  Dragging up and down the slider would change its value between 0 and 360, which I would transform into a 2D direction in x and y using sine and cosine trigonometric functions.  I allowed the slider to cycle through this range several times down the screen, and put a marker at every zero point.</p>
+<p>Similarly I designed a touchscreen horizontal slider for the bottom edge of the screen to change it’s value between -180 and 180 and use it to control the z reading on the sensor facade.</p>
+<p>Using what I had learned about touch input from my manipulations test to quickly knocked out <code>TouchSliderVertical</code> and <code>TouchSliderHorizontal</code> nodes.  I created an <code>AccelerometerSensor</code> node (the facade) that would read from <code>get_accelerometer()</code> a few times when it started up, and if it didn’t get a non-zero reading it would determine that the accelerometer sensor wasn’t present.  It would set a boolean flag to indicate if the sensor was available, and not read the sensor further if it determined it wasn’t there.  This flag was also used to disable the touch sliders if the sensor was available (so the sliders wouldn’t appear if they weren’t required).</p>
+<h1 id="Putting-it-all-Together"><a href="#Putting-it-all-Together" class="headerlink" title="Putting it all Together"></a>Putting it all Together</h1><p>Now it was time to put all this into a scene.  I built a <code>SensorDisplay</code> node to draw the line and the circle, using the readings from the <code>AccelerometerSensor</code> facade (node).  A script on the root node connected up all the necessary signals to marshall readings from the touch sliders to the facade, and to disable them if the sensor was present.  I even threw in a <code>DebugLabel</code> to show the state of the <code>AccelerometerSensor</code>.</p>
+<p>Here’s a video of it all hooked up and running from the Godot editor.  You can see the touch sliders in action,  how they modify the readings of the accelerometer facade, and thus drive the display.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LfvbE7FNmTQ" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running from the Editor</span></p>
+<h1 id="Smoothing-Sensor-Readings-with-Filters"><a href="#Smoothing-Sensor-Readings-with-Filters" class="headerlink" title="Smoothing Sensor Readings with Filters"></a>Smoothing Sensor Readings with Filters</h1><p>I know from experience that raw readings from an accelerometer sensor are noisy and not suitable for using as input in most cases.  The way around this is to filter the readings to smooth out the values.</p>
+<p>There are many strategies that can be employed to smooth the data, and choosing the one that works for you takes some experimentation.  From previous efforts I’ve found a simple low-pass filter is adequate for my needs.  Such a filter uses both the previous value and the current reading, performs some simple mathematics and creates a new value.  This is remarkably easy to do, and given a good dampening <code>coefficient</code> (again found through trial and error) the readings become smoother and more useful.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">0.0</span></span><br><span class="line">var y = <span class="number">0.0</span></span><br><span class="line">var z = <span class="number">0.0</span></span><br><span class="line">var coefficient = <span class="number">0.35</span></span><br><span class="line"></span><br><span class="line">func _process(delta):</span><br><span class="line">  var reading = Input.get_accelerometer()</span><br><span class="line">    x = x + coefficient * (reading.x - x)</span><br><span class="line">    y = y + coefficient * (reading.y - y)</span><br><span class="line">    z = z + coefficient * (reading.z - z)</span><br></pre></td></tr></table></figure>
+<p><span class="caption">A simple low-pass filter to smooth readings from the accelerometer</span></p>
+<div class="admonition note"><p class="admonition-title">GDScript vs C#</p><p>It’s worth comparing the implementation of this filter with the implementation from my previous capability test in C# on UWP.  In the previous test I separated the accelerometer facade and the smoothing function, then replicated values in a view model and synchronised them with the sensors own <code>ReadingChanged</code> event and the <code>INotifyPropertyChanged</code> event.  The implementation was spread across multiple files, and while technically and architecturally acceptable, the simplicity of the implementation in GDScript gives me comfort and confidence in moving ahead on the Godot platform.</p>
+</div>
+<h1 id="Exporting-to-Target-Platforms"><a href="#Exporting-to-Target-Platforms" class="headerlink" title="Exporting to Target Platforms"></a>Exporting to Target Platforms</h1><p>You’ve already seen the end result on Android in the video earlier in this post.  While exporting to my phone (another device) may feel more complex, it’s actually the easier export path.  Once setup, the Android export is as simple as clicking a button in Godot and it’s all done for you.</p>
+<p>Exporting to UWP is more difficult as Godot doesn’t handle bumping up the version number or completely signing the exported file out of the box.  It does handle signing with a developer key automatically on export which is something, however to run the result on Windows you also need to sign the resulting file with a certificate to create a trusted executable.  I currently do the non-Godot actions on the command line, and I plan to take some time to automate this with script in the future.</p>
+<p>Despite the clunky export process, once you have the executable it works just as well as the Android version.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/x_SJiU7rkOY" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running on my Surface Pro</span></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Although it wasn’t as issue-free a journey as I was expecting the result is pretty satisfying.  I was again impressed with the ease at which the Godot solution came together, and hopefully making the accelerometer work when running from the editor can be added to the platform in the future to make the developer experience even better.</p>
+<p>Coding this capability test in Godot was all too easy and the challenges I encountered were relatively simple to resolve.  I was helped greatly with my experience having built this test before, however it’s encouraging to know that if you know what you want to build then building it in Godot is a pleasurable and productive experience.</p>
+
         
         </div>
         <footer class="article-footer">
@@ -345,580 +389,30 @@
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-say-gday-to-godot" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-            
-	
-		<a href="/2018/08/21/say-gday-to-godot/" itemprop="url">
-            <img src="/2018/08/21/say-gday-to-godot/hogan-wide-420.png" class="article-banner" />
+<nav id="article-nav">
+    
+    
+        <a href="/2018/08/21/say-gday-to-godot/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Saying G&#39;day to Godot</div>
         </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/08/21/say-gday-to-godot/">Saying G&#39;day to Godot</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/08/21/say-gday-to-godot/">
-            <time datetime="2018-08-21T13:09:17.000Z" itemprop="datePublished">2018-08-21</time>
-        </a>
-    </div>
+</nav>
 
 
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GDScript/">GDScript</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>, <a class="tag-link" href="/tags/Sensor/">Sensor</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>I’ve taken my first steps to developing a game on the Godot 3 game engine.<br></p>
-            <p class="article-more-link">
-                <a href="/2018/08/21/say-gday-to-godot/">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/" data-id="cjlry60p0001oc0uujqt5qh13" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/">Comments</a>
-    
-
-        </footer>
-    </div>
     
 </article>
 
 
-
-    <article id="post-choosing-a-new-game-engine" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<a href="/2018/05/08/choosing-a-new-game-engine/" itemprop="url">
-            <img src="/2018/05/08/choosing-a-new-game-engine/pixel2-sample-credit-allison-johnson-420.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/05/08/choosing-a-new-game-engine/">Choosing a Game Engine</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/05/08/choosing-a-new-game-engine/">
-            <time datetime="2018-05-08T12:47:17.000Z" itemprop="datePublished">2018-05-08</time>
-        </a>
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Game-Maker/">Game Maker</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>, <a class="tag-link" href="/tags/Unity/">Unity</a>, <a class="tag-link" href="/tags/Unreal/">Unreal</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>I’d decided to use someone else’s engine, but how would I choose which one?<br></p>
-            <p class="article-more-link">
-                <a href="/2018/05/08/choosing-a-new-game-engine/">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/" data-id="cjlry60mz0005c0uukweo6owx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
+</section>
     
-        <a href="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-changing-everything" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<a href="/2018/03/30/changing-everything/" itemprop="url">
-            <img src="/2018/03/30/changing-everything/crystal-saga-france-420.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/03/30/changing-everything/">Changes of a Cosmic Scale</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/03/30/changing-everything/">
-            <time datetime="2018-03-29T23:47:31.000Z" itemprop="datePublished">2018-03-30</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gameblog/">gameblog</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>I’ve reached a critical juncture in the development of my game and engine.<br></p>
-            <p class="article-more-link">
-                <a href="/2018/03/30/changing-everything/">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.redperegrine.net/2018/03/30/changing-everything/" data-id="cjlry60md0003c0uuwk9hb565" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.redperegrine.net/2018/03/30/changing-everything/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/03/30/changing-everything/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-measuring-csharp-perf-with-benchmarkdotnet" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" itemprop="url">
-            <img src="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/tacho-420.png" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/">Measuring C# Performance with BenchmarkDotNet</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/">
-            <time datetime="2017-12-23T09:12:47.000Z" itemprop="datePublished">2017-12-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/BenchmarkDotNet/">BenchmarkDotNet</a>, <a class="tag-link" href="/tags/C/">C#</a>, <a class="tag-link" href="/tags/LINQPad/">LINQPad</a>, <a class="tag-link" href="/tags/Win2d/">Win2d</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>I’m measuring optimal C# code implementations for a game engine I’m building.<br></p>
-            <p class="article-more-link">
-                <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjlry60ou001mc0uuzhkpe2ln" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
 
 </section>
             
@@ -1104,11 +598,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/';
+        
+        this.page.identifier = 'instrumenting-the-accelerometer';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/count.js';
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

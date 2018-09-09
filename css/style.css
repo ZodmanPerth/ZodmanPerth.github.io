@@ -159,6 +159,14 @@ code {
   margin: 0;
   line-height: 1.8em;
 }
+.admonition.quote {
+  color: #60788f;
+  background-color: #fbfbfc;
+  border-color: #aab8c6;
+}
+.admonition.quote > .admonition-title {
+  display: none !important;
+}
 .admonition.note {
   color: #5c7895;
   background-color: #eef1f4;
@@ -1044,17 +1052,26 @@ a.article-title:hover {
 }
 .article-entry blockquote {
   position: static;
-  font-family: Georgia, "Times New Roman", "Microsoft Yahei", serif;
-  font-size: 1.1em;
-  margin: 0 -20px;
-  padding: 10px 20px 10px 54px;
-  background: #fcfcfc;
-  border-left: 4px solid #eee;
+  background: #fbfbfc;
+  border-left: 4px solid #aab8c6;
 }
 .article-entry blockquote:before {
   top: 20px;
   left: 10px;
   content: "\f10d";
+  color: #e2e2e2;
+  font-size: 32px;
+  font-family: FontAwesome;
+  text-align: center;
+  position: static;
+}
+.article-entry blockquote > p:display: inline-block {
+  padding: 0 1em;
+}
+.article-entry blockquote:after {
+  top: 20px;
+  left: 10px;
+  content: "\f10e";
   color: #e2e2e2;
   font-size: 32px;
   font-family: FontAwesome;

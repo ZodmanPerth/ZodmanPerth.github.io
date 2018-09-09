@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2018-08-21T13:09:13.606Z</updated>
+  <updated>2018-09-09T10:08:59.938Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -17,19 +17,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Saying G&#39;day to Godot</title>
-    <link href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
-    <id>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
-    <published>2018-08-21T13:09:17.000Z</published>
-    <updated>2018-08-21T13:09:13.606Z</updated>
+    <title>Instrumenting the Accelerometer</title>
+    <link href="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/"/>
+    <id>http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/</id>
+    <published>2018-09-09T10:08:52.000Z</published>
+    <updated>2018-09-09T10:08:59.938Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;I’ve taken my first steps to developing a game on the Godot 3 game engine.&lt;br&gt;
+      &lt;p&gt;Converting my accelerometer capability test from UWP to Godot 3.&lt;br&gt;
     
     </summary>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
@@ -40,6 +42,40 @@
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
     
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
+    
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Saying G&#39;day to Godot</title>
+    <link href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
+    <id>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
+    <published>2018-08-21T13:09:17.000Z</published>
+    <updated>2018-09-03T08:54:58.937Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’ve taken my first steps to developing a game on the Godot 3 game engine.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+    
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
+    
       <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
     
   </entry>
@@ -49,7 +85,7 @@
     <link href="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/"/>
     <id>http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/</id>
     <published>2018-05-08T12:47:17.000Z</published>
-    <updated>2018-05-08T12:53:32.861Z</updated>
+    <updated>2018-09-03T08:47:23.453Z</updated>
     
     <summary type="html">
     
@@ -57,9 +93,9 @@
     
     </summary>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
@@ -81,7 +117,7 @@
     <link href="http://www.redperegrine.net/2018/03/30/changing-everything/"/>
     <id>http://www.redperegrine.net/2018/03/30/changing-everything/</id>
     <published>2018-03-29T23:47:31.000Z</published>
-    <updated>2018-03-30T00:55:00.073Z</updated>
+    <updated>2018-09-03T08:47:23.454Z</updated>
     
     <summary type="html">
     
@@ -89,9 +125,11 @@
     
     </summary>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
@@ -105,7 +143,7 @@
     <link href="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/"/>
     <id>http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/</id>
     <published>2017-12-23T09:12:47.000Z</published>
-    <updated>2018-05-08T12:52:04.570Z</updated>
+    <updated>2018-09-03T08:47:23.452Z</updated>
     
     <summary type="html">
     
@@ -113,9 +151,11 @@
     
     </summary>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/indiedev/"/>
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/indiedev/gameengine/"/>
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
