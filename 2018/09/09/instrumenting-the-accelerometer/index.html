@@ -14,7 +14,7 @@
 <meta property="og:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png">
-<meta property="og:updated_time" content="2018-09-09T10:08:59.938Z">
+<meta property="og:updated_time" content="2018-09-09T10:17:22.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Instrumenting the Accelerometer">
 <meta name="twitter:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
@@ -262,7 +262,7 @@
             
             <p>Converting my accelerometer capability test from UWP to Godot 3.<br><a id="more"></a></p>
 <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Having successfully ported my touch manipulation capability test from UWP to Godot 3 (the subject of <a href="/2018/08/21/say-gday-to-godot\">my last post</a>) it was time to prove the capability of another sensor using Godot; the accelerometer.  I haven’t posted about this test before (even on my <a href="https://www.youtube.com/channel/UCnH_0IE9-uVdAv5Ku1UazeQ" target="_blank" rel="noopener">you-tube channel</a>), so let me set the scene for you.</p>
-<p>The game I’m developing will be controlled by tilting a smartphone or tablet in the real world.  Even in their cheapest form, these devices tend to have an accelerometer sensor.  Some expensive ones have additional sensors such as gyroscopes and magnetometers which can also be used to determine/enhance how the device is tilted in space.  Though prior research and testing I discovered I can get the degree of control I need for the game I’m building using the accelerometer alone.  Initially this was revealed with a capability test (the remake of which is the subject of this post), but also later when I developed playable parts of the game on the previous game engine I was developing myself (see <a href="http://localhost:4000/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet" target="_blank" rel="noopener">my first post</a>).</p>
+<p>The game I’m developing will be controlled by tilting a smartphone or tablet in the real world.  Even in their cheapest form, these devices tend to have an accelerometer sensor.  Some expensive ones have additional sensors such as gyroscopes and magnetometers which can also be used to determine/enhance how the device is tilted in space.  Though prior research and testing I discovered I can get the degree of control I need for the game I’m building using the accelerometer alone.  Initially this was revealed with a capability test (the remake of which is the subject of this post), but also later when I developed playable parts of the game on the previous game engine I was developing myself (see <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet">my first post</a>).</p>
 <h1 id="Accelerometer-Crash-Course"><a href="#Accelerometer-Crash-Course" class="headerlink" title="Accelerometer Crash Course"></a>Accelerometer Crash Course</h1><p>Imagine the screen you’re reading this on is a device with an accelerometer.  The accelerometer in this device defines it’s movement through real world space using a 3D cartesian coordinate system.  It defines an x, y, and z axis through the screen as follows:</p>
 <ul>
 <li>the x axis passes across the face of the screen from left to right</li>
@@ -315,7 +315,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/" data-id="cjlry60n10006c0uu6iyugtnw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/" data-id="cjlupinoi0009zkuua4yz3im3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

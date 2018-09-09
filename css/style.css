@@ -1051,9 +1051,9 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  position: static;
-  background: #fbfbfc;
-  border-left: 4px solid #aab8c6;
+  background: #fafafd;
+  padding: 1em 1.4em;
+  text-align: center;
 }
 .article-entry blockquote:before {
   top: 20px;
@@ -1065,7 +1065,8 @@ a.article-title:hover {
   text-align: center;
   position: static;
 }
-.article-entry blockquote > p:display: inline-block {
+.article-entry blockquote > p {
+  display: inline-block;
   padding: 0 1em;
 }
 .article-entry blockquote:after {

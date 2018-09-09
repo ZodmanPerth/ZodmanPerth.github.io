@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2018-09-09T10:08:59.938Z</updated>
+  <updated>2018-09-09T10:17:22.721Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/"/>
     <id>http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/</id>
     <published>2018-09-09T10:08:52.000Z</published>
-    <updated>2018-09-09T10:08:59.938Z</updated>
+    <updated>2018-09-09T10:17:22.721Z</updated>
     
     <summary type="html">
     
@@ -35,9 +35,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -67,9 +67,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
