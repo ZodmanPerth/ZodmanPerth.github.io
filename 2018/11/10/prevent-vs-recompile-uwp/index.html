@@ -3,18 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Category: gameengine | Red Peregrine</title>
+    <title>Preventing Visual Studio Recompiles in UWP | Red Peregrine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Red Peregrine is the blog site of Carl Scarlett">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Red Peregrine">
-<meta property="og:url" content="http://www.redperegrine.net/categories/gamedev/gameengine/index.html">
+    <meta name="description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
+<meta name="keywords" content="Visual Studio,MSBuild,UWP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Preventing Visual Studio Recompiles in UWP">
+<meta property="og:url" content="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/index.html">
 <meta property="og:site_name" content="Red Peregrine">
-<meta property="og:description" content="Red Peregrine is the blog site of Carl Scarlett">
+<meta property="og:description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png">
+<meta property="og:updated_time" content="2018-11-10T08:09:19.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Red Peregrine">
-<meta name="twitter:description" content="Red Peregrine is the blog site of Carl Scarlett">
+<meta name="twitter:title" content="Preventing Visual Studio Recompiles in UWP">
+<meta name="twitter:description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
+<meta name="twitter:image" content="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png">
     
 
     
@@ -205,50 +209,198 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">gameengine</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-prevent-vs-recompile-uwp" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/2018/11/10/prevent-vs-recompile-uwp/frustration-891x388.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/05/08/choosing-a-new-game-engine/">Choosing a Game Engine</a>
+        <h1 class="article-title" itemprop="name">
+            Preventing Visual Studio Recompiles in UWP
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/05/08/choosing-a-new-game-engine/">
-            <time datetime="2018-05-08T12:47:17.000Z" itemprop="datePublished">2018-05-08</time>
+        <a href="/2018/11/10/prevent-vs-recompile-uwp/">
+            <time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/gameengine/">gameengine</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+        <a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Game-Maker/">Game Maker</a>, <a class="tag-link" href="/tags/Godot/">Godot</a>, <a class="tag-link" href="/tags/Unity/">Unity</a>, <a class="tag-link" href="/tags/Unreal/">Unreal</a>
+        <a class="tag-link" href="/tags/MSBuild/">MSBuild</a>, <a class="tag-link" href="/tags/UWP/">UWP</a>, <a class="tag-link" href="/tags/Visual-Studio/">Visual Studio</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.<br><a id="more"></a><br><div class="admonition note"><p class="admonition-title">note</p><p>This is a reworked internal blog I posted at my current employer.  I’ve altered entity names to avoid IP issues.</p>
+</div></p>
+<h1 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h1><p>In my development team we were being slowed down by unneccessary Visual Studio recompiles of UWP projects. We have several projects in our solution structure with quite a few dependencies between them, so it’s reasonable to expect compiles could take a while if you’re changing things upstream in the dependency chain.</p>
+<p><img src="cleaned-solution-structure.png" alt="The Project Structure of our Application"></p>
+<p>However when nothing was being changed, we were finding certain UWP projects were still being recompiled by Visual Studio. Those recompiles were taking significant time (over a minute on my Surface Pro 5), which was disrupting our developer flow and sapping our productivity. Sometimes you just need to iterate fast through a few debugging sessions to get a task done, and “edit and continue” isn’t possible in all those scenarios.</p>
+<h1 id="Research"><a href="#Research" class="headerlink" title="Research"></a>Research</h1><p>The first place developers look to solve problems like “Visual Studio builds when nothing has changed” is Google. There’s a lot of developers in the world, and it’s likely someone has seen and solved this type of problem before. A few hits were returned when I searched, but nothing to solve our particular flavour of this issue. One hit did provide a means of diagnosis and potentially solving the problem myself, so I started following that.</p>
+<p>Kudos to this external article: <a href="https://blog.oz-code.com/visual-studio-keeps-rebuilding-projects-no-good-reason/" target="_blank" rel="noopener">Why Visual Studio keeps rebuilding my projects for no good reason</a></p>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>The key takeaway from the article is to turn the build output verbosity up to diagnostic levels and examine the output.</p>
+<p><img src="build-output-verbosity.png" alt="Setting the Build Output Verbosity in Visual Studio"></p>
+<p>When you do this, the output window is flooded with information from MSBuild showing exactly what it’s doing during a build.  By examining such output you get a real sense of how much complexity is managed by modern compilers on our behalf, and you gain an appreciation of how much it’s doing for you.</p>
+<p>The key clue to what’s causing the problem is in the first few lines of the output of each project build.  In my case it was the following line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Copy to output file &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\bin\x64\Debug\Themes\Generic.xaml&apos; missing from output location.</span><br></pre></td></tr></table></figure>
+<p>The build expected a <code>xaml</code> file to be present and it wasn’t.  If I did 2 builds consecutively this line persisted, so clearly Visual Studio needed some help to get this file output.</p>
+<p>The reflex for any seasoned developer seeing this message is to find the source file and set its <code>Copy to Output Directory</code> property value to <code>Copy if newer</code>.  This means that if there is no file in the <code>bin</code> folder already, or the file is present but is an older version at build time, Visual Studio should copy the file there.  That way if a developer changes the file during development it will be compiled into the resulting application correctly.</p>
+<p>When I looked at this particular file I discovered that property was already set to <code>Copy if newer</code>.  For experimentation I tried setting the property to <code>Copy always</code> and rebuilding but Visual Studio never actually output the file.</p>
+<h1 id="Forceful-Measures"><a href="#Forceful-Measures" class="headerlink" title="Forceful Measures"></a>Forceful Measures</h1><p>Taking matters into my own hands I copied the file there myself to see if it had any effect.  Building now produced a different message:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Input file &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\In-house.Framework.csproj&apos; is modified after output file &apos;&apos;.</span><br></pre></td></tr></table></figure>
+<p>This is an interesting message, and I wasn’t entirely sure what it meant as it didn’t match the change I had just made.  It seems as though somewhere in the complexity of the generated build process, MSBuild determined the project file was changed so it forced a project rebuild.  This rebuild was what I expected so I thought I was making progress.</p>
+<p>Once that build had finished I rebuilt without changing anything and was met with the following message:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Project item &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\Themes\Generic.xaml&apos; has &apos;Copy to Output Directory&apos; attribute set to &apos;Copy always&apos;.</span><br></pre></td></tr></table></figure>
+<p>It appears even though Visual Studio doesn’t actually copy the <code>xaml</code> file, it still checks the <code>Copy to Output Directory</code> property value to see if it needs to force a project rebuild, and does so when the value indicates it should.</p>
+<h1 id="Bad-Behaviour"><a href="#Bad-Behaviour" class="headerlink" title="Bad Behaviour"></a>Bad Behaviour</h1><p>It appears that for <code>xaml</code> files at least, the <code>Copy to Output Directory</code> property is no longer useful.  In conjunction with the messages from the MSBuild output, this property is now a source of confusion.  MSBuild expects a <code>xaml</code> file at build time and the usual means of control to ensure the file is present at compile time simply don’t work.</p>
+<p>What’s worse is those usual means of control actually force a rebuild, which is the action you’re trying to prevent in the first place.  Given the manipulation of the <code>Copy to Output Directory</code> property is a common practice by developers to help Visual Studio build correctly, this is potentially a cause of common productivity loss among all UWP developers.</p>
+<h1 id="Theory-about-Root-Cause"><a href="#Theory-about-Root-Cause" class="headerlink" title="Theory about Root Cause"></a>Theory about Root Cause</h1><p>I don’t have the means of digging into Visual Studio’s code or MSBuild to find exactly why this happens.  From experimenting with the presence or absence of <code>xaml</code> files in the <code>bin</code> folder, different <code>Copy to Output Directory</code> property values, and many, many rebuilds I have developed a theory about what is going on.</p>
+<p>In UWP, the <code>xaml</code> files are no longer used in the build process that requires them to be present in the <code>bin</code> folder.  At some point in the past, binary representations of the <code>xaml</code> files (the <code>xbf</code> format) began being built and output for use in XAML applications, rather than the plain text <code>xaml</code> files.  It is these <code>xbf</code> files that are important to be present in the <code>bin</code> folder at compile time, not <code>xaml</code> files.  The MSBuild messages are leading the developer astray.</p>
+<p>I suspect that when the binary format feature was being implemented by Microsoft, an oversight or deprioritised task (or two) meant the messages from MSBuild weren’t updated, and Visual Studio wasn’t updated to properly support the new feature.  The result is a perfect storm causing a bad consequence, and the impact is widespread productivity loss for UWP developers.</p>
+<h1 id="The-Actual-Fix"><a href="#The-Actual-Fix" class="headerlink" title="The Actual Fix"></a>The Actual Fix</h1><p>Empowered by the knowledge I had accumulated through investigation and the theory about the root cause, we can finally address the rebuild problem.  The fix is simply to tell Visual Studio not to copy the <code>xaml</code> files at all (set the <code>Copy to Output Directory</code> property to <code>Do not copy</code>) and allow the <code>xbf</code> feature to do what it’s supposed to do.  Once in this configuration everything works as it should; changes to <code>xaml</code> files are correctly detected by Visual Studio (forcing a recomple), <code>xaml</code> files without changes are correctly skipped (no recompilation), and cleaning the solution (via Visual Studio or by removing the <code>bin</code> and <code>obj</code> folders from the file system by some means) and building correctly forces a recompile.</p>
+<p>Of course, you will need to find all the <code>xaml</code> files in your projects that have unwanted <code>Copy to Output Directory</code> property values, because each will cause unwanted builds.  This is easily done by opening each of your UWP projects in a text editor (like VS Code) and searching for (and removing) <code>CopyToOutputDirectory</code> elements on any <code>xaml</code> Page elements.</p>
+<p><img src="bad-values.png" alt="Removing the Problematic Value from the Project File"></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Setting the <code>Copy to Output Directory</code> property to anything but a value of <code>Do not copy</code> on <code>xaml</code> files is now considered a bad decision. Doing so will cause unnecessary compilation of your UWP projects, which will hamper your productivity as a UWP developer.</p>
+<p>I hope the various teams at Microsoft can come together to address both the misleading messages from MSBuild and the Visual Studio behaviour around the <code>Copy to Output Directory</code> property on <code>xaml</code> files at build time. An improvement could be to provide a compiler warning when the value is not set to <code>Do not copy</code>; this could improve developer awareness that setting these properties now has unintended and (likely) harmful consequences.</p>
+<p>In any case, fixing both of these issues will squash yet another cause of poor productivity for UWP developers, and that would be a good thing.</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/" data-id="cjob65l2i0007fguu4dajd3y7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/09/26/menu-all-gui/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Waiter...my Menu is all GUI!</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -433,11 +585,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/';
+        
+        this.page.identifier = 'prevent-vs-recompile-uwp';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/count.js';
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

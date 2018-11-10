@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2018-09-26T08:44:23.085Z</updated>
+  <updated>2018-11-10T08:09:19.998Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Preventing Visual Studio Recompiles in UWP</title>
+    <link href="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/"/>
+    <id>http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/</id>
+    <published>2018-11-10T03:58:42.000Z</published>
+    <updated>2018-11-10T08:09:19.998Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="developer" scheme="http://www.redperegrine.net/categories/developer/"/>
+    
+      <category term="flow" scheme="http://www.redperegrine.net/categories/developer/flow/"/>
+    
+      <category term="productivity" scheme="http://www.redperegrine.net/categories/developer/productivity/"/>
+    
+    
+      <category term="Visual Studio" scheme="http://www.redperegrine.net/tags/Visual-Studio/"/>
+    
+      <category term="MSBuild" scheme="http://www.redperegrine.net/tags/MSBuild/"/>
+    
+      <category term="UWP" scheme="http://www.redperegrine.net/tags/UWP/"/>
+    
+  </entry>
   
   <entry>
     <title>Waiter...my Menu is all GUI!</title>
@@ -35,9 +63,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -69,14 +97,14 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+    
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
     
       <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
     
@@ -101,14 +129,14 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+    
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
     
       <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
     
@@ -191,9 +219,9 @@
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
-      <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
     
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
     
