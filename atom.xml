@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2018-11-10T08:09:19.998Z</updated>
+  <updated>2018-12-30T09:35:08.414Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Building a Pause Menu - Part 1</title>
+    <link href="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/"/>
+    <id>http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</id>
+    <published>2018-12-30T09:34:58.000Z</published>
+    <updated>2018-12-30T09:35:08.414Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I built a pause menu to improve the experience on my Android phone.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+    
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+    
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+    
+      <category term="GUI" scheme="http://www.redperegrine.net/tags/GUI/"/>
+    
+      <category term="Menu" scheme="http://www.redperegrine.net/tags/Menu/"/>
+    
+  </entry>
   
   <entry>
     <title>Preventing Visual Studio Recompiles in UWP</title>
@@ -63,9 +97,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -97,9 +131,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -129,9 +163,9 @@
     
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -219,9 +253,9 @@
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
-    
       <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
     
