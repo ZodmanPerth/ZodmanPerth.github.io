@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     
     <title>Measuring C# Performance with BenchmarkDotNet | Red Peregrine</title>
+    <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
 <meta name="keywords" content="BenchmarkDotNet,LINQPad,C#,Win2d">
@@ -266,7 +267,7 @@
 <p>Fortunately I’d pursued life experiences that included all the ingredients I would need to pull off such a feat from both a creative and practical standpoint, including a lengthy career in software engineering and commercial experience in UX design.</p>
 <p>I’ll explore the circumstances that drove those initial decisions another time.  Right now, it’s enough to know that the game engine is written in C# on UWP using Win2D, and targets Windows tablets and phones that have accelerometer sensors and touch screens.  The game is a top-down 2D space shoot ‘em up with a retro arcade look.</p>
 <h1 id="Build-A-Game-Engine-in-C-…Are-You-Crazy"><a href="#Build-A-Game-Engine-in-C-…Are-You-Crazy" class="headerlink" title="Build A Game Engine in C#…Are You Crazy?"></a>Build A Game Engine in C#…Are You Crazy?</h1><p>When people talk of building game engines, C# and .NET aren’t terribly popular choices.  The .NET framework, while a much loved and carefully crafted platform, hasn’t exactly been built for the demands of a high-performing game engine in mind.  I don’t think my engine will be <em>too</em> demanding though, so using .NET is a feasible option.  Win2D is a powerful ally here, being a finely tuned wrapper over DirectX that <em>is</em> built for performance.  Win2D also provides a game-loop that gracefully handles the complexity of loop timing management, so that’s one less thing I needed to worry about.</p>
-<p>This leaves the game engine “merely” doing some user input handling, physics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f600.png?v8" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
+<p>This leaves the game engine “merely” doing some user input handling, physics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png?v8" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
 <h1 id="Performance-Front-and-Centre"><a href="#Performance-Front-and-Centre" class="headerlink" title="Performance Front and Centre"></a>Performance Front and Centre</h1><p>I was <em>reasonably</em> sure I could make something decent with my technology choices, and a few test applications later I committed to the task ahead.  With a freshly read copy of Bob Nystrom’s amazing eBook <a href="http://gameprogrammingpatterns.com" target="_blank" rel="noopener">Game Programming Patterns</a> up my sleeve, years of mentally constructed game systems and designs that were eager to escape my mind, and the skills I had nurtured over my career, I figured I had a decent shot at a solid result.</p>
 <p>But confidence alone was never going to be enough.  Going into development of the engine I knew I would have to make every nanosecond count. While the architecture was wholly under my control and I trusted my skills, there was one concern that still hung heavy on my mind; <em>would the .NET Framework itself be performant enough?</em></p>
 <p>There was only one way to know for sure; I was going to have to write performance tests for the framework itself.  And when you want to know the performance of .NET code I know of nothing more suited to the task than <a href="https://github.com/dotnet/BenchmarkDotNet" target="_blank" rel="noopener">BenchmarkDotNet</a>.</p>
@@ -338,7 +339,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjoy433e400087ouuvp0ltyn0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cjtcbhi03000900uuihg12hh3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -615,7 +616,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2018 Carl Scarlett<br>
+            &copy; 2019 Carl Scarlett<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>

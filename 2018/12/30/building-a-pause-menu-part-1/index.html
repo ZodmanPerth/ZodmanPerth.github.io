@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     
     <title>Building a Pause Menu - Part 1 | Red Peregrine</title>
+    <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I built a pause menu to improve the experience on my Android phone.">
-<meta name="keywords" content="Godot,GDScript,GUI,Menu">
+<meta name="keywords" content="GUI,Menu,Godot,GDScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a Pause Menu - Part 1">
 <meta property="og:url" content="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/index.html">
@@ -14,7 +15,7 @@
 <meta property="og:description" content="I built a pause menu to improve the experience on my Android phone.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/3-bears-300x300.png">
-<meta property="og:updated_time" content="2018-12-30T09:35:08.414Z">
+<meta property="og:updated_time" content="2018-12-30T09:37:50.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building a Pause Menu - Part 1">
 <meta name="twitter:description" content="I built a pause menu to improve the experience on my Android phone.">
@@ -331,7 +332,7 @@
 <p>Here’s a video of the game running on Android phone.</p>
 <p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/X-oq0xzY3z4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">The Pause Menu on Android Phone</span></p>
 <h1 id="Designing-to-Improve-the-Android-Experience"><a href="#Designing-to-Improve-the-Android-Experience" class="headerlink" title="Designing to Improve the Android Experience"></a>Designing to Improve the Android Experience</h1><p>Here’s a video showing the issue where Android doesn’t quit to highlight why it’s an issue.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/1wh8CR-lgOA" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Android just won’t quit on Android!</span></p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/1wh8CR-lgOA" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Godot 3 can’t quit on Android!</span></p>
 <p>Given I can’t force the app to close on Android at the moment, the only option I have is to employ clever design choices to counteract this woeful experience.  I’ve reflected on this issue for some time.  The best options I’ve come up with so far are to either change the button label from <code>Quit</code> to <code>Close</code> (or <code>Minimise</code>), and/or add another label to the Pause Menu explaining that you have to manually close down the app.  I would only want these changes to appear when running on Android to avoid breaking the current design for other platforms.  Further research is needed to discover how to achieve this, though I suspect adding an argument when exporting to Android will be the first thing to investigate.</p>
 <p>In any case I’m not happy with either of these options from an aesthetic point of view.  I like the symmetry of the current design with short four-letter words to describe intent.  I also like the current icons that accurately describe what the intention of the button is by mimicking real-world hardware devices.  Changing these to accommodate a functional shortfall on Android weakens the current design to the point at which I’m forced to consider a complete redesign for the Pause Menu.</p>
 <p>I’m deferring that line of thinking for another time.  The best outcome for me is that Godot will support force closing on Android in the future.  Given I’m not writing a releasable game just yet (I’m still testing Godot’s capabilities) I can afford to wait to see what happens.  Right now I have a menu that works for my current use case and I’ve implemented a nice navigation system that will stand up to future expansion of my app.</p>
@@ -348,7 +349,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/" data-id="cjqap8md20000l0uunlq3uchy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/" data-id="cjtcbhhyq000100uumjj3gpsh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -621,7 +622,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2018 Carl Scarlett<br>
+            &copy; 2019 Carl Scarlett<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>

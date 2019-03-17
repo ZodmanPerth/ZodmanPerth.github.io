@@ -174,7 +174,7 @@ code {
 }
 .admonition.note > .admonition-title {
   background-color: #a9b9ca;
-  color: #eef1f4;
+  color: #fff;
 }
 .admonition.aside {
   color: #537758;
@@ -183,7 +183,7 @@ code {
 }
 .admonition.aside > .admonition-title {
   background-color: #89ad8e;
-  color: #e7efe8;
+  color: #fff;
 }
 .admonition.info,
 .admonition.tips {
@@ -207,7 +207,7 @@ code {
 }
 .admonition.warning > .admonition-title {
   background-color: #ffeaae;
-  color: #fffbef;
+  color: #fff;
 }
 .admonition.error,
 .admonition.critical {
@@ -218,7 +218,7 @@ code {
 .admonition.error > .admonition-title,
 .admonition.critical > .admonition-title {
   background-color: #d04437;
-  color: #f6dad7;
+  color: #fff;
 }
 .admonition.question {
   color: #530053;
@@ -227,7 +227,7 @@ code {
 }
 .admonition.question > .admonition-title {
   background-color: #800080;
-  color: #ffb3ff;
+  color: #fff;
 }
 figure.highlight {
   max-height: 30em;
