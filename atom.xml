@@ -191,11 +191,11 @@
     
       <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
-    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -225,9 +225,9 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
     
       <category term="gameblog" scheme="http://www.redperegrine.net/tags/gameblog/"/>
@@ -251,11 +251,11 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
       <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
     
