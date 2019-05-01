@@ -33,22 +33,22 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
       <category term="game" scheme="http://www.redperegrine.net/categories/zodproj/game/"/>
     
     
-      <category term="GUI" scheme="http://www.redperegrine.net/tags/GUI/"/>
+      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
     
-      <category term="Menu" scheme="http://www.redperegrine.net/tags/Menu/"/>
+      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
@@ -72,11 +72,11 @@
       <category term="productivity" scheme="http://www.redperegrine.net/categories/developer/productivity/"/>
     
     
-      <category term="Visual Studio" scheme="http://www.redperegrine.net/tags/Visual-Studio/"/>
+      <category term="Visual Studio" scheme="http://www.redperegrine.net/tags/visual-studio/"/>
     
-      <category term="MSBuild" scheme="http://www.redperegrine.net/tags/MSBuild/"/>
+      <category term="MSBuild" scheme="http://www.redperegrine.net/tags/msbuild/"/>
     
-      <category term="UWP" scheme="http://www.redperegrine.net/tags/UWP/"/>
+      <category term="UWP" scheme="http://www.redperegrine.net/tags/uwp/"/>
     
   </entry>
   
@@ -97,22 +97,22 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
       <category term="game" scheme="http://www.redperegrine.net/categories/zodproj/game/"/>
     
     
-      <category term="GUI" scheme="http://www.redperegrine.net/tags/GUI/"/>
+      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
     
-      <category term="Menu" scheme="http://www.redperegrine.net/tags/Menu/"/>
+      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
@@ -133,20 +133,20 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
       <category term="game" scheme="http://www.redperegrine.net/categories/zodproj/game/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
     
   </entry>
   
@@ -167,20 +167,20 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
       <category term="game" scheme="http://www.redperegrine.net/categories/zodproj/game/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/GDScript/"/>
+      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/Sensor/"/>
+      <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
     
   </entry>
   
@@ -201,20 +201,20 @@
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/zodproj/gameengine/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Unity" scheme="http://www.redperegrine.net/tags/Unity/"/>
+      <category term="Unity" scheme="http://www.redperegrine.net/tags/unity/"/>
     
-      <category term="Unreal" scheme="http://www.redperegrine.net/tags/Unreal/"/>
+      <category term="Unreal" scheme="http://www.redperegrine.net/tags/unreal/"/>
     
-      <category term="Game Maker" scheme="http://www.redperegrine.net/tags/Game-Maker/"/>
+      <category term="Game Maker" scheme="http://www.redperegrine.net/tags/game-maker/"/>
     
   </entry>
   
@@ -235,9 +235,9 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
       <category term="gameengine" scheme="http://www.redperegrine.net/categories/zodproj/gameengine/"/>
     
@@ -263,24 +263,24 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
-    
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
       <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/zodproj/gameengine/"/>
-    
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
     
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/zodproj/gameengine/"/>
     
-      <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/BenchmarkDotNet/"/>
     
-      <category term="LINQPad" scheme="http://www.redperegrine.net/tags/LINQPad/"/>
+      <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/benchmarkdotnet/"/>
     
-      <category term="C#" scheme="http://www.redperegrine.net/tags/C/"/>
+      <category term="LINQPad" scheme="http://www.redperegrine.net/tags/linqpad/"/>
     
-      <category term="Win2d" scheme="http://www.redperegrine.net/tags/Win2d/"/>
+      <category term="C#" scheme="http://www.redperegrine.net/tags/c/"/>
+    
+      <category term="Win2d" scheme="http://www.redperegrine.net/tags/win2d/"/>
     
   </entry>
   
