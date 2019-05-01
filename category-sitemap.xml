@@ -8,36 +8,78 @@
     </url>
 
     <url>
+        <loc>http://www.redperegrine.net/categories/zodproj/game/</loc>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.redperegrine.net/categories/godot/gdscript/</loc>
-        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/categories/godot/</loc>
-        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/categories/zodproj/</loc>
-        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/categories/gamedev/indiedev/</loc>
-        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/categories/gamedev/</loc>
-        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/categories/zodproj/gameengine/</loc>
+        <lastmod>2019-05-01T09:06:10.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/categories/gamedev/gameengine/</loc>
+        <lastmod>2019-05-01T09:06:10.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/</loc>
+        <lastmod>2019-05-01T09:05:24.319Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/categories/tests/performance/</loc>
+        <lastmod>2019-05-01T09:05:11.594Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/categories/tests/</loc>
+        <lastmod>2019-05-01T09:05:11.594Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -59,34 +101,6 @@
     <url>
         <loc>http://www.redperegrine.net/categories/developer/</loc>
         <lastmod>2018-11-10T08:09:19.998Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/</loc>
-        <lastmod>2018-09-03T08:47:23.454Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/categories/gamedev/gameengine/</loc>
-        <lastmod>2018-09-03T08:47:23.453Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/categories/tests/performance/</loc>
-        <lastmod>2018-09-03T08:47:23.452Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/categories/tests/</loc>
-        <lastmod>2018-09-03T08:47:23.452Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
