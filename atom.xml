@@ -33,11 +33,11 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="GUI" scheme="http://www.redperegrine.net/tags/GUI/"/>
@@ -95,11 +95,11 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="GUI" scheme="http://www.redperegrine.net/tags/GUI/"/>
@@ -129,11 +129,11 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -149,7 +149,7 @@
     <link href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
     <id>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
     <published>2018-08-21T13:09:17.000Z</published>
-    <updated>2018-09-03T08:54:58.937Z</updated>
+    <updated>2019-05-01T08:32:10.228Z</updated>
     
     <summary type="html">
     
@@ -161,11 +161,11 @@
     
       <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
       <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
-    
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>
@@ -191,11 +191,11 @@
     
       <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
     
       <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
     
     
       <category term="Godot" scheme="http://www.redperegrine.net/tags/Godot/"/>

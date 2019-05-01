@@ -3,15 +3,22 @@
 
 
     <url>
+        <loc>http://www.redperegrine.net/tags/Sensor/</loc>
+        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.redperegrine.net/tags/GDScript/</loc>
-        <lastmod>2018-12-30T09:37:50.682Z</lastmod>
+        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/Godot/</loc>
-        <lastmod>2018-12-30T09:37:50.682Z</lastmod>
+        <lastmod>2019-05-01T08:32:10.228Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -47,13 +54,6 @@
     <url>
         <loc>http://www.redperegrine.net/tags/Visual-Studio/</loc>
         <lastmod>2018-11-10T08:09:19.998Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/Sensor/</loc>
-        <lastmod>2018-09-09T10:17:22.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
