@@ -10,6 +10,13 @@
     </url>
 
     <url>
+        <loc>http://www.redperegrine.net/tags/Godot/</loc>
+        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.redperegrine.net/tags/Menu/</loc>
         <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,13 +25,6 @@
 
     <url>
         <loc>http://www.redperegrine.net/tags/GUI/</loc>
-        <lastmod>2019-05-01T09:07:05.583Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/Godot/</loc>
         <lastmod>2019-05-01T09:07:05.583Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
