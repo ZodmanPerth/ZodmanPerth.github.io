@@ -80,10 +80,10 @@
   
   <entry>
     <title>Waiter...my Menu is all GUI!</title>
-    <link href="http://www.redperegrine.net/2018/09/26/menu-all-gui/"/>
-    <id>http://www.redperegrine.net/2018/09/26/menu-all-gui/</id>
+    <link href="http://www.redperegrine.net/2018/09/21/menu-all-gui/"/>
+    <id>http://www.redperegrine.net/2018/09/21/menu-all-gui/</id>
     <published>2018-09-26T08:26:36.000Z</published>
-    <updated>2019-05-10T23:59:59.739Z</updated>
+    <updated>2019-05-11T00:40:09.700Z</updated>
     
     <summary type="html">
     
@@ -114,10 +114,10 @@
   
   <entry>
     <title>Instrumenting the Accelerometer</title>
-    <link href="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/"/>
-    <id>http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/</id>
+    <link href="http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/"/>
+    <id>http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</id>
     <published>2018-09-09T10:08:52.000Z</published>
-    <updated>2019-05-11T00:00:17.685Z</updated>
+    <updated>2019-05-11T00:40:20.606Z</updated>
     
     <summary type="html">
     
@@ -136,9 +136,9 @@
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
-    
       <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
       <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     
@@ -168,9 +168,9 @@
       <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
-    
       <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
     
       <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
     

@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Instrumenting the Accelerometer | Red Peregrine</title>
+    <title>Waiter...my Menu is all GUI! | Red Peregrine</title>
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Converting my accelerometer capability test from UWP to Godot 3.">
-<meta name="keywords" content="Godot,Sensor,GDScript">
+    <meta name="description" content="I built a front end UI for my capability tests.">
+<meta name="keywords" content="Godot,GDScript,GUI,Menu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Instrumenting the Accelerometer">
-<meta property="og:url" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/index.html">
+<meta property="og:title" content="Waiter...my Menu is all GUI!">
+<meta property="og:url" content="http://www.redperegrine.net/2018/09/21/menu-all-gui/index.html">
 <meta property="og:site_name" content="Red Peregrine">
-<meta property="og:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
+<meta property="og:description" content="I built a front end UI for my capability tests.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png">
-<meta property="og:updated_time" content="2019-05-11T00:00:17.685Z">
+<meta property="og:image" content="http://www.redperegrine.net/2018/09/21/menu-all-gui/menu-256.png">
+<meta property="og:updated_time" content="2019-05-11T00:40:09.700Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Instrumenting the Accelerometer">
-<meta name="twitter:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
-<meta name="twitter:image" content="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png">
+<meta name="twitter:title" content="Waiter...my Menu is all GUI!">
+<meta name="twitter:description" content="I built a front end UI for my capability tests.">
+<meta name="twitter:image" content="http://www.redperegrine.net/2018/09/21/menu-all-gui/menu-256.png">
     
 
     
@@ -206,12 +206,12 @@
 </aside>
 
             
-            <section id="main"><article id="post-2018/09/09/instrumenting-the-accelerometer" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-2018/09/21/menu-all-gui" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             
 	
-		<img src="/2018/09/09/instrumenting-the-accelerometer/acceleration-420.png" class="article-banner" />
+		<img src="/2018/09/21/menu-all-gui/menu-420.png" class="article-banner" />
 	
 
 
@@ -222,7 +222,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Instrumenting the Accelerometer
+            Waiter...my Menu is all GUI!
         </h1>
     
 
@@ -231,8 +231,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/09/09/instrumenting-the-accelerometer/">
-            <time datetime="2018-09-09T10:08:52.000Z" itemprop="datePublished">2018-09-09</time>
+        <a href="/2018/09/21/menu-all-gui/">
+            <time datetime="2018-09-26T08:26:36.000Z" itemprop="datePublished">2018-09-26</time>
         </a>
     </div>
 
@@ -246,7 +246,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gdscript/">GDScript</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/sensor/">Sensor</a>
+        <a class="tag-link" href="/tags/gdscript/">GDScript</a>, <a class="tag-link" href="/tags/gui/">GUI</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/menu/">Menu</a>
     </div>
 
                     </div>
@@ -257,51 +257,39 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Converting my accelerometer capability test from UWP to Godot 3.<br><a id="more"></a></p>
-<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Having successfully ported my touch manipulation capability test from UWP to Godot 3 (the subject of <a href="/2018/08/21/say-gday-to-godot\">my last post</a>) it was time to prove the capability of another sensor using Godot; the accelerometer.  I haven’t posted about this test before (even on my <a href="https://www.youtube.com/channel/UCnH_0IE9-uVdAv5Ku1UazeQ" target="_blank" rel="noopener">you-tube channel</a>), so let me set the scene for you.</p>
-<p>The game I’m developing will be controlled by tilting a smartphone or tablet in the real world.  Even in their cheapest form, these devices tend to have an accelerometer sensor.  Some expensive ones have additional sensors such as gyroscopes and magnetometers which can also be used to determine/enhance how the device is tilted in space.  Though prior research and testing I discovered I can get the degree of control I need for the game I’m building using the accelerometer alone.  Initially this was revealed with a capability test (the remake of which is the subject of this post), but also later when I developed playable parts of the game on the previous game engine I was developing myself (see <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet">my first post</a>).</p>
-<h1 id="Accelerometer-Crash-Course"><a href="#Accelerometer-Crash-Course" class="headerlink" title="Accelerometer Crash Course"></a>Accelerometer Crash Course</h1><p>Imagine the screen you’re reading this on is a device with an accelerometer.  The accelerometer in this device defines it’s movement through real world space using a 3D cartesian coordinate system.  It defines an x, y, and z axis through the screen as follows:</p>
-<ul>
-<li>the x axis passes across the face of the screen from left to right</li>
-<li>the y axis passes across the face of the screen from top to bottom</li>
-<li>the z axis passes through the screen from back (behind) to front</li>
-</ul>
-<div class="admonition note"><p class="admonition-title">Note</p><p>If you’re wondering, the origin of the axes (the point where all three axes intersect) is the top-left hand corner of the screen.  However that doesn’t matter when we are talking about readings from the accelerometer.</p>
+            <p>I built a front end UI for my capability tests.<br><a id="more"></a></p>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>As I ported my accelerometer test (the subject of <a href="/2018/09/09/instrumenting-the-accelerometer/">my last post</a>), I realised creating an app for each test on my Android phone was going to be problematic.  When I originally built these tests as UWP apps for Windows Phone in Visual Studio, deployment was easy.  It was cheaper in time and effort to just deploy a new app each time rather than building a UI and hosting them in a single app.</p>
+<p>However deploying to UWP and Android in Godot has different overheads.  It takes significantly more effort to configure the project, obtain signing certificates, and do the app signing.  Having gone through the pain once I knew I didn’t want to spend time jumping through those hoops every time I created a new test app.</p>
+<p>It was time to build myself a small UI to choose which test to run within the bounds of a single app, and a simple menu is perfect for this purpose.</p>
+<h1 id="Designing-the-Menu"><a href="#Designing-the-Menu" class="headerlink" title="Designing the Menu"></a>Designing the Menu</h1><p>Because the next capability test I will convert requires knowledge of Godot UI control nodes, exploring them now on something simple is a logical first step.  A menu that fulfills my current need will show an app title, and a button for each test to choose from.  Each button will show the title of the capability test it represents and an image representing what the test looks like when it’s running.</p>
+<p>I decided to make the menu content dynamic so that updating it with each new test I build will be trivial.  A data driven menu is the way to go in this case, so I created an array of dictionary objects with properties of <code>name</code>, <code>thumbnail</code> (image filepath) and <code>path</code> (scene filepath).  This is the minimum data each button needs to render and run a test when pressed.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var Apps = [</span><br><span class="line">    &#123;</span><br><span class="line">        name = <span class="string">"Touch Manipulation"</span>,</span><br><span class="line">        thumbnail = <span class="string">"res://game/menu/thumbnails/ManipulationTest.png"</span>,</span><br><span class="line">        path = <span class="string">"res://touchInput/touchInput.tscn"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        name = <span class="string">"Accelerometer"</span>,</span><br><span class="line">        thumbnail = <span class="string">"res://game/menu/thumbnails/AccelerometerTest.png"</span>,</span><br><span class="line">        path = <span class="string">"res://sensorInput/sensorInput.tscn"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><span class="caption">The data to define the app buttons on the menu</span></p>
+<h1 id="Scene-Control"><a href="#Scene-Control" class="headerlink" title="Scene Control"></a>Scene Control</h1><p>On each test I’ve built in Godot up to this point, I’ve configured the project’s main scene (the one that runs when you hit F5) to be the test I was actively working on.  Now it was time to implement things properly; constructing a game root node with dynamic loading and unloading of child nodes, thereby changing the scene that is being displayed.  When the app starts the game’s root node is pre-loaded with the <code>Menu</code> scene, and when a test is chosen in the menu the game will remove the <code>Menu</code> scene and add the scene of the chosen test.</p>
+<p>I created a separate <code>game</code> folder so that the implementation of the game logic (loading and unloading children etc) wouldn’t bleed into the implementation of each test.  For the time being I kept my tests in their own folders directly under the <code>res://</code> root folder, though it’s likely I’ll reorganise this to avoid clutter as I add more tests.  Here’s how this looks on disk:</p>
+<p><img src="filesystem.png" alt="File structure of the game"></p>
+<h1 id="The-Menu-Scene"><a href="#The-Menu-Scene" class="headerlink" title="The Menu Scene"></a>The Menu Scene</h1><p>As stated earlier the Menu will show the app title and a button for each test.  A left-aligned title with a nice big font will be at the top.  In the remaining space underneath I will lay buttons out horizontally across the screen, wrapping to the next line when there are too many to fit.  Some space around these pieces will let the UI breathe.</p>
+<p>To achieve this I used a <code>MarginContainer</code> with some healthy margins to provide the breathing room.  To that node I added a <code>VBoxContainer</code> containing a <code>Label</code> node for the app title and a <code>GridContainer</code> for the buttons.  I put the <code>GridContainer</code> inside its own <code>MarginContainer</code> so I can specify additional space between the buttons and app title.</p>
+<p><img src="menuScene.png" alt="The Menu scene structure"></p>
+<h1 id="The-SceneButton-Scene"><a href="#The-SceneButton-Scene" class="headerlink" title="The SceneButton Scene"></a>The SceneButton Scene</h1><p>I designed each button to have a centred image at the top, the test name (title) centred horizontally at the bottom, and a border around them both for aesthetics.  I used a <code>Panel</code> to give the illusion of a border, though it’s really just a big coloured box taking up the whole background.  Inside that I created a <code>Button</code> node inside a <code>MarginContainer</code> for creating this border illusion.  The <code>Button</code> node contains a <code>TextureRect</code> and <code>Label</code> node inside another <code>VBoxContainer</code> to achieve a vertical layout, and each is wrapped in its own <code>MarginContainer</code> to get the spacing just right.</p>
+<p>I called this scene a <code>SceneButton</code> because it’s a generic button that defines which test scene the game will load when clicked.</p>
+<p><img src="buttonScene.png" alt="The SceneButton scene structure"></p>
+<div class="admonition note"><p class="admonition-title">Note</p><p>In hindsight it may have been better to put the <code>Panel</code> and <code>MarginContainer</code> inside the <code>Button</code> node, which would have made the entire button clickable.  For the purpose of this post let’s call this a “feature” and move on.</p>
 </div>
-<p>The accelerometer measures the acceleration of the device in real world space on these three axes at the time a reading is taken.  Readings from the accelerometer are split into x, y, and z values.  The accelerometer sensor is constantly measuring so it can provide values any time you take a reading.</p>
-<h1 id="The-Gravity-of-the-Situation"><a href="#The-Gravity-of-the-Situation" class="headerlink" title="The Gravity of the Situation"></a>The Gravity of the Situation</h1><p>The key thing to understand is that gravity is always affecting these readings.  Unless you’re lucky enough to be holding this device in outer-space or on another world, the force of Earth’s gravity is constantly accelerating the device towards the centre of the Earth.  If the device is placed on a stationary table and you read the accelerometer you’ll find a force of 9.8 meters per second towards the centre of the Earth being reflected in the results.  That’s the amount of force gravity is exerting on the device and the direction in which it is being exerted.</p>
-<p>This fact can be used to determine the orientation of the device in the real world, and therefore how much the device is tilting.  This amount of tilt is what is used to control the game.</p>
-<h1 id="Visualising-the-Reading"><a href="#Visualising-the-Reading" class="headerlink" title="Visualising the Reading"></a>Visualising the Reading</h1><p>For the purpose of this capability test, the screen is a 2D surface on which I want to show the 3D reading from the accelerometer sensor.  I chose to represent the x and y component of each reading as a line from the centre of the screen pointing in the same x and y direction, with a length reflecting the strength of the reading in that direction.  I also chose to draw a circle around the screen centre to indicate where a force of 9.8 metres per second is, so that if the screen was perfectly stationary and upright (where z == 0) the line would terminate at the circle.  This lets me demonstrate rotation around the device’s z axis.</p>
-<p>For showing the z value of the reading I needed to be creative.  I chose to represent the z component by changing the fill colour of the circle.  When the z reading is zero, the circle is transparent.  When the screen is facing the centre of the Earth, the circle is solid green.  When the screen is facing away from the centre of the Earth, the circle is solid red.  As the screen tilts towards and away from the centre of the Earth, the colour gradually changes between these three colour values.</p>
-<p>The end result is that it becomes easy to see which direction the centre of the Earth is on the device as you tilt it through space.  It’s quite difficult to explain in words, so let’s jump ahead and see a video of this in action after this capability test has been implemented.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/HXTu3S-CrmE" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot on my Android phone</span></p>
-<h1 id="Reading-the-Accelerometer-in-Godot"><a href="#Reading-the-Accelerometer-in-Godot" class="headerlink" title="Reading the Accelerometer in Godot"></a>Reading the Accelerometer in Godot</h1><p>In UWP the accelerometer sensor is exposed in the <code>Windows.Devices.Sensors</code>.  You define the interval at which readings will be taken, and an event handler that will receive each readings.  In the previous implementation of this capability test I wrapped this sensor object in a service that stored the values as readings came in, and the application simply read from this service when it is was ready to take a reading.</p>
-<p>In Godot 3, the accelerometer sensor is exposed as a function <code>get_accelerometer()</code> on the <code>Input</code> singleton, which returns a <code>Vector3</code> containing the x, y, and z values.  At the time I was coding, the Godot help system described the functionality of this method as:</p>
-<blockquote><p>If the device has an accelerometer, this will return the movement.</p>
-</blockquote>
-<p>I knew my Surface Pro (where I do all my coding) had an accelerometer from when I wrote my UWP version of the capability test.  When I read the sensor in Godot however, I was only getting zeros.  Confused and unable to figure it out myself, I turned to <a href="https://discordapp.com/invite/zH7NUgz" target="_blank" rel="noopener">Godot Discord</a> for help.</p>
-<p>Some friends there did some digging and found the <code>get_accelerometer()</code> method only returns values when you export your code and run it on a device where an implementation has been written.  Though it’s fortunate that both UWP and Android (my primary targets) have this implementation, being forced to export the code to test it every time is far from ideal.  Unless I came up with a plan, I wouldn’t have a tight development loop and progress on my entire game would be painstakingly slow.</p>
-<div class="admonition note"><p class="admonition-title">Making it better</p><p>The documentation totally misled me here but there’s a couple of things I can do to make it better.  The first is to submit a pull request on the documentation to write better text and prevent confusion.  The second is to request for the Godot development team (or community contributor) to implement accelerometer support within the editor (if the device supports it).  I plan to take an action on these.</p>
-</div>
-<h1 id="Tightening-the-Development-Loop"><a href="#Tightening-the-Development-Loop" class="headerlink" title="Tightening the Development Loop"></a>Tightening the Development Loop</h1><p>I wanted to simulate moving the device in real space while in the editor, but I knew <code>get_accelerometer()</code> would only return zeroes when running there.  However I could make an accelerometer sensor node (a facade) that exposed readings from <code>get_accelerometer()</code> when it was returning values, and create touch controls to manually update the values when <code>get_accelerometer()</code> wasn’t returning values.  Then if I only consume the facade my application would work in both scenarios.</p>
-<p>I designed a touchscreen vertical slider for the left edge of the screen whose value controlled the x and y readings on the sensor facade.  Dragging up and down the slider would change its value between 0 and 360, which I would transform into a 2D direction in x and y using sine and cosine trigonometric functions.  I allowed the slider to cycle through this range several times down the screen, and put a marker at every zero point.</p>
-<p>Similarly I designed a touchscreen horizontal slider for the bottom edge of the screen to change it’s value between -180 and 180 and use it to control the z reading on the sensor facade.</p>
-<p>Using what I had learned about touch input from my manipulations test to quickly knocked out <code>TouchSliderVertical</code> and <code>TouchSliderHorizontal</code> nodes.  I created an <code>AccelerometerSensor</code> node (the facade) that would read from <code>get_accelerometer()</code> a few times when it started up, and if it didn’t get a non-zero reading it would determine that the accelerometer sensor wasn’t present.  It would set a boolean flag to indicate if the sensor was available, and not read the sensor further if it determined it wasn’t there.  This flag was also used to disable the touch sliders if the sensor was available (so the sliders wouldn’t appear if they weren’t required).</p>
-<h1 id="Putting-it-all-Together"><a href="#Putting-it-all-Together" class="headerlink" title="Putting it all Together"></a>Putting it all Together</h1><p>Now it was time to put all this into a scene.  I built a <code>SensorDisplay</code> node to draw the line and the circle, using the readings from the <code>AccelerometerSensor</code> facade (node).  A script on the root node connected up all the necessary signals to marshall readings from the touch sliders to the facade, and to disable them if the sensor was present.  I even threw in a <code>DebugLabel</code> to show the state of the <code>AccelerometerSensor</code>.</p>
-<p>Here’s a video of it all hooked up and running from the Godot editor.  You can see the touch sliders in action,  how they modify the readings of the accelerometer facade, and thus drive the display.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LfvbE7FNmTQ" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running from the Editor</span></p>
-<h1 id="Smoothing-Sensor-Readings-with-Filters"><a href="#Smoothing-Sensor-Readings-with-Filters" class="headerlink" title="Smoothing Sensor Readings with Filters"></a>Smoothing Sensor Readings with Filters</h1><p>I know from experience that raw readings from an accelerometer sensor are noisy and not suitable for using as input in most cases.  The way around this is to filter the readings to smooth out the values.</p>
-<p>There are many strategies that can be employed to smooth the data, and choosing the one that works for you takes some experimentation.  From previous efforts I’ve found a simple low-pass filter is adequate for my needs.  Such a filter uses both the previous value and the current reading, performs some simple mathematics and creates a new value.  This is remarkably easy to do, and given a good dampening <code>coefficient</code> (again found through trial and error) the readings become smoother and more useful.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">0.0</span></span><br><span class="line">var y = <span class="number">0.0</span></span><br><span class="line">var z = <span class="number">0.0</span></span><br><span class="line">var coefficient = <span class="number">0.35</span></span><br><span class="line"></span><br><span class="line">func _process(delta):</span><br><span class="line">  var reading = Input.get_accelerometer()</span><br><span class="line">    x = x + coefficient * (reading.x - x)</span><br><span class="line">    y = y + coefficient * (reading.y - y)</span><br><span class="line">    z = z + coefficient * (reading.z - z)</span><br></pre></td></tr></table></figure>
-<p><span class="caption">A simple low-pass filter to smooth readings from the accelerometer</span></p>
-<div class="admonition note"><p class="admonition-title">GDScript vs C#</p><p>It’s worth comparing the implementation of this filter with the implementation from my previous capability test in C# on UWP.  In the previous test I separated the accelerometer facade and the smoothing function, then replicated values in a view model and synchronised them with the sensors own <code>ReadingChanged</code> event and the <code>INotifyPropertyChanged</code> event.  The implementation was spread across multiple files, and while technically and architecturally acceptable, the simplicity of the implementation in GDScript gives me comfort and confidence in moving ahead on the Godot platform.</p>
-</div>
-<h1 id="Exporting-to-Target-Platforms"><a href="#Exporting-to-Target-Platforms" class="headerlink" title="Exporting to Target Platforms"></a>Exporting to Target Platforms</h1><p>You’ve already seen the end result on Android in the video earlier in this post.  While exporting to my phone (another device) may feel more complex, it’s actually the easier export path.  Once setup, the Android export is as simple as clicking a button in Godot and it’s all done for you.</p>
-<p>Exporting to UWP is more difficult as Godot doesn’t handle bumping up the version number or completely signing the exported file out of the box.  It does handle signing with a developer key automatically on export which is something, however to run the result on Windows you also need to sign the resulting file with a certificate to create a trusted executable.  I currently do the non-Godot actions on the command line, and I plan to take some time to automate this with script in the future.</p>
-<p>Despite the clunky export process, once you have the executable it works just as well as the Android version.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/x_SJiU7rkOY" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running on my Surface Pro</span></p>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Although it wasn’t as issue-free a journey as I was expecting the result is pretty satisfying.  I was again impressed with the ease at which the Godot solution came together, and hopefully making the accelerometer work when running from the editor can be added to the platform in the future to make the developer experience even better.</p>
-<p>Coding this capability test in Godot was all too easy and the challenges I encountered were relatively simple to resolve.  I was helped greatly with my experience having built this test before, however it’s encouraging to know that if you know what you want to build then building it in Godot is a pleasurable and productive experience.</p>
+<h1 id="Controlling-Scene-Loading-with-Signals"><a href="#Controlling-Scene-Loading-with-Signals" class="headerlink" title="Controlling Scene Loading with Signals"></a>Controlling Scene Loading with Signals</h1><p>The <code>SceneButton</code> fire’s a <code>pressed</code> signal that is received by the <code>game</code> node when clicked, and it passes the filepath of the scene to load as a parameter.  The <code>SceneButton</code> script connects to its internal <code>Button</code> node to detect the actual button press, and simply emits the <code>pressed</code> signal with the filepath that is configured when the button instance is created.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">extends Control</span><br><span class="line"></span><br><span class="line">export(String, FILE, <span class="string">'*.gd'</span>) var ScenePath = <span class="string">'&lt;some default file path&gt;'</span></span><br><span class="line"></span><br><span class="line">onready var buttonNode = $Panel/MarginContainer/Button</span><br><span class="line"></span><br><span class="line">signal pressed(pathToScene)</span><br><span class="line"></span><br><span class="line">func _ready():</span><br><span class="line">    buttonNode.connect(<span class="string">"pressed"</span>, self, <span class="string">"OnButtonPressed"</span>)</span><br><span class="line"></span><br><span class="line">func OnButtonPressed():</span><br><span class="line">    emit_signal(<span class="string">"pressed"</span>, ScenePath)</span><br></pre></td></tr></table></figure>
+<p><span class="caption">Signals in the SceneButton (code edited for brevity)</span></p>
+<h1 id="Configuring-the-SceneButtons-at-Run-Time"><a href="#Configuring-the-SceneButtons-at-Run-Time" class="headerlink" title="Configuring the SceneButtons at Run Time"></a>Configuring the SceneButtons at Run Time</h1><p>When the app loads and the game scene is ready, its script loops through the <code>Apps</code> array shown earlier and creates the instances of <code>SceneButton</code>.  Each instance is populated with the properties of the scene it represents, and its <code>pressed</code> event is connected to an <code>OnButtonPressed</code> handler in the game.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">extends Node</span><br><span class="line"></span><br><span class="line">onready var SceneButtonGrid = $menuContainer/VBoxContainer/MarginContainer/SceneButtonGrid</span><br><span class="line"></span><br><span class="line">func _ready():</span><br><span class="line">    <span class="keyword">for</span> app <span class="keyword">in</span> Apps:</span><br><span class="line">        var sceneButton = load(<span class="string">"res://game/menu/SceneButton.tscn"</span>).instance()</span><br><span class="line">        sceneButton.Initialise(app.name, app.thumbnail, app.path)</span><br><span class="line">        sceneButton.connect(<span class="string">"pressed"</span>, self, <span class="string">"OnButtonPressed"</span>)</span><br><span class="line">        SceneButtonGrid.add_child(sceneButton)</span><br></pre></td></tr></table></figure>
+<p><span class="caption">Instancing the SceneButtons (code edited for brevity)</span></p>
+<p>Finally, the <code>OnButtonPressed</code> handler creates an instance of the scene that was passed from the clicked <code>SceneButton</code>, adds the instance to the game’s root node, and removes the Menu scene node.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onready var MenuContainer = $menuContainer</span><br><span class="line"></span><br><span class="line">func OnButtonPressed(scenePath):</span><br><span class="line">    var appInstance = load(scenePath).instance()</span><br><span class="line">    add_child(appInstance)</span><br><span class="line">    remove_child(MenuContainer)</span><br></pre></td></tr></table></figure>
+<p><span class="caption">Handling a SceneButton press (code edited for brevity)</span></p>
+<h1 id="The-Completed-Menu"><a href="#The-Completed-Menu" class="headerlink" title="The Completed Menu"></a>The Completed Menu</h1><p>After a bit of styling I’m happy with the result.  Now I have a basic framework to showcase all the tests in one place that’s easy to extend as new tests are built.</p>
+<p><img src="menu.png" alt="The result with both capability tests I&#39;ve converted to date"></p>
+<p>The source code is up on a Gist.</p>
+<p><a href="https://gist.github.com/ZodmanPerth/72e45974a579cbca22255e40169f4f28" target="_blank" rel="noopener"><br><img src="github-gist.png" alt="See all the code on my Github Gist"><br></a></p>
+<p>Bon appétit!</p>
 
         
         </div>
@@ -312,7 +300,7 @@
 
 </div>
 
-    <a data-url="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/" data-id="cjvirxct0000nk0uucb74467w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://www.redperegrine.net/2018/09/21/menu-all-gui/" data-id="cjvis9kdj000ucguuo3pwbx00" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -380,7 +368,7 @@
 
             
     
-        <a href="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/">Comments</a>
+        <a href="http://www.redperegrine.net/2018/09/21/menu-all-gui/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.redperegrine.net/2018/09/21/menu-all-gui/">Comments</a>
     
 
         </footer>
@@ -389,19 +377,19 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/09/26/menu-all-gui/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/11/10/prevent-vs-recompile-uwp/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Waiter...my Menu is all GUI!
+                    Preventing Visual Studio Recompiles in UWP
                 
             </div>
         </a>
     
     
-        <a href="/2018/08/21/say-gday-to-godot/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/03/instrumenting-the-accelerometer/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Saying G&#39;day to Godot</div>
+            <div class="article-nav-title">Instrumenting the Accelerometer</div>
         </a>
     
 </nav>
@@ -472,10 +460,10 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/09/26/menu-all-gui/" class="thumbnail">
+                            <a href="/2018/09/21/menu-all-gui/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/09/26/menu-all-gui/menu-256.png)" alt="Waiter...my Menu is all GUI!" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/09/21/menu-all-gui/menu-256.png)" alt="Waiter...my Menu is all GUI!" class="thumbnail-image"></span>
     
 </a>
 
@@ -483,7 +471,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
-                            <p class="item-title"><a href="/2018/09/26/menu-all-gui/" class="title">Waiter...my Menu is all GUI!</a></p>
+                            <p class="item-title"><a href="/2018/09/21/menu-all-gui/" class="title">Waiter...my Menu is all GUI!</a></p>
                             <p class="item-date"><time datetime="2018-09-26T08:26:36.000Z" itemprop="datePublished">2018-09-26</time></p>
                         </div>
                     </li>
@@ -491,10 +479,10 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/09/09/instrumenting-the-accelerometer/" class="thumbnail">
+                            <a href="/2018/09/03/instrumenting-the-accelerometer/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/09/09/instrumenting-the-accelerometer/acceleration-256.png)" alt="Instrumenting the Accelerometer" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/09/03/instrumenting-the-accelerometer/acceleration-256.png)" alt="Instrumenting the Accelerometer" class="thumbnail-image"></span>
     
 </a>
 
@@ -502,7 +490,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
-                            <p class="item-title"><a href="/2018/09/09/instrumenting-the-accelerometer/" class="title">Instrumenting the Accelerometer</a></p>
+                            <p class="item-title"><a href="/2018/09/03/instrumenting-the-accelerometer/" class="title">Instrumenting the Accelerometer</a></p>
                             <p class="item-date"><time datetime="2018-09-09T10:08:52.000Z" itemprop="datePublished">2018-09-09</time></p>
                         </div>
                     </li>
@@ -604,9 +592,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://www.redperegrine.net/2018/09/09/instrumenting-the-accelerometer/';
+            this.page.url = 'http://www.redperegrine.net/2018/09/21/menu-all-gui/';
         
-        this.page.identifier = '2018/09/09/instrumenting-the-accelerometer';
+        this.page.identifier = '2018/09/21/menu-all-gui';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
