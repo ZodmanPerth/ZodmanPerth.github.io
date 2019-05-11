@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2019-05-11T00:01:57.807Z</updated>
+  <updated>2019-05-11T00:46:47.707Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/"/>
     <id>http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</id>
     <published>2018-12-30T09:34:58.000Z</published>
-    <updated>2019-05-11T00:01:57.807Z</updated>
+    <updated>2019-05-11T00:46:47.707Z</updated>
     
     <summary type="html">
     
@@ -178,10 +178,10 @@
   
   <entry>
     <title>Choosing a Game Engine</title>
-    <link href="http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/"/>
-    <id>http://www.redperegrine.net/2018/05/08/choosing-a-new-game-engine/</id>
+    <link href="http://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/"/>
+    <id>http://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</id>
     <published>2018-05-08T12:47:17.000Z</published>
-    <updated>2019-05-11T00:01:01.244Z</updated>
+    <updated>2019-05-11T00:44:14.052Z</updated>
     
     <summary type="html">
     
@@ -236,10 +236,10 @@
   
   <entry>
     <title>Measuring C# Performance with BenchmarkDotNet</title>
-    <link href="http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/"/>
-    <id>http://www.redperegrine.net/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet/</id>
+    <link href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
+    <id>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
     <published>2017-12-23T09:12:47.000Z</published>
-    <updated>2019-05-10T23:57:15.228Z</updated>
+    <updated>2019-05-11T00:50:20.576Z</updated>
     
     <summary type="html">
     
