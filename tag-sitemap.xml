@@ -3,113 +3,113 @@
 
 
     <url>
-        <loc>http://www.redperegrine.net/tags/sensor/</loc>
-        <lastmod>2019-05-01T09:39:24.453Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/gdscript/</loc>
-        <lastmod>2019-05-01T09:39:24.453Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/godot/</loc>
-        <lastmod>2019-05-01T09:39:24.453Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.redperegrine.net/tags/menu/</loc>
-        <lastmod>2019-05-01T09:39:24.376Z</lastmod>
+        <lastmod>2019-05-11T00:01:57.807Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/gui/</loc>
-        <lastmod>2019-05-01T09:39:24.376Z</lastmod>
+        <lastmod>2019-05-11T00:01:57.807Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.redperegrine.net/tags/win2d/</loc>
-        <lastmod>2019-05-01T09:39:24.290Z</lastmod>
+        <loc>http://www.redperegrine.net/tags/gdscript/</loc>
+        <lastmod>2019-05-11T00:01:57.807Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.redperegrine.net/tags/c/</loc>
-        <lastmod>2019-05-01T09:39:24.290Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/linqpad/</loc>
-        <lastmod>2019-05-01T09:39:24.290Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/benchmarkdotnet/</loc>
-        <lastmod>2019-05-01T09:39:24.290Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/game-maker/</loc>
-        <lastmod>2019-05-01T09:39:24.129Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/unreal/</loc>
-        <lastmod>2019-05-01T09:39:24.129Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/unity/</loc>
-        <lastmod>2019-05-01T09:39:24.129Z</lastmod>
+        <loc>http://www.redperegrine.net/tags/godot/</loc>
+        <lastmod>2019-05-11T00:01:57.807Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/gameblog/</loc>
-        <lastmod>2019-05-01T09:39:24.004Z</lastmod>
+        <lastmod>2019-05-11T00:01:29.678Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/game-maker/</loc>
+        <lastmod>2019-05-11T00:01:01.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/unreal/</loc>
+        <lastmod>2019-05-11T00:01:01.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/unity/</loc>
+        <lastmod>2019-05-11T00:01:01.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/sensor/</loc>
+        <lastmod>2019-05-11T00:00:17.685Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/uwp/</loc>
-        <lastmod>2018-11-10T08:09:19.998Z</lastmod>
+        <lastmod>2019-05-10T23:59:34.122Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/msbuild/</loc>
-        <lastmod>2018-11-10T08:09:19.998Z</lastmod>
+        <lastmod>2019-05-10T23:59:34.122Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/visual-studio/</loc>
-        <lastmod>2018-11-10T08:09:19.998Z</lastmod>
+        <lastmod>2019-05-10T23:59:34.122Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/win2d/</loc>
+        <lastmod>2019-05-10T23:57:15.228Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/c/</loc>
+        <lastmod>2019-05-10T23:57:15.228Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/linqpad/</loc>
+        <lastmod>2019-05-10T23:57:15.228Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/tags/benchmarkdotnet/</loc>
+        <lastmod>2019-05-10T23:57:15.228Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
