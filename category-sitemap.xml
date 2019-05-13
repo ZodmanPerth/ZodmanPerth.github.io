@@ -57,14 +57,14 @@
     </url>
 
     <url>
-        <loc>http://www.redperegrine.net/categories/developer/</loc>
+        <loc>http://www.redperegrine.net/categories/gamedev/gameengine/</loc>
         <lastmod>2019-05-13T08:31:14.999Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.redperegrine.net/categories/gamedev/gameengine/</loc>
+        <loc>http://www.redperegrine.net/categories/developer/</loc>
         <lastmod>2019-05-13T08:31:14.999Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
