@@ -8,32 +8,16 @@
     </url>
 
     <url>
+        <loc>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</loc>
+        <lastmod>2019-05-13T08:20:16.689Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</loc>
-        <lastmod>2019-05-13T08:18:49.045Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</loc>
-        <lastmod>2019-05-13T08:18:48.952Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/2018/09/21/menu-all-gui/</loc>
-        <lastmod>2019-05-13T08:18:48.952Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</loc>
-        <lastmod>2019-05-13T08:18:48.947Z</lastmod>
+        <lastmod>2019-05-13T08:20:12.664Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -41,7 +25,23 @@
 
     <url>
         <loc>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</loc>
-        <lastmod>2019-05-13T08:18:48.941Z</lastmod>
+        <lastmod>2019-05-13T08:20:08.685Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</loc>
+        <lastmod>2019-05-13T08:20:05.295Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.redperegrine.net/2018/09/21/menu-all-gui/</loc>
+        <lastmod>2019-05-13T08:20:01.994Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -49,15 +49,15 @@
 
     <url>
         <loc>http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/</loc>
-        <lastmod>2019-05-13T08:18:48.941Z</lastmod>
+        <lastmod>2019-05-13T08:19:58.087Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</loc>
-        <lastmod>2019-05-13T08:17:58.089Z</lastmod>
+        <loc>http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</loc>
+        <lastmod>2019-05-13T08:19:54.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
