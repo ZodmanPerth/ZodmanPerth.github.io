@@ -3,29 +3,29 @@
 
 
     <url>
+        <loc>http://www.redperegrine.net/tags/benchmarkdotnet2/</loc>
+        <lastmod>2019-05-13T08:15:37.783Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.redperegrine.net/tags/win2d/</loc>
-        <lastmod>2019-05-11T00:50:20.576Z</lastmod>
+        <lastmod>2019-05-13T08:15:37.783Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/c/</loc>
-        <lastmod>2019-05-11T00:50:20.576Z</lastmod>
+        <lastmod>2019-05-13T08:15:37.783Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.redperegrine.net/tags/linqpad/</loc>
-        <lastmod>2019-05-11T00:50:20.576Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.redperegrine.net/tags/benchmarkdotnet/</loc>
-        <lastmod>2019-05-11T00:50:20.576Z</lastmod>
+        <lastmod>2019-05-13T08:15:37.783Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

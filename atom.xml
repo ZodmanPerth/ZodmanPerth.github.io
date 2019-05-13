@@ -239,7 +239,7 @@
     <link href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
     <id>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
     <published>2017-12-23T09:12:47.000Z</published>
-    <updated>2019-05-11T00:50:20.576Z</updated>
+    <updated>2019-05-13T08:15:37.783Z</updated>
     
     <summary type="html">
     
@@ -260,13 +260,13 @@
       <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
     
     
-      <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/benchmarkdotnet/"/>
-    
       <category term="LINQPad" scheme="http://www.redperegrine.net/tags/linqpad/"/>
     
       <category term="C#" scheme="http://www.redperegrine.net/tags/c/"/>
     
       <category term="Win2d" scheme="http://www.redperegrine.net/tags/win2d/"/>
+    
+      <category term="BenchmarkDotNet2" scheme="http://www.redperegrine.net/tags/benchmarkdotnet2/"/>
     
   </entry>
   
