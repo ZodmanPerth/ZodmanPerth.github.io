@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.redperegrine.net/"/>
-  <updated>2019-05-13T08:32:34.476Z</updated>
+  <updated>2019-12-27T11:36:58.057Z</updated>
   <id>http://www.redperegrine.net/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Building a Pause Menu - Part 2</title>
+    <link href="http://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/"/>
+    <id>http://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/</id>
+    <published>2019-12-27T08:17:50.000Z</published>
+    <updated>2019-12-27T11:36:58.057Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;That pause menu I’d finished building?  I gave it super-powers.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+    
+      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+    
+      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+    
+      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+    
+    
+      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+    
+      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
+    
+      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
+    
+  </entry>
   
   <entry>
     <title>Building a Pause Menu - Part 1</title>
