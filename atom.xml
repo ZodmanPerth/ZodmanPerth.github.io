@@ -5,9 +5,9 @@
   <subtitle>Carl Scarlett&#39;s Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.redperegrine.net/"/>
+  <link href="https://www.redperegrine.net/"/>
   <updated>2019-12-27T11:36:58.057Z</updated>
-  <id>http://www.redperegrine.net/</id>
+  <id>https://www.redperegrine.net/</id>
   
   <author>
     <name>Carl Scarlett</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Building a Pause Menu - Part 2</title>
-    <link href="http://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/"/>
-    <id>http://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/</id>
+    <link href="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/"/>
+    <id>https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/</id>
     <published>2019-12-27T08:17:50.000Z</published>
     <updated>2019-12-27T11:36:58.057Z</updated>
     
@@ -29,27 +29,27 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
+      <category term="GUI" scheme="https://www.redperegrine.net/tags/gui/"/>
     
-      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
+      <category term="Menu" scheme="https://www.redperegrine.net/tags/menu/"/>
     
   </entry>
   
   <entry>
     <title>Building a Pause Menu - Part 1</title>
-    <link href="http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/"/>
-    <id>http://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</id>
+    <link href="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/"/>
+    <id>https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</id>
     <published>2018-12-30T09:34:58.000Z</published>
     <updated>2019-05-13T08:32:34.476Z</updated>
     
@@ -59,31 +59,31 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+      <category term="gdscript" scheme="https://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
-      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
+      <category term="GUI" scheme="https://www.redperegrine.net/tags/gui/"/>
     
-      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
+      <category term="Menu" scheme="https://www.redperegrine.net/tags/menu/"/>
     
   </entry>
   
   <entry>
     <title>Preventing Visual Studio Recompiles in UWP</title>
-    <link href="http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/"/>
-    <id>http://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/</id>
+    <link href="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/"/>
+    <id>https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/</id>
     <published>2018-11-10T03:58:42.000Z</published>
     <updated>2019-05-13T08:32:38.064Z</updated>
     
@@ -93,25 +93,25 @@
     
     </summary>
     
-      <category term="developer" scheme="http://www.redperegrine.net/categories/developer/"/>
+      <category term="developer" scheme="https://www.redperegrine.net/categories/developer/"/>
     
-      <category term="flow" scheme="http://www.redperegrine.net/categories/developer/flow/"/>
+      <category term="flow" scheme="https://www.redperegrine.net/categories/developer/flow/"/>
     
-      <category term="productivity" scheme="http://www.redperegrine.net/categories/developer/productivity/"/>
+      <category term="productivity" scheme="https://www.redperegrine.net/categories/developer/productivity/"/>
     
     
-      <category term="Visual Studio" scheme="http://www.redperegrine.net/tags/visual-studio/"/>
+      <category term="Visual Studio" scheme="https://www.redperegrine.net/tags/visual-studio/"/>
     
-      <category term="MSBuild" scheme="http://www.redperegrine.net/tags/msbuild/"/>
+      <category term="MSBuild" scheme="https://www.redperegrine.net/tags/msbuild/"/>
     
-      <category term="UWP" scheme="http://www.redperegrine.net/tags/uwp/"/>
+      <category term="UWP" scheme="https://www.redperegrine.net/tags/uwp/"/>
     
   </entry>
   
   <entry>
     <title>Waiter...my Menu is all GUI!</title>
-    <link href="http://www.redperegrine.net/2018/09/21/menu-all-gui/"/>
-    <id>http://www.redperegrine.net/2018/09/21/menu-all-gui/</id>
+    <link href="https://www.redperegrine.net/2018/09/21/menu-all-gui/"/>
+    <id>https://www.redperegrine.net/2018/09/21/menu-all-gui/</id>
     <published>2018-09-26T08:26:36.000Z</published>
     <updated>2019-05-13T08:32:41.673Z</updated>
     
@@ -121,31 +121,31 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+      <category term="gdscript" scheme="https://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
-      <category term="GUI" scheme="http://www.redperegrine.net/tags/gui/"/>
+      <category term="GUI" scheme="https://www.redperegrine.net/tags/gui/"/>
     
-      <category term="Menu" scheme="http://www.redperegrine.net/tags/menu/"/>
+      <category term="Menu" scheme="https://www.redperegrine.net/tags/menu/"/>
     
   </entry>
   
   <entry>
     <title>Instrumenting the Accelerometer</title>
-    <link href="http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/"/>
-    <id>http://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</id>
+    <link href="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/"/>
+    <id>https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</id>
     <published>2018-09-09T10:08:52.000Z</published>
     <updated>2019-05-13T08:32:45.114Z</updated>
     
@@ -155,29 +155,29 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+      <category term="gdscript" scheme="https://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
+      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
   <entry>
     <title>Saying G&#39;day to Godot</title>
-    <link href="http://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
-    <id>http://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
+    <link href="https://www.redperegrine.net/2018/08/21/say-gday-to-godot/"/>
+    <id>https://www.redperegrine.net/2018/08/21/say-gday-to-godot/</id>
     <published>2018-08-21T13:09:17.000Z</published>
     <updated>2019-05-13T08:32:50.284Z</updated>
     
@@ -187,29 +187,29 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
-      <category term="gdscript" scheme="http://www.redperegrine.net/categories/godot/gdscript/"/>
+      <category term="gdscript" scheme="https://www.redperegrine.net/categories/godot/gdscript/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Sensor" scheme="http://www.redperegrine.net/tags/sensor/"/>
+      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
     
-      <category term="GDScript" scheme="http://www.redperegrine.net/tags/gdscript/"/>
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
   <entry>
     <title>Choosing a Game Engine</title>
-    <link href="http://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/"/>
-    <id>http://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</id>
+    <link href="https://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/"/>
+    <id>https://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</id>
     <published>2018-05-08T12:47:17.000Z</published>
     <updated>2019-05-13T08:32:54.516Z</updated>
     
@@ -219,29 +219,29 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/gameengine/"/>
+      <category term="gameengine" scheme="https://www.redperegrine.net/categories/gamedev/gameengine/"/>
     
-      <category term="godot" scheme="http://www.redperegrine.net/categories/godot/"/>
+      <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
     
-      <category term="Godot" scheme="http://www.redperegrine.net/tags/godot/"/>
+      <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Unity" scheme="http://www.redperegrine.net/tags/unity/"/>
+      <category term="Unity" scheme="https://www.redperegrine.net/tags/unity/"/>
     
-      <category term="Unreal" scheme="http://www.redperegrine.net/tags/unreal/"/>
+      <category term="Unreal" scheme="https://www.redperegrine.net/tags/unreal/"/>
     
-      <category term="Game Maker" scheme="http://www.redperegrine.net/tags/game-maker/"/>
+      <category term="Game Maker" scheme="https://www.redperegrine.net/tags/game-maker/"/>
     
   </entry>
   
   <entry>
     <title>Changes of a Cosmic Scale</title>
-    <link href="http://www.redperegrine.net/2018/03/30/changing-everything/"/>
-    <id>http://www.redperegrine.net/2018/03/30/changing-everything/</id>
+    <link href="https://www.redperegrine.net/2018/03/30/changing-everything/"/>
+    <id>https://www.redperegrine.net/2018/03/30/changing-everything/</id>
     <published>2018-03-29T23:47:31.000Z</published>
     <updated>2019-05-11T00:01:29.678Z</updated>
     
@@ -251,23 +251,23 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
+      <category term="gameengine" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
     
-      <category term="gameblog" scheme="http://www.redperegrine.net/tags/gameblog/"/>
+      <category term="gameblog" scheme="https://www.redperegrine.net/tags/gameblog/"/>
     
   </entry>
   
   <entry>
     <title>Measuring C# Performance with BenchmarkDotNet</title>
-    <link href="http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
-    <id>http://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
+    <link href="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/"/>
+    <id>https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</id>
     <published>2017-12-23T09:12:47.000Z</published>
     <updated>2019-05-13T08:32:58.753Z</updated>
     
@@ -277,26 +277,26 @@
     
     </summary>
     
-      <category term="zodproj" scheme="http://www.redperegrine.net/categories/zodproj/"/>
+      <category term="zodproj" scheme="https://www.redperegrine.net/categories/zodproj/"/>
     
-      <category term="gamedev" scheme="http://www.redperegrine.net/categories/gamedev/"/>
+      <category term="gamedev" scheme="https://www.redperegrine.net/categories/gamedev/"/>
     
-      <category term="indiedev" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/"/>
+      <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="gameengine" scheme="http://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
+      <category term="gameengine" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/gameengine/"/>
     
-      <category term="tests" scheme="http://www.redperegrine.net/categories/tests/"/>
+      <category term="tests" scheme="https://www.redperegrine.net/categories/tests/"/>
     
-      <category term="performance" scheme="http://www.redperegrine.net/categories/tests/performance/"/>
+      <category term="performance" scheme="https://www.redperegrine.net/categories/tests/performance/"/>
     
     
-      <category term="BenchmarkDotNet" scheme="http://www.redperegrine.net/tags/benchmarkdotnet/"/>
+      <category term="BenchmarkDotNet" scheme="https://www.redperegrine.net/tags/benchmarkdotnet/"/>
     
-      <category term="LINQPad" scheme="http://www.redperegrine.net/tags/linqpad/"/>
+      <category term="LINQPad" scheme="https://www.redperegrine.net/tags/linqpad/"/>
     
-      <category term="C#" scheme="http://www.redperegrine.net/tags/c/"/>
+      <category term="C#" scheme="https://www.redperegrine.net/tags/c/"/>
     
-      <category term="Win2d" scheme="http://www.redperegrine.net/tags/win2d/"/>
+      <category term="Win2d" scheme="https://www.redperegrine.net/tags/win2d/"/>
     
   </entry>
   
