@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Building a Pause Menu - Part 3 | Red Peregrine</title>
+    <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Let’s talk about how I designed the new Pause Menu.">
+<meta name="keywords" content="GUI,Menu,Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Pause Menu - Part 3">
+<meta property="og:url" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/index.html">
+<meta property="og:site_name" content="Red Peregrine">
+<meta property="og:description" content="Let’s talk about how I designed the new Pause Menu.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png">
+<meta property="og:updated_time" content="2020-03-14T23:19:43.960Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a Pause Menu - Part 3">
+<meta name="twitter:description" content="Let’s talk about how I designed the new Pause Menu.">
+<meta name="twitter:image" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Red Peregrine" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Red Peregrine</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="What are you looking for?" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc?s=128" />
+            <h2 id="name">Carl Scarlett</h2>
+            <h3 id="title">Designer, Developer, Dreamer, Doer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Perth, Western Australia</span>
+            <a id="follow" target="_blank" href="https://twitter.com/ZodmanPerth">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                10
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZodmanPerth" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/ZodmanPerth" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/carlscarlett/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.youtube.com/user/ZodmanPerth" target="_blank" title="youtube" class=tooltip>
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2020/02/00/building-a-pause-menu-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Building a Pause Menu - Part 3
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/02/00/building-a-pause-menu-part-3/">
+            <time datetime="2020-02-04T04:47:49.000Z" itemprop="datePublished">2020-02-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/design/">design</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/design/process/">process</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/design/">Design</a>, <a class="tag-link" href="/tags/gui/">GUI</a>, <a class="tag-link" href="/tags/menu/">Menu</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Let’s talk about how I designed the new Pause Menu.<br><a id="more"></a></p>
+<div class="admonition aside"><p class="admonition-title">Prelude</p><p><br><br></p>
+<p><em>I was around seven when the first home computers and arcade machines unleashed electronic games into the world. I was instantly seduced, and wondered over how to design such incredible experiences. With the appearance of every new reality, that allure was nurtured and became deep-seeded passion. I saw them as a gateway to unrestricted expression and infinite creativity.  From the first brush of their magic I burned to be a creator of such marvels; to liberate the unfathomable visions of my mind and cast them into the world for others to enjoy.</em></p>
+<p><br></p>
+<p><em>I spent decades playing them, studying them, absorbing everything they offer, analysing how they do what they do, and dreaming of what</em> I <em>want them to do.  Meanwhile I forged a career in software development, learning and practicing the art of code.  Despite living in the world’s most isolated city, where good opportunities are rare and difficult to obtain, I have been fortunate and made a successful living as a software developer.</em></p>
+<p><br></p>
+<p><em>I’ve seen many types of developers over the years, and observed how swathes of programmers shy away from creating beautiful visual experiences.  Something about the challenges of code grinding consumes many a developer, who turn their backs on the visualisation and interaction aspects of software.  They seem content to limit their craft to writing and maintaining systems of pure data.  It seems to be an event horizon in the field of computer science, resulting in a majority of people who shun, rather than embrace, the skillset required to fashion creations for the experience of others.</em></p>
+<p><br></p>
+<p><em>I’m definitely not of that mindset.  As a highly visual person I’ve always held</em> experiencing <em>software in the same high regard as</em> creating <em>it.  I have a huge passion for crafting delightful and seamless interactions, and have eagerly filled the roles left void by engineers more afraid of UI than inspired.</em></p>
+<p><br></p>
+<p><em>At other times I’ve been fortunate to spend time working under and alongside people who specialise in design instead of programming.  I wasn’t even aware design was a</em> thing <em>for over a decade of my career, when I finally landed a job on a project requiring the expertise of a full-time designer.  The shock of realising there was an entire industry I had never encountered was another world-expanding moment in my journey; like living a lifetime in the moonlight before seeing world in the full sun.</em></p>
+<p><br></p>
+<p><em>I had found the door to a part of me I’d felt was missing but couldn’t describe, and threw myself into exploring the domains of design with insatiable thirst and relentless energy.  For several years I did everything in my power to learn all I could about design, the practices of visual designers, and the fields of computer-human interaction.  While I still feel incomplete after discovering design so late in my career, I am blessed to have had the opportunity to discover and empower myself with it at all.</em></p>
+<p><br></p>
+<p><em>I am at a point in life where I have achieved a comfortable balance of design and engineering knowledge and experience.  I feel no fear as I design and develop.</em></p>
+<p><br></p>
+<p><em>I dream and I do.</em></p>
+</div>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>It may simply be an inability to find the right community, but I rarely see people sharing their thoughts about designing user experiences for software.  Sure there’s a plethora of articles, texts, courses, and advice about creating experiences within Web Browsers (<a href="http://www.sensible.com/about.html" target="_blank" rel="noopener">Steve Krug</a> has the <a href="http://www.sensible.com/dmmt.html" target="_blank" rel="noopener">best book</a> about it I’ve ever found on the topic), yet the vast majority of them seem biased toward the Web as the visual medium.</p>
+<p>I’m talking about design at a higher level; where are the references on how to think about design for getting the best experience for users of software in <em>any</em> electronic medium?</p>
+<p>I caught my first glimpse in 2010 when <a href="https://www.billbuxton.com/#bio" target="_blank" rel="noopener">Bill Buxton</a> did the keynote at Microsoft’s Mix10 conference (wish I could find a link for that), and his book on <a href="https://www.billbuxton.com/bookFlyer.pdf" target="_blank" rel="noopener">Sketching User Experiences</a> ushered me down the path to explore the field of UX (much appreciated Bill). I was beaten over the head with it by <a href="http://worrydream.com/#!/Bio" target="_blank" rel="noopener">Bret Victor</a> talking about <a href="https://vimeo.com/36579366" target="_blank" rel="noopener">Inventing on Principle</a>, and Bret’s work on designing better interactions continues to be the finest I’ve encountered.  His <a href="https://dynamicland.org/" target="_blank" rel="noopener">current project</a> is pushing boundaries, lifting the concept of software to the physical world.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-vimeo"><iframe src="//player.vimeo.com/video/36579366" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">If you’ve never seen Inventing on Principle, do yourself a favour and watch it now!</span></p>
+<p>The people and works I’ve mentioned have altered the course of my life in significant and positive ways.  When they crossed my path I felt I had uncovered the tip of a giant iceberg; that I would dive in and drink the knowledge until my mind overflowed.</p>
+<p>But that never happened.  I haven’t found anyone since who talks about the subject, let alone expands on it.  I’ve had to make do learning from masters of more restricted disciplines, eking whatever I could and pocketing it within my own pool of knowledge.</p>
+<p>I feel it’s about time I began to write about how <em>I</em> do design and weave it into the narrative of my posts.  With that in mind, let’s explore the process I went through to design the new Pause Menu I’ve just built for my Capability Test app.</p>
+<h1 id="How-It-Began"><a href="#How-It-Began" class="headerlink" title="How It Began"></a>How It Began</h1><p>As I’ve mentioned in previous posts, I wasn’t at peace with the first Pause Menu I had created.  Sure it was functional enough, allowing me to navigate to all corners of the app.  I avoided digging too deeply as to <em>why</em> I was uncomfortable with it and had decided it was good enough for now.  I was going to move on and build my next capability test.</p>
+<p>Not long after making this decision I found myself on a long-haul jet flight for a family holiday.  It was one of those rare flights where I hadn’t brought my Surface with me to work on my game, as our destination didn’t have a safe and I couldn’t afford to replace my hardware if something untoward were to happen.</p>
+<p>Instead, I had brought along some paper and a pencil with which to sketch.  I figured if the in-flight entertainment wasn’t interesting I could always practice drawing with physical tools for a change.  Sure enough the idea of sitting <em>passively</em> watching TV paled in comparison actively <em>doing</em> something, and it wasn’t long before I  pulled out my tools and started scribbling away.</p>
+<h1 id="Warmup-Sketches"><a href="#Warmup-Sketches" class="headerlink" title="Warmup Sketches"></a>Warmup Sketches</h1><p>To warm up I did a mindfulness exercise to ground myself within the noisy, unfamiliar environment I was in.  I find this technique calms my mind and creates a healthy mental space to fill with creative thoughts.</p>
+<p>Following that I began thinking of what I could sketch.  In the past I had sketched enemies for my game and figured that was a good place to start.  After a short period of “writer’s block” I was growing impatient so I began scouring my surroundings for inspiration.</p>
+<p>The seat in front of me had an interesting surround for the phone recharging  port and I was inspired by that for a while.  The first sketch felt a little too <em>Minion-like</em> for my taste, so I played with softening the square edges and reshaping the head to remove the inference.  Here’s the result:</p>
+<p><img src="warmup.png" alt="Some warmup sketches"></p>
+<p>Having warmed up I looked around for further inspiration.  By utilising things from the real world I hoped my creations would infuse a familiar feel with my own style to make them unique and interesting.  After some time I realised the symbols used by the aircraft signage were a potential gold mine of familiar sources and I settled on using an arrow from the emergency exit sign for next piece.</p>
+<p>The dimensions of the arrow evoked echoes of isometric geometry in me so I sketched this as a potential enemy ship:</p>
+<p><img src="cubic-ship.png" alt="Enemy ship or alien digital segment display?"></p>
+<p>As a designer I’m always keen to explore playing with <a href="https://en.wikipedia.org/wiki/Negative_space" target="_blank" rel="noopener">negative space</a>.  For my next sketch I decided to take the person symbol from the toilet sign as a base and doodle with it.  A Sphinx-like figure began to emerge. In a purposeful flurry I began adding symmetry, wings, and really went for it with the use of negative space.  The result is some sort of <em>statue-y</em> thing. I don’t have a use for it right now but who knows if it will find some purpose later on in development.</p>
+<p>Here’s the final image, and the same image rotated so you can make out the person symbol in it’s correct orientation:</p>
+<p><img src="oracle.png" alt="I have the sudden urge to go watch The Neverending Story..."></p>
+<p>With my passion for symmetry ignited and my creativity fully warmed up, I wanted to create something deliberate and original.  Taking the lead from the head of the person symbol (oh I do love a circle!), I sketched a sphere and began putting some structure around it.  This opened up to more play with negative space and I added expression lines to form the impression of a larger circle.</p>
+<p>On it’s own it looked too controlled, so I added some horizontal lines above and below to indicate some mysterious purpose.  I coloured in some of the structural pieces to break the symmetry and it really looked like there was a message trying to be told here.  I assure you there isn’t!</p>
+<p><img src="symbol.png" alt="Alien hieroglyph"></p>
+<h1 id="Succumbing-to-Design-Impulses"><a href="#Succumbing-to-Design-Impulses" class="headerlink" title="Succumbing to Design Impulses"></a>Succumbing to Design Impulses</h1><p>Throughout the time I was sketching these I kept having to ward off distracting thoughts about my discomfort with current state of the design of the Pause Menu.  Now that I had sketched a few things and felt I was being productive, and with plenty of flight time remaining, I turned my attention to analysing why I felt uncomfortable with the original design.</p>
+<p>As a reminder, here’s what the Pause Menu looked like at that time:</p>
+<p><img src="/2018/12/30/building-a-pause-menu-part-1/pause-menu-controls.png" alt="The Pause Menu buttons"></p>
+<p>Three comfortable buttons, with labels and icons.  Anyone who paused the game could look at these and know how to use it in an instant.</p>
+<p>What was it that disturbed me in this simple interface?  As a designer I usually <em>strive</em> for such simplicity; for the user to instantly understand what to do with minimal explanation or guidance.  The arrangement I had produced could already be viewed as a pinnacle of design; 3 clear choices, a simple tap and away you go.</p>
+<p>However that design didn’t work on the Android platform.  While ideally there are only 3 choices, on Android the app can’t close itself without breaking the development rules of the operating system.  I shared my disappointment at discovering this late in development <a href="/2018/12/30/building-a-pause-menu-part-1/#Designing-to-Improve-the-Android-Experience">in part 1 of this series</a>.  This is knowledge I wanted to carry with me into a redesign.</p>
+<p>Something else to consider was the distinctive <em>feel</em> of the game.  A simple menu such as this would look at home just about anywhere on any app <em>ever</em>.  From a different viewpoint however, any one app with this design <em>looks the same as every other app</em>.  While that may be fine for my Capability App with an intended audience of just me, I want to eventually lift the code for this menu and put it in my game at a later point, and everyone else would see and use it.</p>
+<p>When I asked myself “Are you happy with this being the Pause Menu in your game?”, the answer was a resounding “No!” because it just felt too generic. The design of this menu looks straight out of the “form-based business application development” handbook, not “designing for awesome game experiences - masters edition”.  It’s the design equivalent of having developer or placeholder art in the final game.  This was a valuable realisation to have before I redesigned.</p>
+<p>One final thing to consider was that I may need to add more options to the menu as development progresses.  For example, a player may want to tweak game settings such as the volume level.  A familiar place people look to find such options is the Pause Menu, as the menu itself is generally quick to access during game play.  The point for me here, however, was to ensure the design is flexible enough to accommodate more options in the future, with minimal development effort, if I need them.</p>
+<div class="admonition note"><p class="admonition-title">note</p><p>It’s a common usability pattern for players to quickly alternate between tweaking settings and playing the game, trying to find optimal values before continuing with extended gameplay.  Designing for this experience means carefully balancing accessibility, speed, and affordance.  Because the Pause Menu itself needs to be accessible at pace, there is a natural synergy to providing access to in-game settings from the Pause Menu.</p>
+</div>
+<h1 id="Identifying-the-Root-Cause-of-the-Problem"><a href="#Identifying-the-Root-Cause-of-the-Problem" class="headerlink" title="Identifying the Root Cause of the Problem"></a>Identifying the Root Cause of the Problem</h1><p>I now had a revised set of requirements to take into a redesign brainstorming session; a <em>Brief</em>.  I didn’t write these down at the time because having them swimming around in my mind is usually enough for me.  However I’ll list them out for you here so it’s clear exactly what they were.</p>
+<ul>
+<li>The menu must have 3 choices for navigation:<ol>
+<li>Continue playing</li>
+<li>Go back to the main menu</li>
+<li>Quit the app</li>
+</ol>
+</li>
+<li>On Android, the <code>Quit</code> instruction doesn’t make sense on it’s own.  One of the following must be true on Android:<ol>
+<li>The <code>Quit</code> instruction must not infer the app will close (relabelling?)</li>
+<li>The <code>Quit</code> instruction could have further instruction on how to actually close the app (intermediate dialog?)</li>
+<li>The <code>Quit</code> instruction could be removed on Android (avoidance?)</li>
+</ol>
+</li>
+<li>The menu could have more than 3 choices in the future</li>
+<li>The menu could have <em>different</em> choices in the future (e.g. relabelling <code>Quit</code> on Android)</li>
+<li>The menu should be <em>quick to access</em></li>
+<li>The menu should be <em>easy</em> to use</li>
+<li>The menu should be <em>intuitive</em> to use</li>
+<li>The menu must be <em>efficient</em> to use (i.e. selection must be fast)</li>
+<li>Menu interaction should reflect the <em>feel</em> of the game</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">note</p><p>Notice how I use terms such as <code>must</code>, <code>should</code> and <code>could</code> to phrase my requirements.  From experience I have learned the <a href="https://en.wikipedia.org/wiki/MoSCoW_method" target="_blank" rel="noopener">MoSCoW method</a> is the best way to <em>externally</em> convey clear understanding and priority of what is required.  I find it beneficial to <em>think</em> that way as well.</p>
+</div>
+<p>That last requirement may seem vague because I haven’t blogged about the feel of the game yet.  That isn’t to say it hasn’t been defined; I have spent many hours refining my ideas about it.  I am yet to create a formal Game Design Document because I enjoy leaving flexibility to discover new ideas while I explore how to code up the building blocks for the game.  I’m experienced enough to recognise scope creep most of the time, so that isn’t a concern for me.</p>
+<p>I have strong ideas about how the game interface will work, how it will look, how it will feel, and how it will sound.  For the moment I leave these loosely connected in my mind, swimming around like a soup in my head.  Through practice and experimentation I’ve discovered the best way to allow my designer-mind to work is if I formalise such things at the last possible moment, maximising the time I have to work on the problems on my plate <em>today</em>.</p>
+<p>What I <em>will</em> share for now is that a key principle of my game is the interface must be a delightful haptic experience.  Controlling the player ship through touch manipulation is as important an aspect contributing to an enjoyable player experience as anything else in the game, and I’ve designed this principle into the game from the very beginning.</p>
+<p>With that in mind, when I looked at the first Pause Menu design with it’s three comfortable buttons, it became pretty clear to me what the problem was.  There was simply no <em>fun</em> in using that interface.  There is no <em>playfulness</em>, no <em>delight</em>.  It did not reflect the haptic principle that is a pivotal part of the experience of playing my game.  It is a completely forgettable interaction for a user to tap one of those buttons, and that was the crux of the problem.</p>
+<h1 id="Ideation-of-the-New-Design"><a href="#Ideation-of-the-New-Design" class="headerlink" title="Ideation of the New Design"></a>Ideation of the New Design</h1><p>At last I understood what it was I didn’t like about the design of that menu, why I didn’t like it, and all the requirements I needed for improving it. Now all I had to do was brainstorm ideas that covered the new Brief as much as possible.  Fortunately I still had plenty of time to think while my flight continued, and I already had my creative juices flowing.  I was ready to tackle the task.</p>
+<p>If I truly wanted to celebrate the touch aspect of the interface, I somehow needed to incorporate dragging across the surface with touch gestures.  If I was to have gestures I needed to have visual feedback so a player could see the effects of their gestures.  If it was to be intuitive it needed to be familiar, even while I create something that uniquely reflects the feel of my game.</p>
+<p>I began to reflect on established UI controls, testing whether they matched my Brief.  Of all the controls, the best fit was the humble ScrollBar.  Though restricted to a single dimension, it feels natural and familiar to drag a Thumbnail along the ScrollBar rail/track to change the value of a property.  It has visual feedback while manipulating with touch, and is intuitive to use.</p>
+<p>While I knew a ScrollBar only changes the value of a single property, it was the <em>Thumbnail</em> that caught my interest.  If a Thumbnail were free to slide in multiple directions, I wondered if it could be used to allow the selection of one of several values.  Perhaps allowing movement in both the <em>x</em> and <em>y</em> direction, contained by some bounding field, would be a potential solution.</p>
+<p>At the same time, I was thinking of how to visualise multiple dimensions in general.  Because I’m a huge fan of Geometry, I typically think of geometrical shapes at times like these.  This time was no exception.  Blending this line of thinking with the problem of choosing from three values led me to think of a 3-dimensional geometrical shapes; <em>Triangles</em>. If a selectable option were placed at each corner of a Triangle, could a player drag a Thumbnail onto each option to select it?</p>
+<p>I began sketching as I was thinking:</p>
+<p><img src="triangle-geometry.png" alt="Exploring 3-point geometrical interfaces through sketch"></p>
+<p><br></p>
+<p>As I worked a memory was triggered; I remembered an old joystick Commodore 64 joystick with a triangular-prism for a shaft (like a <a href="https://en.wikipedia.org/wiki/Toblerone" target="_blank" rel="noopener">Toblerone Chocolate Bar packet</a>).  You would push the shaft to indicate your choice of eight directions (nine of you count the default no-direction state).  As with all digital joysticks, if you stopped pushing the shaft it would snap back to the centre.</p>
+<p><br></p>
+<p><img src="1311-joystick.jpg" alt="The Commodore 1311 Joystick.  Ain&#39;t she a beaut?"></p>
+<p><br><br>What would it look like if I merged all these ideas?  A triangular Thumbnail, pushed around by touch, restricted by a triangular field, with the three selectable options at each corner, that snapped back to the centre when the gesture was complete? I began sketching what a Pause Menu with such an interface would look like:</p>
+<p><img src="new-menu.png" alt="A new pause menu design?"></p>
+<p><br><br>I knew from Geometry that by having the Thumbnail be a smaller-scale version of the same shape as the containing field, the Thumbnail would fit perfectly in any corner.   I realised this state could be how the player could position the Thumbnail to indicate they wanted to select the option at that corner of the field. I also realised this would work for <em>any</em> convex geometrical shape, allowing me to generate geometrical fields and Thumbnails for however many numbers of options I needed as my game development progressed.</p>
+<p>I had prior knowledge that Godot (the game engine I am using in my game) has a  <a href="https://docs.godotengine.org/en/3.2/classes/class_kinematicbody.html#class-kinematicbody-method-move-and-slide" target="_blank" rel="noopener">move-and-slide</a> behaviour built in.  It should be fairly easy to create a mechanism where a gesture-driven Thumbnail would be restricted by the edges of the field and slide snugly into a corner when pushed around by the player.</p>
+<p>It was all sounding quite promising.</p>
+<h1 id="Checking-Against-the-Brief"><a href="#Checking-Against-the-Brief" class="headerlink" title="Checking Against the Brief"></a>Checking Against the Brief</h1><p>My excitement was growing at this point as I was thinking the design was going to work.  As I imagined using the mechanism it satisfied the feel I was after much better than the original design.</p>
+<p>It was time to cross-check with the Brief to ensure I wasn’t missing anything important:</p>
+<ul>
+<li>The menu could be accessed by the same mechanism before, which was already intuitive and quick. :heavy-check-mark:</li>
+<li>The menu had 3 options that could be chosen. :heavy-check-mark:</li>
+<li>Because I was using Geometry to match the number of options to choose from, I could generate the interface and the mechanism would still work. :heavy-check-mark:</li>
+<li>It encapsulated the <em>feel</em> I was after. :heavy-check-mark:</li>
+</ul>
+<p>There were a few questions remaining to be answered.  Would it be <em>easy</em> to use?  Would it be <em>efficient</em> to use?  Would it be <em>intuitive</em>?</p>
+<h1 id="Final-Tweaks-to-the-Design"><a href="#Final-Tweaks-to-the-Design" class="headerlink" title="Final Tweaks to the Design"></a>Final Tweaks to the Design</h1><p>As for the intuitiveness, I needed to build a prototype and test it out for myself (and playtest it with other people as well).  That wasn’t going to happen before I landed so I put that aside as future work.</p>
+<p>I had a concern about how easy and efficient it would be to use.  On a phone the Thumbnail may be too small to touch with a finger, or be obscured by the finger as the player dragged it around.</p>
+<p>This was a relatively simple one to solve as I had already built a similar mechanism in my <a href="http://localhost:4000/2018/08/21/say-gday-to-godot/#What-to-Build-First" target="_blank" rel="noopener">Touch Manipulation Test</a>.  Because the only touch-controllable part of the new Pause Menu is the Thumbnail, I would make it such that you didn’t need to start the gesture by being in contact with the Thumbnail itself. Wherever your finger was on the screen when you started the gesture would be the point where the Thumbnail’s position change would be calculated from as you dragged.  You could push and pull the Thumbnail from anywhere on the screen you felt comfortable.</p>
+<p>This technique isn’t new, it is a well established technique in many touch interfaces.  Applied here it would certainly make the Thumbnail easy and efficient to move around.  With your finger out of the way the Thumbnail will be clearly visible, even on small mobile devices.  The player should intuitively understand the physics when they see the Thumbnail colliding with the containing field as they move and slide the Thumbnail around.</p>
+<p>Finally, I thought by orienting the Triangle correctly, the user could intuitively expect the correct option/outcome when they swiped.  Placing the “Go back to the main menu” option on the left and “Continue playing” option on the right mirrors the familiar swipe left to “Go back” and swipe right to “Go forward” on a browser. The Thumbnail would collide with the edge of the field and slide into the appropriate corner as a result of the swipe.</p>
+<p>That left “Quit the app” as either swipe up or swipe down, depending which way the triangle points.  On Windows (a target platform for my game), a swipe down is used to close the app in WinRT, so I chose my triangular field to point down.  Again, this keeps some familiarity among gestures.</p>
+<p>Design complete!</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>Congratulations on getting to the end of this mammoth post!  I hope it wasn’t too dry as I recounted my process.  Communicating all that thought and reasoning in text has been challenging to make this an easy read.</p>
+<p>Remember, just like coding, design is all about:</p>
+<ul>
+<li>thinking at a high level to ensure you’re moving in the right direction…</li>
+<li>thinking in intricate detail to ensure everything is appropriately covered…</li>
+<li>doing both at the same time to ensure everything works harmoniously to achieve the right result.</li>
+</ul>
+<p>Here’s the full page scan of the page of sketches I created while I was on my flight for your reference.  You may even spot some bonus sketches if you look closely!</p>
+<p><img src="full-page.png" alt="The complete page of all sketches from this design odyssey"></p>
+<h1 id="Final-Words"><a href="#Final-Words" class="headerlink" title="Final Words"></a>Final Words</h1><p>I hope the information in this post assists you with your own design process and helps to make better software.  The world has too many examples of poor design choices for my liking, and I believe as more people showcase their design processes, in more electronic mediums than just the Web, good design will become more ubiquitous and the world will be a better place.</p>
+<p>In the next post of this series I’ll get back to the programming side, and talk about how I took this design into a prototyping phase.  I’ll talk about more of the challenges I faced and how I overcame them.</p>
+<p>I look forward to seeing you in the next post!</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/" data-id="ck7s8gbim00433gork1rrlf0g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/12/27/building-a-pause-menu-part-2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Building a Pause Menu - Part 2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/00/building-a-pause-menu-part-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png)" alt="Building a Pause Menu - Part 3" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/design/">design</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/design/process/">process</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2020/02/00/building-a-pause-menu-part-3/" class="title">Building a Pause Menu - Part 3</a></p>
+                            <p class="item-date"><time datetime="2020-02-04T04:47:49.000Z" itemprop="datePublished">2020-02-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/27/building-a-pause-menu-part-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/12/27/building-a-pause-menu-part-2/living-with-elephants-foundation-300x300.png)" alt="Building a Pause Menu - Part 2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2019/12/27/building-a-pause-menu-part-2/" class="title">Building a Pause Menu - Part 2</a></p>
+                            <p class="item-date"><time datetime="2019-12-27T05:17:50.000Z" itemprop="datePublished">2019-12-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/30/building-a-pause-menu-part-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/30/building-a-pause-menu-part-1/3-bears-300x300.png)" alt="Building a Pause Menu - Part 1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/12/30/building-a-pause-menu-part-1/" class="title">Building a Pause Menu - Part 1</a></p>
+                            <p class="item-date"><time datetime="2018-12-30T06:34:58.000Z" itemprop="datePublished">2018-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
+                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
+                            <p class="item-date"><time datetime="2018-11-10T00:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/21/menu-all-gui/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/09/21/menu-all-gui/menu-256.png)" alt="Waiter...my Menu is all GUI!" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/09/21/menu-all-gui/" class="title">Waiter...my Menu is all GUI!</a></p>
+                            <p class="item-date"><time datetime="2018-09-26T06:26:36.000Z" itemprop="datePublished">2018-09-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://godotengine.org/">Godot</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.linqpad.net/">LINQPad</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/';
+        
+        this.page.identifier = '2020/02/00/building-a-pause-menu-part-3';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
