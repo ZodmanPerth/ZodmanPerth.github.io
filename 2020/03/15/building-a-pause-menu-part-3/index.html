@@ -10,16 +10,16 @@
 <meta name="keywords" content="GUI,Menu,Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a Pause Menu - Part 3">
-<meta property="og:url" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/index.html">
+<meta property="og:url" content="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="Let’s talk about how I designed the new Pause Menu.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png">
-<meta property="og:updated_time" content="2020-03-14T23:19:43.960Z">
+<meta property="og:image" content="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/guillaume-840x420.png">
+<meta property="og:updated_time" content="2020-03-14T23:36:19.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building a Pause Menu - Part 3">
 <meta name="twitter:description" content="Let’s talk about how I designed the new Pause Menu.">
-<meta name="twitter:image" content="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png">
+<meta name="twitter:image" content="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/guillaume-840x420.png">
     
 
     
@@ -206,12 +206,12 @@
 </aside>
 
             
-            <section id="main"><article id="post-2020/02/00/building-a-pause-menu-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-2020/03/15/building-a-pause-menu-part-3" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             
 	
-		<img src="/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png" class="article-banner" />
+		<img src="/2020/03/15/building-a-pause-menu-part-3/guillaume-840x420.png" class="article-banner" />
 	
 
 
@@ -231,8 +231,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2020/02/00/building-a-pause-menu-part-3/">
-            <time datetime="2020-02-04T04:47:49.000Z" itemprop="datePublished">2020-02-04</time>
+        <a href="/2020/03/15/building-a-pause-menu-part-3/">
+            <time datetime="2020-03-14T23:29:49.000Z" itemprop="datePublished">2020-03-15</time>
         </a>
     </div>
 
@@ -355,16 +355,11 @@
 <p>It was all sounding quite promising.</p>
 <h1 id="Checking-Against-the-Brief"><a href="#Checking-Against-the-Brief" class="headerlink" title="Checking Against the Brief"></a>Checking Against the Brief</h1><p>My excitement was growing at this point as I was thinking the design was going to work.  As I imagined using the mechanism it satisfied the feel I was after much better than the original design.</p>
 <p>It was time to cross-check with the Brief to ensure I wasn’t missing anything important:</p>
-<ul>
-<li>The menu could be accessed by the same mechanism before, which was already intuitive and quick. :heavy-check-mark:</li>
-<li>The menu had 3 options that could be chosen. :heavy-check-mark:</li>
-<li>Because I was using Geometry to match the number of options to choose from, I could generate the interface and the mechanism would still work. :heavy-check-mark:</li>
-<li>It encapsulated the <em>feel</em> I was after. :heavy-check-mark:</li>
-</ul>
+<p>✅ The menu could be accessed by the same mechanism before, which was already intuitive and quick.<br>✅ The menu had 3 options that could be chosen.<br>✅ Because I used geometrical shapes I could flexibly generate the interface.<br>✅ It encapsulated the <em>feel</em> I was after.</p>
 <p>There were a few questions remaining to be answered.  Would it be <em>easy</em> to use?  Would it be <em>efficient</em> to use?  Would it be <em>intuitive</em>?</p>
 <h1 id="Final-Tweaks-to-the-Design"><a href="#Final-Tweaks-to-the-Design" class="headerlink" title="Final Tweaks to the Design"></a>Final Tweaks to the Design</h1><p>As for the intuitiveness, I needed to build a prototype and test it out for myself (and playtest it with other people as well).  That wasn’t going to happen before I landed so I put that aside as future work.</p>
 <p>I had a concern about how easy and efficient it would be to use.  On a phone the Thumbnail may be too small to touch with a finger, or be obscured by the finger as the player dragged it around.</p>
-<p>This was a relatively simple one to solve as I had already built a similar mechanism in my <a href="http://localhost:4000/2018/08/21/say-gday-to-godot/#What-to-Build-First" target="_blank" rel="noopener">Touch Manipulation Test</a>.  Because the only touch-controllable part of the new Pause Menu is the Thumbnail, I would make it such that you didn’t need to start the gesture by being in contact with the Thumbnail itself. Wherever your finger was on the screen when you started the gesture would be the point where the Thumbnail’s position change would be calculated from as you dragged.  You could push and pull the Thumbnail from anywhere on the screen you felt comfortable.</p>
+<p>This was a relatively simple one to solve as I had already built a similar mechanism in my <a href="/2018/08/21/say-gday-to-godot/#What-to-Build-First">Touch Manipulation Test</a>.  Because the only touch-controllable part of the new Pause Menu is the Thumbnail, I would make it such that you didn’t need to start the gesture by being in contact with the Thumbnail itself. Wherever your finger was on the screen when you started the gesture would be the point where the Thumbnail’s position change would be calculated from as you dragged.  You could push and pull the Thumbnail from anywhere on the screen you felt comfortable.</p>
 <p>This technique isn’t new, it is a well established technique in many touch interfaces.  Applied here it would certainly make the Thumbnail easy and efficient to move around.  With your finger out of the way the Thumbnail will be clearly visible, even on small mobile devices.  The player should intuitively understand the physics when they see the Thumbnail colliding with the containing field as they move and slide the Thumbnail around.</p>
 <p>Finally, I thought by orienting the Triangle correctly, the user could intuitively expect the correct option/outcome when they swiped.  Placing the “Go back to the main menu” option on the left and “Continue playing” option on the right mirrors the familiar swipe left to “Go back” and swipe right to “Go forward” on a browser. The Thumbnail would collide with the edge of the field and slide into the appropriate corner as a result of the swipe.</p>
 <p>That left “Quit the app” as either swipe up or swipe down, depending which way the triangle points.  On Windows (a target platform for my game), a swipe down is used to close the app in WinRT, so I chose my triangular field to point down.  Again, this keeps some familiarity among gestures.</p>
@@ -391,7 +386,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/" data-id="ck7s8nxox000zjcor56h95vse" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/" data-id="ck7sal5tb00483worsbuhmas5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -459,7 +454,7 @@
 
             
     
-        <a href="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/">Comments</a>
+        <a href="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/">Comments</a>
     
 
         </footer>
@@ -504,10 +499,10 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2020/02/00/building-a-pause-menu-part-3/" class="thumbnail">
+                            <a href="/2020/03/15/building-a-pause-menu-part-3/" class="thumbnail">
     
     
-        <span style="background-image:url(/2020/02/00/building-a-pause-menu-part-3/guillaume-840x420.png)" alt="Building a Pause Menu - Part 3" class="thumbnail-image"></span>
+        <span style="background-image:url(/2020/03/15/building-a-pause-menu-part-3/guillaume-840x420.png)" alt="Building a Pause Menu - Part 3" class="thumbnail-image"></span>
     
 </a>
 
@@ -515,8 +510,8 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/design/">design</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/design/process/">process</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
-                            <p class="item-title"><a href="/2020/02/00/building-a-pause-menu-part-3/" class="title">Building a Pause Menu - Part 3</a></p>
-                            <p class="item-date"><time datetime="2020-02-04T04:47:49.000Z" itemprop="datePublished">2020-02-04</time></p>
+                            <p class="item-title"><a href="/2020/03/15/building-a-pause-menu-part-3/" class="title">Building a Pause Menu - Part 3</a></p>
+                            <p class="item-date"><time datetime="2020-03-14T23:29:49.000Z" itemprop="datePublished">2020-03-15</time></p>
                         </div>
                     </li>
                 
@@ -614,7 +609,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -674,9 +669,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://www.redperegrine.net/2020/02/00/building-a-pause-menu-part-3/';
+            this.page.url = 'https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/';
         
-        this.page.identifier = '2020/02/00/building-a-pause-menu-part-3';
+        this.page.identifier = '2020/03/15/building-a-pause-menu-part-3';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
