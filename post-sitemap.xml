@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/</loc>
+        <lastmod>2020-04-25T01:02:46.376Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/</loc>
-        <lastmod>2020-03-15T03:27:11.183Z</lastmod>
+        <lastmod>2020-04-25T00:55:39.703Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +25,15 @@
 
     <url>
         <loc>https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/</loc>
-        <lastmod>2019-12-27T11:37:00.000Z</lastmod>
+        <lastmod>2020-04-12T01:42:06.295Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</loc>
+        <lastmod>2020-04-12T01:32:31.192Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -66,14 +82,6 @@
     <url>
         <loc>https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/</loc>
         <lastmod>2019-05-13T08:32:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</loc>
-        <lastmod>2019-05-13T08:32:36.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

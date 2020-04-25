@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Building a Pause Menu - Part 4 | Red Peregrine</title>
+    <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="The new design is a lock.  Time to prototype.">
+<meta name="keywords" content="Godot,GUI,Menu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Pause Menu - Part 4">
+<meta property="og:url" content="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/index.html">
+<meta property="og:site_name" content="Red Peregrine">
+<meta property="og:description" content="The new design is a lock.  Time to prototype.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/palacio-80x80.png">
+<meta property="og:updated_time" content="2020-04-25T01:02:46.376Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a Pause Menu - Part 4">
+<meta name="twitter:description" content="The new design is a lock.  Time to prototype.">
+<meta name="twitter:image" content="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/palacio-80x80.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Red Peregrine" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/logo.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Red Peregrine</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="What are you looking for?" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/78e9bc2dd2c2726ff6cd3891fd9dd4bc?s=128" />
+            <h2 id="name">Carl Scarlett</h2>
+            <h3 id="title">Designer, Developer, Dreamer, Doer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Perth, Western Australia</span>
+            <a id="follow" target="_blank" href="https://twitter.com/ZodmanPerth">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                11
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                17
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/ZodmanPerth" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/ZodmanPerth" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/carlscarlett/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.youtube.com/user/ZodmanPerth" target="_blank" title="youtube" class=tooltip>
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-2020/04/25/building-a-pause-menu-part-4" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/2020/04/25/building-a-pause-menu-part-4/palacio-840x485.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Building a Pause Menu - Part 4
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/04/25/building-a-pause-menu-part-4/">
+            <time datetime="2020-03-25T00:56:12.000Z" itemprop="datePublished">2020-03-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/">series</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/pausemenu/">PauseMenu</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/gui/">GUI</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/menu/">Menu</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>The new design is a lock.  Time to prototype.<br><a id="more"></a></p>
+<p><br></p>
+<hr>
+<p><strong>Previous posts in this series</strong><br><a href="/2018/12/30/building-a-pause-menu-part-1/">Building a Pause Menu - Part 1</a> - The first version<br><a href="/2019/12/27/building-a-pause-menu-part-2/">Building a Pause Menu - Part 2</a> - The rewrite showcase<br><a href="/2020/03/15/building-a-pause-menu-part-3/">Building a Pause Menu - Part 3</a> - Designing the new version</p>
+<hr>
+<p><br></p>
+<div class="admonition aside"><p class="admonition-title">Preface</p><p><br><br></p>
+<p><em>The bulk of this article was written during the height of the first wave of the COVID-19 pandemic in Australia (where I live).  Australia chose the lockdown method as our response to dealing with the virus.  You would think that would mean I had more time to devote to my blog, but the contrary is true.  With the added chaos of having a partner also working from home, two daughters being schooled from home, restrictions on supermarket purchases </em> and <em> shopping for my elderly mother resulting in almost daily trips to the shop, I actually had </em> less <em> time to work on this post than I usually do.</em></p>
+<p><br></p>
+<p><em>Further, as I prepared the video accompanying this post, I discovered the free software I normally use had started begun driving people to purchase the product by putting watermarks on the video exports.  As a software developer myself I understand and don’t object to this practice, however I felt their pricing didn’t reflect the quality of the tool and couldn’t justify spending so much on something I use so little.</em></p>
+<p><br></p>
+<p><em>Seeking both paid </em> and <em> free alternatives, I now use <a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a> for video editing software.  While I haven’t made anything large or complicated yet, I feel I work quicker with it than with  my previous software.  It’s more difficult to use and doesn’t have all the features I currently need though, so time will tell.  At least there’s a </em> lot <em> of online content demonstrating how to use and configure it.  I’m happy with the results so far.  Hopefully it improves my throughput in the long run.</em></p>
+<p><br></p>
+<p><em>As I write this COVID-19 continues to devastate many corners of the world.  Hundreds of thousands of people have died as a result of this virus.  Wherever you are in the world, I hope you, your family, and your friends are doing everything to stay safe at this difficult time.</em></p>
+</div>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>In <a href="/2020/03/15/building-a-pause-menu-part-3/">my last post</a> I went into detail about why I redesigned the Pause Menu for my Capability Test app, the design process, and what the final design was.  The Capability Test app is a project where I experiment with code to test and create the building blocks for a game I’ve designed and will be building with the <a href="https://godotengine.org/" target="_blank" rel="noopener">Godot engine</a>.</p>
+<p>I mentioned how important it is for the Pause Menu to <a href="/2020/03/15/building-a-pause-menu-part-3/#Succumbing-to-Design-Impulses">reflect the feel of my game</a>, as I wanted to lift the code and place it into my game once I begin building it.  I also stated that designing was only the first step, and I would need to <a href="/2020/03/15/building-a-pause-menu-part-3/#Final-Tweaks-to-the-Design">prototype</a> the design to ensure it actually works before moving onto play-testing with other people.</p>
+<p>In this post I talk about building that prototype.</p>
+<div class="admonition note"><p class="admonition-title">note</p><p>If you have seen my previous post you’ll have seen a <a href="https://www.youtube.com/watch?v=6uZF5jY8a5g" target="_blank" rel="noopener">video</a> of the completed product.  For the purpose of this post, you’ll need to imagine that all I had at this point was the completed new design, the understanding that Godot has built-in support for <a href="https://docs.godotengine.org/en/3.2/classes/class_kinematicbody.html#class-kinematicbody-method-move-and-slide" target="_blank" rel="noopener">move-and-slide</a>, and that I was expecting this to be a relatively simple coding exercise to complete.</p>
+</div>
+<h1 id="First-steps"><a href="#First-steps" class="headerlink" title="First steps"></a>First steps</h1><p>As a reminder, here is the sketch of the design I was going to prototype:</p>
+<p><img src="/2020/03/15/building-a-pause-menu-part-3/new-menu.png" alt="A sketch of the new design"></p>
+<p><br></p>
+<p>Prototyping this would be relatively simple given the majority of the touch interface code had been built in a previous capability test.  All I needed to do was to create a few walls, a Thumbnail utilising Godot’s collision system, hook up input gestures to move the Thumbnail, and apply Godot’s <a href="https://docs.godotengine.org/en/3.2/classes/class_kinematicbody.html#class-kinematicbody-method-move-and-slide" target="_blank" rel="noopener">move-and-slide</a> functionality to the Thumbnail.</p>
+<p>I created a new scene for the new Pause Menu because I didn’t want to modify the code in the existing Pause Menu until I had confirmed the new design worked.  I typically use this development approach because it ensures I focus purely on the code I’m developing; iterating fast, testing and tweaking until things are working to my satisfaction.</p>
+<p>Looking at the <a href="https://docs.godotengine.org/en/3.2/classes/class_kinematicbody.html" target="_blank" rel="noopener">Godot documentation</a> I found in order to utilise move-and-slide the Thumbnail needed to be a <code>KinematicBody2D</code> and the walls should be <code>StaticBody2D</code>.  My scene’s root node was of type <code>Node</code> and I added the Thumbnail node and two Wall nodes.</p>
+<p>I used a <code>CollisionShape2D</code>as the collision shape on the Thumbnail, and a <code>Polygon2D</code> to create visual of the Thumb using a <code>PoolVector2Array</code>.  Both were defined using the properties panel.  I made the visual a solid white colour for now.  I added a script to the Thumbnail node and pulled in my movement management code.  At this stage I included both touch and mouse input because I wanted to explore how accurate Godot’s collision system was by providing precise input, as well as getting a feel for manipulating the Thumbnail with touch.</p>
+<p>Similar to the Thumbnail node, I added <code>CollisionShape2D</code> and <code>Polygon2D</code> properties to define the collision and visual of the walls (again in white). I set the walls up carefully so the data defining them formed a perfectly angled corner into which the Thumbnail would fit.  At this stage I was calculating coordinates and and inputting the data by hand just to get started.</p>
+<p>Finally I added a node to draw debug visualisations.  I wanted to visualise the drag vector as an arrow so I could see the origination point, size, and direction in which the Thumbnail was being dragged.  For this I just made a <code>Node2D</code> with a script that exposed an array property called <code>vectors</code> expecting dictionary elements <code>{ vector, position }</code>.  I then implemented the <code>_draw()</code> method such that, on every frame, each element in <code>vectors</code> would be drawn as an arrow with a filled circle at its <code>position</code> and a length and direction defined by its <code>vector</code>.  I updated the Thumbnail script to capture a reference to this <code>debugVisualiser</code> node using <code>onready</code>, then cleared and add the gesture vector while the gesture interaction was occurring.</p>
+<p>It took a bit of <a href="https://www.dictionary.com/browse/jiggery-pokery" target="_blank" rel="noopener">jiggery-pokery</a> to get the code working like I wanted (I’m no GDScript professional quite yet!), but before long I had the prototype up and running.  I had to pinch myself to believe it, but the move and slide behaviour worked exactly as described right out of the box!</p>
+<p>Here’s a video showing the prototype of the scene at this point.  I’m moving the Thumbnail around with the mouse and have ensured the pointer is visible in the video for reference.  You can observe when I’m click-and-dragging by the visualisation of the gesture vector as a purple arrow, and see how the Thumbnail slides along the walls right into the corner and stops.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/lG4io3b6qyg" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Prototyping with Godot’s move-and-slide</span></p>
+<h1 id="It-Works-Or-Does-it"><a href="#It-Works-Or-Does-it" class="headerlink" title="It Works! Or Does it?"></a>It Works! Or Does it?</h1><p>On the surface things appeared to be working perfectly.  But as all good engineers know, you have to put your model under stress to ensure there aren’t any edge cases skulking about.  Unfortunately for me, when I pushing my prototype to the limit I noticed a couple of such issues.</p>
+<p>First, I discovered that when the gesture vector became sufficiently large, the Thumbnail would push right through the wall and appear on the other side.  This isn’t normally an issue for Godot as the move-and-slide feature is typically used in platformer games where the velocity of objects is small enough and the problem never arises.  However in my case I’m targeting a variety of devices with different form factors, so the gesture vector very easily reaches these large amounts.</p>
+<p>I experimented with different wall sizes to see if I could prevent the issue.  This is when I noticed the second issue; when the gesture vector was sufficiently large and the wall was sufficiently thick, the Thumbnail would slowly intrude <em>into</em> the wall.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/5bxTFS4dav0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Issue showcase. I moved the wall visual back from the <code>CollisionShape2D</code> to highlight the intrusion effect.</span></p>
+<p>For my design I want the walls to form an impervious boundary for the Thumbnail, not be soft and squishy like memory foam.</p>
+<h1 id="Building-a-Bespoke-Move-and-Slide"><a href="#Building-a-Bespoke-Move-and-Slide" class="headerlink" title="Building a Bespoke Move and Slide"></a>Building a Bespoke Move and Slide</h1><p>Move and Slide isn’t a particularly difficult problem to solve, it’s just a bit of vector geometry.  There’s plenty of documented examples of how it works on the web.  Personally I think this <a href="https://kidscancode.org/blog/2017/06/godot_101_13/" target="_blank" rel="noopener">KinematicBody2D Collisions Done Right</a> page from <a href="https://kidscancode.org/blog/" target="_blank" rel="noopener">Kids Can Code</a> explains it best.  Here’s a reference diagram from that post:</p>
+<p><img src="kids-can-code-move-and-slide.png" alt="Fundamentals of move-and-slide (credit to Kids Can Code)"></p>
+<p>Because I couldn’t get Godot’s implementation working for me with my own use case, my only way forward would be to build my own implementation.  Vector geometry isn’t difficult to codify, so why not?  Because I was restricting my walls to be <a href="https://en.wikipedia.org/wiki/Convex_polygon" target="_blank" rel="noopener">convex shapes</a> by design, there would be a maximum of 2 collisions to detect.  This didn’t seem like too much work for GDScript so it should be performant enough.</p>
+<p>I simplified my model so that I could focus on the math, starting by determining when a gesture vector positioned at the centre of the wall geometry would collide with a wall edge.  After several failed attempts at trying to work this out in my head, I decided I needed to visualise what was going on.  I extended my <code>debugVisualiser</code> node to draw lines (with circle terminators), points, and text.</p>
+<p>It took a while to get the <code>debugVisualiser</code> working just right, but it was worth the effort.  With interactions now visible it wasn’t long before I has successfully coded the math to detect when the gesture vector collided with one of the walls.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/dBiWpeqlCzA" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Visualising the point where the gesture crosses a wall boundary</span></p>
+<div class="admonition aside"><p class="admonition-title">aside</p><p>I have <em>always</em> wanted to build a mathematical visualisation tool like this, and I was excited to finally have built one.  The solution was so elegant, and having achieved it made me feel <em>like a boss</em>.  I’m so proud of myself, I’m <em>still</em> excited to have such a simple and versatile tool in my kit!</p>
+</div>
+<h1 id="On-a-Roll"><a href="#On-a-Roll" class="headerlink" title="On a Roll"></a>On a Roll</h1><p>With the collision point detected, I could now focus on building the <em>slide</em>.  It was a simple matter of vector math to calculate the vector from the collision point to the end of the gesture vector, and then use the normal of the wall to project back onto the wall to calculate the slide vector.</p>
+<p>Here’s a video showing what these vectors in orange (again, utilising my <code>debugVisualiser</code>):</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/WL2-dUl4Ris" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Visualising the slide for the first collision</span></p>
+<p>The next step was to calculate the extent of the slide; the vector from the collision point on the wall to the end of the wall (line).  In my use case, because I only using convex shapes for the wall/thumbnail, this is the point of the algorithm where I can stop calculating.  The Thumbnail cannot slide any further than this extent as it is in a corner.</p>
+<p>In terms of the Pause Menu interface, a Thumbnail in a corner means it is selecting the option positioned at that corner.  As such, in the following video, I show the word <code>CONNECTED</code> and the slide vector at this point in yellow.</p>
+<p>With all this in place, I can start testing how <em>swiping</em> gestures feel.  Towards the end of the video you’ll see me confirming swipe left moves into the top-left corner and swipe down moves into the bottom corner.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/Qwys2NlhA_g" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Visualising the slide extent and the <code>Connected</code> state</span></p>
+<h1 id="Wrapping-it-all-up"><a href="#Wrapping-it-all-up" class="headerlink" title="Wrapping it all up"></a>Wrapping it all up</h1><p>With the simplest case resolved I set about generalising my algorithm to work for any wall, and cleaning up.  The visualisations came in very handy to confirm when things were working and when they weren’t.</p>
+<p>Here’s a final video showing the algorithm working for all three walls of a triangular boundary.</p>
+<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/C2JAJRib-w4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Visualising all the walls and connections</span></p>
+<p>My bespoke move-and-slide algorithm was almost complete.  All that remained was to account for the width of the Thumbnail so that it didn’t move past the wall.  At first I started trying to figure out the logic on the fly using the distance from the center of the Thumbnail along the gesture vector.  Then I realised I could do an up-front calculation and move the <em>logical</em> boundary of the walls in by a certain amount from the <em>visible</em> boundary get the same effect.  This avoided complicating the already-working algorithm.  </p>
+<p>Calculating the amount to bring the logical boundary in was just a little more vector math and I was done.</p>
+<p>I now had everything I needed to build the new Pause Menu.  I’ll cover that in my next post.</p>
+<p><br></p>
+<hr>
+<p><strong>Previous posts in this series</strong><br><a href="/2018/12/30/building-a-pause-menu-part-1/">Building a Pause Menu - Part 1</a> - The first version<br><a href="/2019/12/27/building-a-pause-menu-part-2/">Building a Pause Menu - Part 2</a> - The rewrite showcase<br><a href="/2020/03/15/building-a-pause-menu-part-3/">Building a Pause Menu - Part 3</a> - Designing the new version</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/" data-id="ck9excu4j004ua4ormwq09b64" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/03/15/building-a-pause-menu-part-3/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Building a Pause Menu - Part 3</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/04/25/building-a-pause-menu-part-4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/04/25/building-a-pause-menu-part-4/palacio-80x80.png)" alt="Building a Pause Menu - Part 4" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/">series</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/pausemenu/">PauseMenu</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2020/04/25/building-a-pause-menu-part-4/" class="title">Building a Pause Menu - Part 4</a></p>
+                            <p class="item-date"><time datetime="2020-03-25T00:56:12.000Z" itemprop="datePublished">2020-03-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/15/building-a-pause-menu-part-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2020/03/15/building-a-pause-menu-part-3/guillaume-840x420.png)" alt="Building a Pause Menu - Part 3" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/design/">design</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/design/process/">process</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/">series</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/pausemenu/">PauseMenu</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2020/03/15/building-a-pause-menu-part-3/" class="title">Building a Pause Menu - Part 3</a></p>
+                            <p class="item-date"><time datetime="2020-03-15T02:29:49.000Z" itemprop="datePublished">2020-03-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/27/building-a-pause-menu-part-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/12/27/building-a-pause-menu-part-2/living-with-elephants-foundation-300x300.png)" alt="Building a Pause Menu - Part 2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/">series</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/pausemenu/">PauseMenu</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2019/12/27/building-a-pause-menu-part-2/" class="title">Building a Pause Menu - Part 2</a></p>
+                            <p class="item-date"><time datetime="2019-12-27T08:17:50.000Z" itemprop="datePublished">2019-12-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/30/building-a-pause-menu-part-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/30/building-a-pause-menu-part-1/3-bears-300x300.png)" alt="Building a Pause Menu - Part 1" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/gamedev/">gamedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/gamedev/indiedev/">indiedev</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/">godot</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/godot/gdscript/">gdscript</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/">series</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/series/pausemenu/">PauseMenu</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2018/12/30/building-a-pause-menu-part-1/" class="title">Building a Pause Menu - Part 1</a></p>
+                            <p class="item-date"><time datetime="2018-12-30T09:34:58.000Z" itemprop="datePublished">2018-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
+                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
+                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://godotengine.org/">Godot</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.linqpad.net/">LINQPad</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/';
+        
+        this.page.identifier = '2020/04/25/building-a-pause-menu-part-4';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'http-www-redperegrine-net' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
