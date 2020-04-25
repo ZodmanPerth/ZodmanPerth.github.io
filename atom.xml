@@ -69,13 +69,13 @@
     
       <category term="indiedev" scheme="https://www.redperegrine.net/categories/gamedev/indiedev/"/>
     
-      <category term="design" scheme="https://www.redperegrine.net/categories/design/"/>
-    
       <category term="godot" scheme="https://www.redperegrine.net/categories/godot/"/>
     
-      <category term="process" scheme="https://www.redperegrine.net/categories/design/process/"/>
+      <category term="design" scheme="https://www.redperegrine.net/categories/design/"/>
     
       <category term="series" scheme="https://www.redperegrine.net/categories/series/"/>
+    
+      <category term="process" scheme="https://www.redperegrine.net/categories/design/process/"/>
     
       <category term="PauseMenu" scheme="https://www.redperegrine.net/categories/series/pausemenu/"/>
     
@@ -152,11 +152,11 @@
     
       <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
-    
       <category term="GUI" scheme="https://www.redperegrine.net/tags/gui/"/>
     
       <category term="Menu" scheme="https://www.redperegrine.net/tags/menu/"/>
+    
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
@@ -214,11 +214,11 @@
     
       <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
-    
       <category term="GUI" scheme="https://www.redperegrine.net/tags/gui/"/>
     
       <category term="Menu" scheme="https://www.redperegrine.net/tags/menu/"/>
+    
+      <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
     
   </entry>
   
@@ -248,9 +248,9 @@
     
       <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
-    
       <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
+    
+      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
     
   </entry>
   
@@ -280,9 +280,9 @@
     
       <category term="Godot" scheme="https://www.redperegrine.net/tags/godot/"/>
     
-      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
-    
       <category term="GDScript" scheme="https://www.redperegrine.net/tags/gdscript/"/>
+    
+      <category term="Sensor" scheme="https://www.redperegrine.net/tags/sensor/"/>
     
   </entry>
   
