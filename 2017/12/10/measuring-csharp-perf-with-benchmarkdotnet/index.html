@@ -7,18 +7,21 @@
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
-<meta name="keywords" content="BenchmarkDotNet,LINQPad,C#,Win2d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Measuring C# Performance with BenchmarkDotNet">
 <meta property="og:url" content="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png">
-<meta property="og:updated_time" content="2019-05-13T08:33:00.000Z">
+<meta property="article:published_time" content="2017-12-23T09:12:47.000Z">
+<meta property="article:modified_time" content="2019-05-13T08:33:00.000Z">
+<meta property="article:author" content="Carl Scarlett">
+<meta property="article:tag" content="BenchmarkDotNet">
+<meta property="article:tag" content="LINQPad">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="Win2d">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Measuring C# Performance with BenchmarkDotNet">
-<meta name="twitter:description" content="I’m measuring optimal C# code implementations for a game engine I’m building.">
 <meta name="twitter:image" content="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/tacho-thumb.png">
     
 
@@ -30,23 +33,37 @@
         <link rel="icon" href="/css/images/logo.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body>
@@ -112,7 +129,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
         </div>
@@ -154,11 +173,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                17
+                20
                 <span>tags</span>
             </div>
         </div>
@@ -246,7 +265,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a>, <a class="tag-link" href="/tags/c/">C#</a>, <a class="tag-link" href="/tags/linqpad/">LINQPad</a>, <a class="tag-link" href="/tags/win2d/">Win2d</a>
+        <a class="tag-link-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">C#</a>, <a class="tag-link-link" href="/tags/linqpad/" rel="tag">LINQPad</a>, <a class="tag-link-link" href="/tags/win2d/" rel="tag">Win2d</a>
     </div>
 
                     </div>
@@ -257,27 +276,30 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>I’m measuring optimal C# code implementations for a game engine I’m building.<br><a id="more"></a></p>
+            <p>I’m measuring optimal C# code implementations for a game engine I’m building.</p>
+<span id="more"></span>
 <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>I recently took on a “little side project” to pursue a lifelong dream: designing, creating (and releasing!) a computer game.  Though I’ve had the desire to do this for more than three and a half decades, I never <em>quite</em> got around to making a consistent, concerted effort.  It’s not because I’m lazy, I’ve just managed to pack a whole bunch of experiences into my life so far and, until recently, couldn’t find enough time to devote to the cause.</p>
 <p>By “little side project” I’m being a sarcastic of course.  I knew when I started this journey that building a game is no trivial feat, and there would be unknown unknowns that would arise and need to be dealt with along the way.  That discovery was part of the exciting thing for me because I love learning new things.  However, because I <em>really</em> enjoy a challenge (and from the necessity of my circumstances), I made the decision to write the game engine as well; <em>from scratch</em>. </p>
 <p>Fortunately I’d pursued life experiences that included all the ingredients I would need to pull off such a feat from both a creative and practical standpoint, including a lengthy career in software engineering and commercial experience in UX design.</p>
 <p>I’ll explore the circumstances that drove those initial decisions another time.  Right now, it’s enough to know that the game engine is written in C# on UWP using Win2D, and targets Windows tablets and phones that have accelerometer sensors and touch screens.  The game is a top-down 2D space shoot ‘em up with a retro arcade look.</p>
 <h1 id="Build-A-Game-Engine-in-C-…Are-You-Crazy"><a href="#Build-A-Game-Engine-in-C-…Are-You-Crazy" class="headerlink" title="Build A Game Engine in C#…Are You Crazy?"></a>Build A Game Engine in C#…Are You Crazy?</h1><p>When people talk of building game engines, C# and .NET aren’t terribly popular choices.  The .NET framework, while a much loved and carefully crafted platform, hasn’t exactly been built for the demands of a high-performing game engine in mind.  I don’t think my engine will be <em>too</em> demanding though, so using .NET is a feasible option.  Win2D is a powerful ally here, being a finely tuned wrapper over DirectX that <em>is</em> built for performance.  Win2D also provides a game-loop that gracefully handles the complexity of loop timing management, so that’s one less thing I needed to worry about.</p>
-<p>This leaves the game engine “merely” doing some user input handling, physics, collision detections, game logic, and image rendering.  What could go wrong right? <img class="github-emoji" title="grinning" alt="grinning" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png?v8" height="20" width="20">  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
-<h1 id="Performance-Front-and-Centre"><a href="#Performance-Front-and-Centre" class="headerlink" title="Performance Front and Centre"></a>Performance Front and Centre</h1><p>I was <em>reasonably</em> sure I could make something decent with my technology choices, and a few test applications later I committed to the task ahead.  With a freshly read copy of Bob Nystrom’s amazing eBook <a href="http://gameprogrammingpatterns.com" target="_blank" rel="noopener">Game Programming Patterns</a> up my sleeve, years of mentally constructed game systems and designs that were eager to escape my mind, and the skills I had nurtured over my career, I figured I had a decent shot at a solid result.</p>
+<p>This leaves the game engine “merely” doing some user input handling, physics, collision detections, game logic, and image rendering.  What could go wrong right? <span class="github-emoji"><span>😀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>  As long as I build with the Garbage Collector in mind, and execute code in tight enough loops, I would hopefully get a smooth 60 frames per second across my target devices.  This is a nice engineering challenge that will keep me happily satisfying my inner geek for some time.</p>
+<h1 id="Performance-Front-and-Centre"><a href="#Performance-Front-and-Centre" class="headerlink" title="Performance Front and Centre"></a>Performance Front and Centre</h1><p>I was <em>reasonably</em> sure I could make something decent with my technology choices, and a few test applications later I committed to the task ahead.  With a freshly read copy of Bob Nystrom’s amazing eBook <a target="_blank" rel="noopener" href="http://gameprogrammingpatterns.com/">Game Programming Patterns</a> up my sleeve, years of mentally constructed game systems and designs that were eager to escape my mind, and the skills I had nurtured over my career, I figured I had a decent shot at a solid result.</p>
 <p>But confidence alone was never going to be enough.  Going into development of the engine I knew I would have to make every nanosecond count. While the architecture was wholly under my control and I trusted my skills, there was one concern that still hung heavy on my mind; <em>would the .NET Framework itself be performant enough?</em></p>
-<p>There was only one way to know for sure; I was going to have to write performance tests for the framework itself.  And when you want to know the performance of .NET code I know of nothing more suited to the task than <a href="https://github.com/dotnet/BenchmarkDotNet" target="_blank" rel="noopener">BenchmarkDotNet</a>.</p>
-<h1 id="BenchmarkDotNet-and-LINQPad"><a href="#BenchmarkDotNet-and-LINQPad" class="headerlink" title="BenchmarkDotNet and LINQPad"></a>BenchmarkDotNet and LINQPad</h1><p>I’m a heavy <a href="https://www.linqpad.net/" target="_blank" rel="noopener">LINQPad</a> user from way back.  Among other things, LINQPad enables me to test  hypotheses quickly away from the complexity of my larger code bases.  Once I’m happy, I move the validated code into the main codebase and do some manual integration tests.  This process works really well for me, so when I found myself needing to test different C# implementation patterns in isolation, LINQPad was a natural choice.</p>
+<p>There was only one way to know for sure; I was going to have to write performance tests for the framework itself.  And when you want to know the performance of .NET code I know of nothing more suited to the task than <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>.</p>
+<h1 id="BenchmarkDotNet-and-LINQPad"><a href="#BenchmarkDotNet-and-LINQPad" class="headerlink" title="BenchmarkDotNet and LINQPad"></a>BenchmarkDotNet and LINQPad</h1><p>I’m a heavy <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a> user from way back.  Among other things, LINQPad enables me to test  hypotheses quickly away from the complexity of my larger code bases.  Once I’m happy, I move the validated code into the main codebase and do some manual integration tests.  This process works really well for me, so when I found myself needing to test different C# implementation patterns in isolation, LINQPad was a natural choice.</p>
 <p>Fortunately for me my timing was just right; BenchmarkDotNet had just added support for running inside LINQPad, and LINQPad had just added support for hosting BenchmarkDotNet.  While the road since has been a little bumpy, the state of both tools was good enough to provide what I needed.</p>
-<h1 id="Testing-Different-Iterator-Patterns-in-NET"><a href="#Testing-Different-Iterator-Patterns-in-NET" class="headerlink" title="Testing Different Iterator Patterns in .NET"></a>Testing Different Iterator Patterns in .NET</h1><p>I really enjoyed writing my own collision detection system; it’s the kind of challenge I relish.  My starting point was an excellent tutorial by Nilson Suoto called <a href="https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects" target="_blank" rel="noopener">Collision Detection for Solid Objects</a>, and after a lot of experimentation I had a really tight system.  I had a Sort and Sweep service using cheap AABB checks to find collections of objects with potential collisions (the broad phase), which were used to discover the actual collisions using Minkowski Sums and Convex Hulls of object geometries (the narrow phase).  We’re not covering the details of the implementation here, but you should know the narrow phase contains expensive CPU operations and I’ve spent an appropriate amount of time optimising the hell out of them.</p>
+<h1 id="Testing-Different-Iterator-Patterns-in-NET"><a href="#Testing-Different-Iterator-Patterns-in-NET" class="headerlink" title="Testing Different Iterator Patterns in .NET"></a>Testing Different Iterator Patterns in .NET</h1><p>I really enjoyed writing my own collision detection system; it’s the kind of challenge I relish.  My starting point was an excellent tutorial by Nilson Suoto called <a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects">Collision Detection for Solid Objects</a>, and after a lot of experimentation I had a really tight system.  I had a Sort and Sweep service using cheap AABB checks to find collections of objects with potential collisions (the broad phase), which were used to discover the actual collisions using Minkowski Sums and Convex Hulls of object geometries (the narrow phase).  We’re not covering the details of the implementation here, but you should know the narrow phase contains expensive CPU operations and I’ve spent an appropriate amount of time optimising the hell out of them.</p>
 <p>Codewise, the Collision Detection system drives the Sort and Sweep service using an iterator pattern.  You probably know this pattern from implementing <code>IEnumerable&lt;T&gt;</code>; <code>GetEnumerator()</code> methods that <code>yield</code> appropriate results.  This is how I implemented it at first, and it made for some nice, readable code.</p>
 <p>However, I had a hunch that this generic interface may not be the most performant way to drive the service, so I devised a plan to test different implementations of the iterator pattern to see if I could find time savings.  I also had concerns that the use of generics would add pressure to the .NET Garbage Collector, and as such I was interested in verifying this measuring memory aspects of each implementation as well.</p>
 <h1 id="Initial-Benchmarks"><a href="#Initial-Benchmarks" class="headerlink" title="Initial Benchmarks"></a>Initial Benchmarks</h1><p>Switching to LINQPad, I wrote up a <code>Worker</code> class to simulate the Collision Detection system doing expensive work by summing the values yielded by a <code>Driver</code> class, which represented the Sort And Sweep service.  <code>Main()</code> simply called the benchmark runner to run with the <code>Worker</code> type.  I marked up the <code>Worker</code> with a <code>MemoryDiagnoser</code> to report on memory consumption, and because of my cross device intentions I thought it’s prudent to explore 32bit and 64bit generated code.</p>
 <p>The code looked a little like this:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MemoryDiagnoser</span>]</span><br><span class="line">[<span class="meta">RyuJitX64Job, LegacyJitX86Job</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Worker</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Benchmark</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">NormalEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        Driver driver = <span class="keyword">new</span> Driver();</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">int</span> i <span class="keyword">in</span> driver)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Driver : IEnumerable&lt;int&gt;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> _size = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span>[] _array;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Driver</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        _array = <span class="keyword">new</span> <span class="keyword">int</span>[_size];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            _array[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator&lt;<span class="keyword">int</span>&gt; <span class="title">GetEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> _array[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    IEnumerator IEnumerable.GetEnumerator()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> GetEnumerator();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BenchmarkRunner.Run&lt;Worker&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MemoryDiagnoser</span>]</span><br><span class="line">[<span class="meta">RyuJitX64Job, LegacyJitX86Job</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Worker</span></span><br><span class="line">{</span><br><span class="line">    [<span class="meta">Benchmark</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">NormalEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	{</span><br><span class="line">        Driver driver = <span class="keyword">new</span> Driver();</span><br><span class="line">        <span class="built_in">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="built_in">int</span> i <span class="keyword">in</span> driver)</span><br><span class="line">        {</span><br><span class="line">            sum += i;</span><br><span class="line">            count++;</span><br><span class="line">        }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Driver</span> : <span class="title">IEnumerable</span>&lt;<span class="title">int</span>&gt;</span><br><span class="line">{</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">int</span> _size = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">int</span>[] _array;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Driver</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	{</span><br><span class="line">        _array = <span class="keyword">new</span> <span class="built_in">int</span>[_size];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            _array[i] = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator&lt;<span class="built_in">int</span>&gt; <span class="title">GetEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	{</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; _size; i++)</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> _array[i];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    IEnumerator IEnumerable.GetEnumerator()</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">return</span> GetEnumerator();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    BenchmarkRunner.Run&lt;Worker&gt;();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <p>As well as the usual output appearing in LINQPad’s results window, running this produced a nice set of reports in various file formats in the subfolder <code>\BenchmarkDotNet.Artifacts\results</code> where LINQPad was executing.</p>
 <div class="admonition note"><p class="admonition-title">Note</p><p>You will probably need to run LINQPad as an admin to get it to work.</p>
 </div>
+
 <p>Here’s an extract from a report running this code:</p>
 <p><img src="table-1.png" alt="First Run"></p>
 <p>From this I was able to reason a few things about a single implementation of an iterator pattern on a small sample size of 10 items.  This was a good start and served as proof that the concept of measuring performance in this way worked.</p>
@@ -288,7 +310,7 @@
 <p>Fourth, the implementation code should be reasonably easy to read.  I would need to discover where the line was between performance and readability while I thought of innovative implementations.</p>
 <p>Fifth, I wanted to explore iterators over different kinds of objects such as value types, reference types, and generic types.  The result would guide the object structure forming the basis of my collision detection system.</p>
 <p>Finally, I wanted all these tests to run on a single execution run and roll into a single report table.  I figured I would use Excel for final analysis so it would be best if the results were automatically collected together so I didn’t have to do any manual amalgamations every time I completed a test run and wanted explored the results.</p>
-<h1 id="The-Usual-Black-Box-Challenges"><a href="#The-Usual-Black-Box-Challenges" class="headerlink" title="The Usual Black-Box Challenges"></a>The Usual Black-Box Challenges</h1><p>I very quickly discovered that when I performed multiple tests over a single <code>Worker</code> type within the same run, the naming convention BenchmarkDotNet used to create the filenames would result in the overwrite of previous reports.  I created a helper class to create backups of report files on disk and track the generated file names.  I then added amalgamation of the final report using these backup files using <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener">AngleSharp</a> (an open source HTML parser) to rip apart the tables in these files and create my own HTML report.</p>
+<h1 id="The-Usual-Black-Box-Challenges"><a href="#The-Usual-Black-Box-Challenges" class="headerlink" title="The Usual Black-Box Challenges"></a>The Usual Black-Box Challenges</h1><p>I very quickly discovered that when I performed multiple tests over a single <code>Worker</code> type within the same run, the naming convention BenchmarkDotNet used to create the filenames would result in the overwrite of previous reports.  I created a helper class to create backups of report files on disk and track the generated file names.  I then added amalgamation of the final report using these backup files using <a target="_blank" rel="noopener" href="https://github.com/AngleSharp/AngleSharp">AngleSharp</a> (an open source HTML parser) to rip apart the tables in these files and create my own HTML report.</p>
 <p>Along the way I also discovered that LINQPad’s <code>Dump()</code> methods weren’t available when BenchmarkDotNet was running, and would cause a terminating exception.  This hampered my ability to verify that iterator implementations were working properly (i.e. actually <em>iterating</em>), so I added a “runmode” state to the helper class that allowed me to switch between manual verification of code (where code is executed using LINQPad and not via BenchmarkDotNet) and producing the benchmark reports (where BenchmarkDotNet controlled the execution and not LINQPad).  The “runmode” also let me avoid throwing exceptions by isolating calls to <code>Dump()</code> behind conditional checks.</p>
 <p>Finally, I created a state machine that looped through the various implementations, changing the size of the array each time.  The state of the machine was another addition to the helper class.  The report backup system hooked into this state to generate unique report names, which were used in turn to create the column values in the amalgamated report.</p>
 <h1 id="Different-Implementations-to-Test"><a href="#Different-Implementations-to-Test" class="headerlink" title="Different Implementations to Test"></a>Different Implementations to Test</h1><p>I thought of 4 different iterator implementations to try out:</p>
@@ -300,6 +322,7 @@
 </ol>
 <div class="admonition note"><p class="admonition-title">Note</p><p>My game engine runs on a single thread.  Multi-threaded concerns such as the timing of the read and write of values from different threads did not need to be considered.</p>
 </div>
+
 <p>Here’s a gist containing a copy of the final LINQPad code:</p>
 <script src="https://gist.github.com/ZodmanPerth/12711f70d8db12cf4af80ee7df7f641e.js"></script>
 
@@ -309,14 +332,15 @@
 <p>If you’re used to the usual output columns BenchmarkDotNet produces you’ll recognise where I’ve inserted the other relevant data.  The <code>Type</code> and <code>Size</code> columns correspond to the type of Worker (<code>IntegerWorker</code> for value type tests, <code>ItemWorker</code> for reference type tests, and <code>GenericWorkder</code> for generic type tests), and the size of the array used to produce the result.  The other columns come straight from the BenchmarkDotNet reports.</p>
 <h1 id="Analysing-with-Excel"><a href="#Analysing-with-Excel" class="headerlink" title="Analysing with Excel"></a>Analysing with Excel</h1><p>With all the data is in one place I wanted to use Excel’s analysis tools to help me compare the results and derive conclusions.  Copy and paste as text did the trick, though I did have to strip the alphabetical characters from the numeric columns and change their cell format to a number.  Once that was done I used a red-green colour scale conditional formatting on the numeric data to create a performance heat map, and used table filters and sorting to do the analysis.</p>
 <p>Here’s the same amalgamated report formatted this way in Excel:</p>
-<p><img src="1-full.png" alt="It&#39;s beginning to look a lot like Christmas"></p>
+<p><img src="1-full.png" alt="It's beginning to look a lot like Christmas"></p>
 <p>Looking at the <code>Mean</code> column there was an obvious candidate for being too slow; the red cells.  Turns out the <code>NormalEnumerator</code> method (the implementation I was already using) was the worst performing, taking almost twice as long as the other methods.</p>
-<p><img src="2-normalEnumerator.png" alt="Roxanne, you don&#39;t have to put on the red light"></p>
+<p><img src="2-normalEnumerator.png" alt="Roxanne, you don't have to put on the red light"></p>
 <p>I filtered that method out and dug deeper.</p>
 <p><img src="3-withoutNormalEnumerator.png" alt="Mmmmm...lemon and lime"></p>
 <p>When I looked at the fasted results in each <code>Size</code> group (those with the greenest <code>Mean</code> values), I could see that the <code>ResultSetFullyCalculated</code> method looked suspiciously slow. I checked each <code>ResultSetFullyCalculated</code> method against the other methods in the same <code>Size</code> group by eye and confirmed it; calculating the results in one hit was slower than flowing back and forth between the <code>Worker</code> and the <code>Driver</code>.</p>
 <div class="admonition aside"><p class="admonition-title">aside</p><p>This <em>was</em> a pleasant surprise.  I had expected a higher memory footprint and a lower execution time.  This kind of result is exactly why you need to validate early; it’s much cheaper to build things right the “first time” instead of trying to refactor once you’ve built a whole bunch of stuff on top of a false assumption.  I had a real Adam Savage moment with this finding.  Science!</p>
 </div>
+
 <p>Let’s filter out the <code>ResultSetFullyCalculated</code> method and keep digging.</p>
 <p><img src="4-withoutResultSetEnumerator.png" alt="Digging for gold...or in this case, green"></p>
 <p>Now we get down to the pointy end of the analysis.  With only two methods remaining to compare against each other, there’s nothing much to do but check each pair individually.  The results are really close, and difficult to compare due to the variance in <code>Error</code> and <code>StdDev</code>.  However the <code>HandCrankedEnumerator</code> is marginally faster in almost every pair.  This was a bit of a surprise given I had assumed less statements in the caller would mean less execution time, but without checking the final generated code you can never be sure how such assumptions pan out.  The performance difference isn’t significant enough for me to take my investigation that far, so I’ll happily settle on the variant that’s easier to read, maintain, and is generally faster.</p>
@@ -335,7 +359,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/" data-id="ck9ez0bgh000k6kornqo1fi1t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/" data-id="cknayfrvc000dhoorbhrm9als" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -433,7 +457,7 @@
     
         <section id="comments">
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </section>
     
@@ -448,6 +472,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/10/software-algorithms-for-k-combinations/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/10/software-algorithms-for-k-combinations/thumb.jpg)" alt="Software Algorithms for k-combinations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithms/">algorithms</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/">mathematics</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/k-combinations/">k-combinations</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2021/04/10/software-algorithms-for-k-combinations/" class="title">Software Algorithms for k-combinations</a></p>
+                            <p class="item-date"><time datetime="2021-04-09T23:42:02.000Z" itemprop="datePublished">2021-04-10</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -525,25 +568,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
-                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
-                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -553,7 +577,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/k-combinations/">k-combinations</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -562,7 +586,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -571,7 +595,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">Algorithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/" rel="tag">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/" rel="tag">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-gist/" rel="tag">GitHub Gist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/" rel="tag">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/" rel="tag">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mathematics/" rel="tag">Mathematics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/" rel="tag">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/" rel="tag">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/" rel="tag">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/" rel="tag">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/" rel="tag">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/" rel="tag">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/" rel="tag">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -583,19 +607,19 @@
             <ul>
                 
                     <li>
-                        <a href="https://godotengine.org/">Godot</a>
+                        <a target="_blank" rel="noopener" href="https://godotengine.org/">Godot</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/Microsoft/Win2D">Win2D</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
                     </li>
                 
                     <li>
-                        <a href="https://www.linqpad.net/">LINQPad</a>
+                        <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a>
                     </li>
                 
             </ul>
@@ -612,8 +636,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2021 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a target="_blank" rel="noopener" href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
@@ -639,14 +663,18 @@
 
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

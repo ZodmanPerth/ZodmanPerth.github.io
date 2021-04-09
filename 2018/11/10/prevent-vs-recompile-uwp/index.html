@@ -7,18 +7,20 @@
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
-<meta name="keywords" content="Visual Studio,MSBuild,UWP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Preventing Visual Studio Recompiles in UWP">
 <meta property="og:url" content="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png">
-<meta property="og:updated_time" content="2019-05-13T08:32:40.000Z">
+<meta property="article:published_time" content="2018-11-10T03:58:42.000Z">
+<meta property="article:modified_time" content="2019-05-13T08:32:40.000Z">
+<meta property="article:author" content="Carl Scarlett">
+<meta property="article:tag" content="Visual Studio">
+<meta property="article:tag" content="MSBuild">
+<meta property="article:tag" content="UWP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Preventing Visual Studio Recompiles in UWP">
-<meta name="twitter:description" content="I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.">
 <meta name="twitter:image" content="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png">
     
 
@@ -30,23 +32,37 @@
         <link rel="icon" href="/css/images/logo.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body>
@@ -112,7 +128,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
         </div>
@@ -154,11 +172,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                17
+                20
                 <span>tags</span>
             </div>
         </div>
@@ -246,7 +264,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/msbuild/">MSBuild</a>, <a class="tag-link" href="/tags/uwp/">UWP</a>, <a class="tag-link" href="/tags/visual-studio/">Visual Studio</a>
+        <a class="tag-link-link" href="/tags/msbuild/" rel="tag">MSBuild</a>, <a class="tag-link-link" href="/tags/uwp/" rel="tag">UWP</a>, <a class="tag-link-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a>
     </div>
 
                     </div>
@@ -257,26 +275,32 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.<br><a id="more"></a><br><div class="admonition note"><p class="admonition-title">note</p><p>This is a reworked internal blog I posted at my current employer.  I’ve altered entity names to avoid IP issues.</p>
-</div></p>
+            <p>I’ve discovered a circumstance where Visual Studio compiles UWP projects every time.</p>
+<span id="more"></span>
+<div class="admonition note"><p class="admonition-title">note</p><p>This is a reworked internal blog I posted at my current employer.  I’ve altered entity names to avoid IP issues.</p>
+</div>
+
 <h1 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h1><p>In my development team we were being slowed down by unneccessary Visual Studio recompiles of UWP projects. We have several projects in our solution structure with quite a few dependencies between them, so it’s reasonable to expect compiles could take a while if you’re changing things upstream in the dependency chain.</p>
 <p><img src="cleaned-solution-structure.png" alt="The Project Structure of our Application"></p>
 <p>However when nothing was being changed, we were finding certain UWP projects were still being recompiled by Visual Studio. Those recompiles were taking significant time (over a minute on my Surface Pro 5), which was disrupting our developer flow and sapping our productivity. Sometimes you just need to iterate fast through a few debugging sessions to get a task done, and “edit and continue” isn’t possible in all those scenarios.</p>
 <h1 id="Research"><a href="#Research" class="headerlink" title="Research"></a>Research</h1><p>The first place developers look to solve problems like “Visual Studio builds when nothing has changed” is Google. There’s a lot of developers in the world, and it’s likely someone has seen and solved this type of problem before. A few hits were returned when I searched, but nothing to solve our particular flavour of this issue. One hit did provide a means of diagnosis and potentially solving the problem myself, so I started following that.</p>
-<p>Kudos to this external article: <a href="https://blog.oz-code.com/visual-studio-keeps-rebuilding-projects-no-good-reason/" target="_blank" rel="noopener">Why Visual Studio keeps rebuilding my projects for no good reason</a></p>
+<p>Kudos to this external article: <a target="_blank" rel="noopener" href="https://blog.oz-code.com/visual-studio-keeps-rebuilding-projects-no-good-reason/">Why Visual Studio keeps rebuilding my projects for no good reason</a></p>
 <h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>The key takeaway from the article is to turn the build output verbosity up to diagnostic levels and examine the output.</p>
 <p><img src="build-output-verbosity.png" alt="Setting the Build Output Verbosity in Visual Studio"></p>
 <p>When you do this, the output window is flooded with information from MSBuild showing exactly what it’s doing during a build.  By examining such output you get a real sense of how much complexity is managed by modern compilers on our behalf, and you gain an appreciation of how much it’s doing for you.</p>
 <p>The key clue to what’s causing the problem is in the first few lines of the output of each project build.  In my case it was the following line:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Copy to output file &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\bin\x64\Debug\Themes\Generic.xaml&apos; missing from output location.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project 'In-house.Framework' is not up to date. Copy to output file 'C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\bin\x64\Debug\Themes\Generic.xaml' missing from output location.</span><br></pre></td></tr></tbody></table></figure>
+
 <p>The build expected a <code>xaml</code> file to be present and it wasn’t.  If I did 2 builds consecutively this line persisted, so clearly Visual Studio needed some help to get this file output.</p>
 <p>The reflex for any seasoned developer seeing this message is to find the source file and set its <code>Copy to Output Directory</code> property value to <code>Copy if newer</code>.  This means that if there is no file in the <code>bin</code> folder already, or the file is present but is an older version at build time, Visual Studio should copy the file there.  That way if a developer changes the file during development it will be compiled into the resulting application correctly.</p>
 <p>When I looked at this particular file I discovered that property was already set to <code>Copy if newer</code>.  For experimentation I tried setting the property to <code>Copy always</code> and rebuilding but Visual Studio never actually output the file.</p>
 <h1 id="Forceful-Measures"><a href="#Forceful-Measures" class="headerlink" title="Forceful Measures"></a>Forceful Measures</h1><p>Taking matters into my own hands I copied the file there myself to see if it had any effect.  Building now produced a different message:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Input file &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\In-house.Framework.csproj&apos; is modified after output file &apos;&apos;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project 'In-house.Framework' is not up to date. Input file 'C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\In-house.Framework.csproj' is modified after output file ''.</span><br></pre></td></tr></tbody></table></figure>
+
 <p>This is an interesting message, and I wasn’t entirely sure what it meant as it didn’t match the change I had just made.  It seems as though somewhere in the complexity of the generated build process, MSBuild determined the project file was changed so it forced a project rebuild.  This rebuild was what I expected so I thought I was making progress.</p>
 <p>Once that build had finished I rebuilt without changing anything and was met with the following message:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project &apos;In-house.Framework&apos; is not up to date. Project item &apos;C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\Themes\Generic.xaml&apos; has &apos;Copy to Output Directory&apos; attribute set to &apos;Copy always&apos;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project 'In-house.Framework' is not up to date. Project item 'C:\dev\SolutionFolder\ProjectFolder\Source\In-house.Framework\Themes\Generic.xaml' has 'Copy to Output Directory' attribute set to 'Copy always'.</span><br></pre></td></tr></tbody></table></figure>
+
 <p>It appears even though Visual Studio doesn’t actually copy the <code>xaml</code> file, it still checks the <code>Copy to Output Directory</code> property value to see if it needs to force a project rebuild, and does so when the value indicates it should.</p>
 <h1 id="Bad-Behaviour"><a href="#Bad-Behaviour" class="headerlink" title="Bad Behaviour"></a>Bad Behaviour</h1><p>It appears that for <code>xaml</code> files at least, the <code>Copy to Output Directory</code> property is no longer useful.  In conjunction with the messages from the MSBuild output, this property is now a source of confusion.  MSBuild expects a <code>xaml</code> file at build time and the usual means of control to ensure the file is present at compile time simply don’t work.</p>
 <p>What’s worse is those usual means of control actually force a rebuild, which is the action you’re trying to prevent in the first place.  Given the manipulation of the <code>Copy to Output Directory</code> property is a common practice by developers to help Visual Studio build correctly, this is potentially a cause of common productivity loss among all UWP developers.</p>
@@ -299,7 +323,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/" data-id="ck9ez0bgr000s6kor3j9nwz36" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2018/11/10/prevent-vs-recompile-uwp/" data-id="cknayfrv90009hoorbedp3m0i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -402,7 +426,7 @@
     
         <section id="comments">
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </section>
     
@@ -417,6 +441,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/10/software-algorithms-for-k-combinations/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/10/software-algorithms-for-k-combinations/thumb.jpg)" alt="Software Algorithms for k-combinations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithms/">algorithms</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/">mathematics</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/k-combinations/">k-combinations</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2021/04/10/software-algorithms-for-k-combinations/" class="title">Software Algorithms for k-combinations</a></p>
+                            <p class="item-date"><time datetime="2021-04-09T23:42:02.000Z" itemprop="datePublished">2021-04-10</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -494,25 +537,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
-                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
-                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -522,7 +546,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/k-combinations/">k-combinations</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -531,7 +555,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -540,7 +564,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">Algorithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/" rel="tag">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/" rel="tag">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-gist/" rel="tag">GitHub Gist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/" rel="tag">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/" rel="tag">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mathematics/" rel="tag">Mathematics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/" rel="tag">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/" rel="tag">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/" rel="tag">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/" rel="tag">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/" rel="tag">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/" rel="tag">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/" rel="tag">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -552,19 +576,19 @@
             <ul>
                 
                     <li>
-                        <a href="https://godotengine.org/">Godot</a>
+                        <a target="_blank" rel="noopener" href="https://godotengine.org/">Godot</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/Microsoft/Win2D">Win2D</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
                     </li>
                 
                     <li>
-                        <a href="https://www.linqpad.net/">LINQPad</a>
+                        <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a>
                     </li>
                 
             </ul>
@@ -581,8 +605,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2021 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a target="_blank" rel="noopener" href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
@@ -608,14 +632,18 @@
 
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

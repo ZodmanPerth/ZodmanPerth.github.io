@@ -7,18 +7,21 @@
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="I built a pause menu to improve the experience on my Android phone.">
-<meta name="keywords" content="Godot,GDScript,GUI,Menu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a Pause Menu - Part 1">
 <meta property="og:url" content="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="I built a pause menu to improve the experience on my Android phone.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/3-bears-300x300.png">
-<meta property="og:updated_time" content="2020-04-12T01:32:31.192Z">
+<meta property="article:published_time" content="2018-12-30T09:34:58.000Z">
+<meta property="article:modified_time" content="2021-04-08T08:26:24.893Z">
+<meta property="article:author" content="Carl Scarlett">
+<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="GDScript">
+<meta property="article:tag" content="GUI">
+<meta property="article:tag" content="Menu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Building a Pause Menu - Part 1">
-<meta name="twitter:description" content="I built a pause menu to improve the experience on my Android phone.">
 <meta name="twitter:image" content="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/3-bears-300x300.png">
     
 
@@ -30,23 +33,37 @@
         <link rel="icon" href="/css/images/logo.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body>
@@ -112,7 +129,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
         </div>
@@ -154,11 +173,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                17
+                20
                 <span>tags</span>
             </div>
         </div>
@@ -246,7 +265,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gdscript/">GDScript</a>, <a class="tag-link" href="/tags/gui/">GUI</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/menu/">Menu</a>
+        <a class="tag-link-link" href="/tags/gdscript/" rel="tag">GDScript</a>, <a class="tag-link-link" href="/tags/gui/" rel="tag">GUI</a>, <a class="tag-link-link" href="/tags/godot/" rel="tag">Godot</a>, <a class="tag-link-link" href="/tags/menu/" rel="tag">Menu</a>
     </div>
 
                     </div>
@@ -257,10 +276,12 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>I built a pause menu to improve the experience on my Android phone.<br><a id="more"></a></p>
+            <p>I built a pause menu to improve the experience on my Android phone.</p>
+<span id="more"></span>
+
 <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>After constructing a home menu for my Capability Test App (see <a href="/2018/09/26/menu-all-gui/">my last post</a>) I thought I was done with menus for a while.  However the experience of closing and re-opening the app just to change tests quickly became tedious.  I wanted to address this pain before adding more.</p>
 <p>The time was right to build a Pause Menu providing in-app navigation.  This also allowed me to explore how Godot handles game pausing (a feature I’ll use in the future).  It was an opportunity to kill two birds with one stone.</p>
-<p><img src="two birds.jpg" alt="&quot;Please don&#39;t kill us; we&#39;re magnificent creatures!&quot;"></p>
+<p>![“Please don’t kill us; we’re magnificent creatures!”](two birds.jpg)</p>
 <h1 id="The-Godot-Pause-Mechanism"><a href="#The-Godot-Pause-Mechanism" class="headerlink" title="The Godot Pause Mechanism"></a>The Godot Pause Mechanism</h1><p>The Godot engine has a simple mechanism for pausing a game.  Flipping the <code>get_tree().paused</code> boolean to <code>true</code> at run-time sends your game into pause mode.  In pause mode your input handlers and process loop code are no longer called by default, stopping your game from running.  Then you configure the nodes you want to continue processing during pause mode.  In my case this meant configuring a Pause Menu scene that contains controls to unpause the game, go back home (i.e. to the Main Menu), and to quit the app.</p>
 <p>You can add whatever features you want to run while the game is paused.  It’s a very simple and effective system.</p>
 <p><img src="Editor.png" alt="My Pause Scene, complete with background transparency"></p>
@@ -269,28 +290,31 @@
 <p>To prevent the navigation code spreading throughout the codebase as the app grew, I decided to replace existing navigation code with a centralised service.  After considering various ways to achieve this I created a <code>gameStateManager</code> node to be this service.  This node would be responsible for scene navigation via a <code>SetActiveScene()</code> function.  It would also track the state of the app (<code>GamePaused</code> or <code>PlayingScene</code>) and expose a command system to allow navigation to the various fixed game scenes and states (<code>PauseGame</code>, <code>GoHome</code>, <code>QuitApp</code>, <code>ContinueGame</code>).</p>
 <div class="admonition note"><p class="admonition-title">Naming Conventions</p><p>My personal preference is to use the term “Manager” instead of “Controller” when I name such objects.  When I talk about “Manager” objects it’s likely your own understanding of a “Service” or an MVC “Controller” object accurately describes my intention here.</p>
 </div>
+
 <p>After a first pass at writing the <code>gameStateManager</code> I found my code was too messy.  I took this code smell to indicate my <code>gameStateManager</code> was doing too much and needed breaking apart.  I created two child nodes; an <code>activeSceneManager</code> responsible for changing the active scene, and a <code>pauseSceneManager</code> responsible for managing the Pause Menu and its operations.  The <code>gameStateManager</code> remained the central point for processing game commands and tracking the game state.</p>
-<p>This breakdown keeps each node focused on a single area of responsibility (the ‘S’ in <a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">SOLID design principles</a>).</p>
+<p>This breakdown keeps each node focused on a single area of responsibility (the ‘S’ in <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SOLID">SOLID design principles</a>).</p>
 <p><img src="node-structure.png" alt="The game scene showing the state manager service and node structure"></p>
 <div class="admonition note"><p class="admonition-title">note</p><p>At this point in learning Godot I’m finding it difficult to apply object-oriented design principles (such as SOLID) to the node system.  Nodes seem to behave more like methods on an object than as objects themselves, which feels a little unnatural.  However my instincts about when to break script files apart still trigger in a timely fashion.  I’m getting more of a feel for how and when to listen to my instincts while working in Godot, and I’m building my personal development rhythm for organically growing a GDScript codebase.</p>
 </div>
+
 <h1 id="Using-Signals-as-a-Messaging-System"><a href="#Using-Signals-as-a-Messaging-System" class="headerlink" title="Using Signals as a Messaging System"></a>Using Signals as a Messaging System</h1><p>There are two types of messages my navigation system needs to work.  First I have game scenes that need to change the active scene by messaging the <code>activeSceneManager</code>.  Second I have a Pause Menu that needs to send game commands to the <code>gameStateManager</code> for processing.</p>
 <p>All my game scenes (the Main Menu, Pause Menu, and capability test scenes) are created by the Manager nodes.  This provides an opportunity to <code>connect</code> signals from game scenes to the Manager nodes at the point of creation.  As long as these signals implement standard message contracts, a one-way message channel is formed from the game scene to the appropriate Manager node along which messages can be passed.</p>
 <h2 id="The-‘SetActiveScene’-Message-Channel-and-Contract"><a href="#The-‘SetActiveScene’-Message-Channel-and-Contract" class="headerlink" title="The ‘SetActiveScene’ Message Channel (and Contract)"></a>The ‘SetActiveScene’ Message Channel (and Contract)</h2><p>If a game scene (such as my Main Menu) has a requirement to navigate to a new scene, it must implement a <code>signal</code> I’ve called <code>SetActiveScene(args)</code> .  The contract for <code>args</code> is a dictionary containing a key of either <code>sceneInstance</code> or <code>scenePath</code>, and an optional key <code>sceneName</code>.  An existing node instance or path must be passed as the value.  The <code>sceneName</code> value is only used for debug output.</p>
 <p>The <code>signal</code> is connected to the <code>SetActiveScene(args)</code> function in the <code>activeSceneManager</code>.  When a node instance or path is passed in the <code>args</code>, the <code>activeSceneManager</code> creates the new scene instance (or use the passed one), sets the new scene instance as the active one, and connects the <code>SetActiveScene(args)</code> <code>signal</code> of this new instance to itself.  The new node is added as a child of the <code>activeSceneManager</code> itself.  The previously active scene child node is removed (if there is one) and <code>signal</code> connections are disconnected.</p>
 <p>Thus when the currently active scene needs to navigate to a new scene, it calls <code>emit_signal</code> on <code>SetActiveScene</code> with appropriately message <code>args</code> and the navigation is performed by the <code>activeSceneManager</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var _activeSceneInstance</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">func SetActiveScene(args):</span><br><span class="line">    var nodeInstance</span><br><span class="line">    <span class="keyword">if</span> (args.has(<span class="string">"sceneInstance"</span>)):</span><br><span class="line">        nodeInstance = args.sceneInstance</span><br><span class="line">    <span class="keyword">elif</span> (args.has(<span class="string">"scenePath"</span>)):</span><br><span class="line">        nodeInstance = load(args.scenePath).instance()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (args.has(<span class="string">"sceneName"</span>)):</span><br><span class="line">        print([<span class="string">"Playing Scene"</span>, args.sceneName])</span><br><span class="line"></span><br><span class="line">    RemoveActiveScene()</span><br><span class="line"></span><br><span class="line">    _activeSceneInstance = nodeInstance</span><br><span class="line">    _activeSceneInstance.connect(<span class="string">"SetActiveScene"</span>, self, <span class="string">"SetActiveScene"</span>) </span><br><span class="line">    self.add_child(nodeInstance)</span><br><span class="line"></span><br><span class="line">func RemoveActiveScene():</span><br><span class="line">    <span class="keyword">if</span> (_activeSceneInstance == null):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    _activeSceneInstance.disconnect(<span class="string">"SetActiveScene"</span>, self, <span class="string">"SetActiveScene"</span>)</span><br><span class="line">    remove_child(_activeSceneInstance)</span><br><span class="line">    _activeSceneInstance = null</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var _activeSceneInstance</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">func SetActiveScene(args):</span><br><span class="line">    var nodeInstance</span><br><span class="line">    <span class="keyword">if</span> (args.has(<span class="string">"sceneInstance"</span>)):</span><br><span class="line">        nodeInstance = args.sceneInstance</span><br><span class="line">    <span class="keyword">elif</span> (args.has(<span class="string">"scenePath"</span>)):</span><br><span class="line">        nodeInstance = load(args.scenePath).instance()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (args.has(<span class="string">"sceneName"</span>)):</span><br><span class="line">        <span class="built_in">print</span>([<span class="string">"Playing Scene"</span>, args.sceneName])</span><br><span class="line"></span><br><span class="line">    RemoveActiveScene()</span><br><span class="line"></span><br><span class="line">    _activeSceneInstance = nodeInstance</span><br><span class="line">    _activeSceneInstance.connect(<span class="string">"SetActiveScene"</span>, self, <span class="string">"SetActiveScene"</span>) </span><br><span class="line">    self.add_child(nodeInstance)</span><br><span class="line"></span><br><span class="line">func RemoveActiveScene():</span><br><span class="line">    <span class="keyword">if</span> (_activeSceneInstance == null):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    _activeSceneInstance.disconnect(<span class="string">"SetActiveScene"</span>, self, <span class="string">"SetActiveScene"</span>)</span><br><span class="line">    remove_child(_activeSceneInstance)</span><br><span class="line">    _activeSceneInstance = null</span><br></pre></td></tr></tbody></table></figure>
 <p><span class="caption">Managing the active scene and connecting the <code>SetActiveScene</code> signal in the <code>activeSceneManager</code></span></p>
 <h2 id="The-‘ExecuteGameCommand’-Message-Channel-and-Contract"><a href="#The-‘ExecuteGameCommand’-Message-Channel-and-Contract" class="headerlink" title="The ‘ExecuteGameCommand’ Message Channel (and Contract)"></a>The ‘ExecuteGameCommand’ Message Channel (and Contract)</h2><p>The game command message channel is implemented differently.  Currently in my Capability Test app the only node required to send game commands is the Pause Menu scene.  Because the Pause Menu’s UI maps directly to game commands I can hardwire signal connections from the Pause Menu scene directly to the <code>gameStateManager</code> when it is created by the <code>pauseSceneManager</code>.</p>
 <p>To do this I created <code>MenuSelected()</code>, <code>QuitSelected()</code> and <code>PlaySelected()</code> signals on the Pause Menu scene.  These are emitted by the Pause Menu scene when the user selects the <code>Menu</code>, <code>Quit</code> or <code>Play</code> buttons on the Pause Menu.</p>
 <p><img src="pause-menu-controls.png" alt="The Pause Menu buttons"></p>
 <p>These signals are connected to an <code>ExecuteGameCommand(command)</code> function on the <code>gameStateManager</code> by the <code>pauseSceneManager</code> as the game boots.  In this case the message (the <code>command</code> parameter) is a simple <code>enum</code> value.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum gameCommand &#123; PauseGame, GoHome, QuitApp, ContinueGame &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum gameCommand { PauseGame, GoHome, QuitApp, ContinueGame }</span><br></pre></td></tr></tbody></table></figure>
+
 <p>When the <code>pauseSceneManager</code> creates the Pause Menu it connects its signals using a hardcoded message value.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var _pauseSceneInstance</span><br><span class="line"></span><br><span class="line">func Initialise(gameStateManager, pauseScenePath):</span><br><span class="line">    _pauseSceneInstance = load(pauseScenePath).instance()</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"MenuSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.GoHome ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"QuitSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.QuitApp ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"PlaySelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.ContinueGame ])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var _pauseSceneInstance</span><br><span class="line"></span><br><span class="line">func Initialise(gameStateManager, pauseScenePath):</span><br><span class="line">    _pauseSceneInstance = load(pauseScenePath).instance()</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"MenuSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.GoHome ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"QuitSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.QuitApp ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"PlaySelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.ContinueGame ])</span><br></pre></td></tr></tbody></table></figure>
 <p><span class="caption">Creating the game command message channel from pause menu to the <code>gameStateManager</code></span></p>
 <p>The <code>ExecuteGameCommand(command)</code> function on the <code>gameStateManager</code> simply checks which <code>command</code> was passed and performs the desired actions.  It either updates the game state and shows/hides its manager node children, or quits the app.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func ExecuteGameCommand(command):</span><br><span class="line">    match command:</span><br><span class="line">        gameCommand.GoHome:</span><br><span class="line">            SetGameState(gameState.PlayingScene)</span><br><span class="line">            $activeSceneManager.Home();</span><br><span class="line">            $pauseSceneManager.Hide()</span><br><span class="line">        gameCommand.PauseGame:</span><br><span class="line">            SetGameState(gameState.GamePaused)</span><br><span class="line">            $pauseSceneManager.Show()</span><br><span class="line">        gameCommand.ContinueGame:</span><br><span class="line">            SetGameState(gameState.PlayingScene)</span><br><span class="line">            $pauseSceneManager.Hide()</span><br><span class="line">        gameCommand.QuitApp:</span><br><span class="line">            get_tree().quit()</span><br><span class="line"></span><br><span class="line">func SetGameState(state):</span><br><span class="line">    match state:</span><br><span class="line">        gameState.GamePaused:</span><br><span class="line">            get_tree().paused = true</span><br><span class="line">        gameState.PlayingScene:</span><br><span class="line">            get_tree().paused = false</span><br><span class="line">    _currentGameState = state</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func ExecuteGameCommand(command):</span><br><span class="line">    match command:</span><br><span class="line">        gameCommand.GoHome:</span><br><span class="line">            SetGameState(gameState.PlayingScene)</span><br><span class="line">            $activeSceneManager.Home();</span><br><span class="line">            $pauseSceneManager.Hide()</span><br><span class="line">        gameCommand.PauseGame:</span><br><span class="line">            SetGameState(gameState.GamePaused)</span><br><span class="line">            $pauseSceneManager.Show()</span><br><span class="line">        gameCommand.ContinueGame:</span><br><span class="line">            SetGameState(gameState.PlayingScene)</span><br><span class="line">            $pauseSceneManager.Hide()</span><br><span class="line">        gameCommand.QuitApp:</span><br><span class="line">            get_tree().quit()</span><br><span class="line"></span><br><span class="line">func SetGameState(state):</span><br><span class="line">    match state:</span><br><span class="line">        gameState.GamePaused:</span><br><span class="line">            get_tree().paused = true</span><br><span class="line">        gameState.PlayingScene:</span><br><span class="line">            get_tree().paused = false</span><br><span class="line">    _currentGameState = state</span><br></pre></td></tr></tbody></table></figure>
 <p><span class="caption">The <code>gameStateManager</code> being responsible for changing state and executing game commands</span></p>
 <h1 id="The-Bootstrap"><a href="#The-Bootstrap" class="headerlink" title="The Bootstrap"></a>The Bootstrap</h1><p>When the app first starts I need to do some preparation before the app is ready to be consumed by the user.  The environment in which the app runs needs to be configured, and the initial game scenes and nodes required need to be created and instanced.  When this preparation is done using code it is called a <code>Bootstrap</code>, and is an example of the <code>Bootstrapping</code> design pattern.</p>
 <p>The code entry point of my app is the <code>_ready()</code> function in the the <code>game</code> scene script.  This is where my bootstrap begins.  Its first task is to configure the run-time environment for the app, which is performed using Godot engine properties and commands:</p>
@@ -301,41 +325,56 @@
 </ol>
 <div class="admonition note"><p class="admonition-title">note</p><p>A consequence of configuring quit behaviour is the app must handle OS events.  I’ll talk about that later in this post.</p>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up game environment</span></span><br><span class="line">Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)</span><br><span class="line">get_tree().set_auto_accept_quit(false)	<span class="comment"># Must be false to allow pause menu to work on Android</span></span><br><span class="line">get_tree().set_quit_on_go_back(false)	<span class="comment"># Must be false to allow pause menu to work on Android</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up game environment</span></span><br><span class="line">Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)</span><br><span class="line">get_tree().set_auto_accept_quit(false)	<span class="comment"># Must be false to allow pause menu to work on Android</span></span><br><span class="line">get_tree().set_quit_on_go_back(false)	<span class="comment"># Must be false to allow pause menu to work on Android</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>The second task is to initialise the game scenes and nodes.  Rather than hardcoding or hardwiring scenes with the editor, all my game scenes (the Main Menu, Pause Menu, and capability test scenes) are defined using data.  When the app first starts I want the Main Menu to show and have the Pause Menu ready. I pass the paths of these scenes to the <code>gameStateManager</code> for creating, instancing, and adding to the game scene’s tree using a custom function called <code>Initialise</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$gameStateManager.Initialise(<span class="string">"res://game/menu/Main.tscn"</span>, <span class="string">"res://pauseMenu/PauseMenu.tscn"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$gameStateManager.Initialise(<span class="string">"res://game/menu/Main.tscn"</span>, <span class="string">"res://pauseMenu/PauseMenu.tscn"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
 <p>The <code>gameStateManager</code> initialises its child Manager nodes <code>activeSceneManager</code> and <code>pauseSceneManager</code> by passing relevant scene paths using more custom <code>Initialise</code> functions.  Once those complete the initial game state is set to <code>gamestate.PlayingScene</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func Initialise(homeScenePath, pauseScenePath):</span><br><span class="line">    $activeSceneManager.Initialise(homeScenePath)</span><br><span class="line">    $pauseSceneManager.Initialise(pauseScenePath)</span><br><span class="line">    SetGameState(gameState.PlayingScene)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func Initialise(homeScenePath, pauseScenePath):</span><br><span class="line">    $activeSceneManager.Initialise(homeScenePath)</span><br><span class="line">    $pauseSceneManager.Initialise(pauseScenePath)</span><br><span class="line">    SetGameState(gameState.PlayingScene)</span><br></pre></td></tr></tbody></table></figure>
+
 <p><code>Initialise</code> on <code>activeSceneManager</code> creates an instance of the Main Menu using the passed <code>homeScenePath</code>.  It keeps a reference to this instance for later (navigation back to the Main Menu), and sets it as the active scene.  This adds the Main Menu instance as a child of <code>activeSceneManager</code> (itself).  Because <code>activeSceneManager</code> manages the app’s active scene, this is achieved using only local function calls (<code>SetActiveScene()</code> via <code>Home()</code>).</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var _homeSceneInstance;</span><br><span class="line"></span><br><span class="line">func Initialise(homeScenePath):</span><br><span class="line">    _homeSceneInstance = load(homeScenePath).instance()</span><br><span class="line">    Home()</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">func Home():</span><br><span class="line">    SetActiveScene(&#123; sceneInstance = _homeSceneInstance, sceneName = <span class="string">"Home"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var _homeSceneInstance;</span><br><span class="line"></span><br><span class="line">func Initialise(homeScenePath):</span><br><span class="line">    _homeSceneInstance = load(homeScenePath).instance()</span><br><span class="line">    Home()</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">func Home():</span><br><span class="line">    SetActiveScene({ sceneInstance = _homeSceneInstance, sceneName = <span class="string">"Home"</span>})</span><br></pre></td></tr></tbody></table></figure>
+
 <p><code>Initialise</code> on <code>pauseSceneManager</code> creates an instance of the Pause Menu using the passed <code>pauseScenePath</code>.  It creates an instance of the Pause Menu, wires up the <code>ExecuteGameCommand</code> message signals to the <code>gameStateManager</code>, hides the instance, and adds it as a child of <code>pauseSceneManager</code> (itself).</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func Initialise(pauseScenePath):</span><br><span class="line">    var gameStateManager = self.get_parent()</span><br><span class="line">    _pauseSceneInstance = load(pauseScenePath).instance()</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"MenuSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.GoHome ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"QuitSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.QuitApp ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"PlaySelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.ContinueGame ])</span><br><span class="line">    _pauseSceneInstance.hide()</span><br><span class="line">    </span><br><span class="line">    self.add_child(_pauseSceneInstance)</span><br><span class="line"></span><br><span class="line">func Hide():</span><br><span class="line">    _pauseSceneInstance.hide()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func Initialise(pauseScenePath):</span><br><span class="line">    var gameStateManager = self.get_parent()</span><br><span class="line">    _pauseSceneInstance = load(pauseScenePath).instance()</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"MenuSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.GoHome ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"QuitSelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.QuitApp ])</span><br><span class="line">    _pauseSceneInstance.connect(<span class="string">"PlaySelected"</span>, gameStateManager, <span class="string">"ExecuteGameCommand"</span>, [ gameCommand.ContinueGame ])</span><br><span class="line">    _pauseSceneInstance.hide()</span><br><span class="line">    </span><br><span class="line">    self.add_child(_pauseSceneInstance)</span><br><span class="line"></span><br><span class="line">func Hide():</span><br><span class="line">    _pauseSceneInstance.hide()</span><br></pre></td></tr></tbody></table></figure>
+
 <div class="admonition note"><p class="admonition-title">note</p><p>Because <code>pauseSceneManager</code> is a sibling lower in the game scene tree than <code>activeSceneManager</code>, the Pause Menu will appear on top of the active scene.  The background of the Pause Menu is partially transparent to allow the active scene to be visible underneath when the Pause Menu is shown.</p>
 </div>
+
 <h1 id="Godot-System-Notifications"><a href="#Godot-System-Notifications" class="headerlink" title="Godot System Notifications"></a>Godot System Notifications</h1><p>I configured Godot to ignore quit requests because I want to manage how the app closes myself.  I want the Pause Menu to appear when the app window loses focus on desktop environments or the back button is pressed on Android.  This is achieved by handling system notifications emitted by Godot.</p>
 <p>Godot’s notification system uses event-like function calls to notify different parts of the engine when system events occur.  Godot games and apps can also choose to be notified and respond to these events by implementing a <code>_notification(what)</code> function in any script(s).  Each notification has a unique ID to identify <code>what</code> event occurred, and each ID is exposed as a constant in the <code>MainLoop</code> class to facilitate responding appropriately.</p>
 <p>In my case I want the <code>gameStateManager</code> to show the Pause Menu when the app window loses focus (<code>MainLoop.NOTIFICATION_WM_FOCUS_OUT</code>) or the back button is pressed (<code>MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST</code>).  I also want the app to terminate when the app desktop window is closed or the <code>Quit</code> option is selected on the Pause Menu (<code>MainLoop.NOTIFICATION_WM_QUIT_REQUEST</code>).  By implementing a <code>_notification()</code> function in the <code>gameStateManager</code> script I can use local function calls to <code>ExecuteGameCommand()</code> and pass the relevant <code>gameCommand</code> value to achieve the desired effect.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func _notification(what):</span><br><span class="line">    match (what):</span><br><span class="line">        MainLoop.NOTIFICATION_WM_FOCUS_OUT:</span><br><span class="line">            ExecuteGameCommand(gameCommand.PauseGame)</span><br><span class="line">        MainLoop.NOTIFICATION_WM_QUIT_REQUEST:</span><br><span class="line">            ExecuteGameCommand(gameCommand.QuitApp)</span><br><span class="line">        MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:</span><br><span class="line">            ExecuteGameCommand(gameCommand.PauseGame)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func _notification(what):</span><br><span class="line">    match (what):</span><br><span class="line">        MainLoop.NOTIFICATION_WM_FOCUS_OUT:</span><br><span class="line">            ExecuteGameCommand(gameCommand.PauseGame)</span><br><span class="line">        MainLoop.NOTIFICATION_WM_QUIT_REQUEST:</span><br><span class="line">            ExecuteGameCommand(gameCommand.QuitApp)</span><br><span class="line">        MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:</span><br><span class="line">            ExecuteGameCommand(gameCommand.PauseGame)</span><br></pre></td></tr></tbody></table></figure>
+
 <p>Now the game reacts appropriately to operating system events, shows the Pause Menu and terminates when I want it to…</p>
 <p>except…</p>
-<h2 id="Godot-Games-Cannot-Terminate-Themselves-on-Android"><a href="#Godot-Games-Cannot-Terminate-Themselves-on-Android" class="headerlink" title="Godot Games Cannot Terminate Themselves on Android"></a>Godot Games Cannot Terminate Themselves on Android</h2><p>On Android systems a call to <code>get_tree().quit()</code> doesn’t terminate the app.  Android appears to be designed this way, as if all applications running on it are services that should always remain open. Currently it requires the user to force the application closed by using Android’s <a href="https://android.stackexchange.com/a/127947" target="_blank" rel="noopener">overview</a> (square) button.</p>
-<p>There seems to be valid ways to force close Android apps in Java, so I have created a <a href="https://github.com/godotengine/godot/issues/24049" target="_blank" rel="noopener">feature request</a> to allow Godot to support force closing in the future.</p>
+<h2 id="Godot-Games-Cannot-Terminate-Themselves-on-Android"><a href="#Godot-Games-Cannot-Terminate-Themselves-on-Android" class="headerlink" title="Godot Games Cannot Terminate Themselves on Android"></a>Godot Games Cannot Terminate Themselves on Android</h2><p>On Android systems a call to <code>get_tree().quit()</code> doesn’t terminate the app.  Android appears to be designed this way, as if all applications running on it are services that should always remain open. Currently it requires the user to force the application closed by using Android’s <a target="_blank" rel="noopener" href="https://android.stackexchange.com/a/127947">overview</a> (square) button.</p>
+<p>There seems to be valid ways to force close Android apps in Java, so I have created a <a target="_blank" rel="noopener" href="https://github.com/godotengine/godot/issues/24049">feature request</a> to allow Godot to support force closing in the future.</p>
 <h1 id="Moving-Navigation-from-the-Main-Menu-Script"><a href="#Moving-Navigation-from-the-Main-Menu-Script" class="headerlink" title="Moving Navigation from the Main Menu Script"></a>Moving Navigation from the Main Menu Script</h1><p>With the Pause Menu hooked up all that remains is to remove the old navigation code used by the Main Menu to launch the various test scenes and replace them with the <code>SetActiveScene</code> message channel.  As previously described this is a simple matter of implementing the <code>SetActiveScene(args)</code> signal in the Main Menu script and emitting it with correctly populated message arguments.  The connection of the signal is done for the Main Menu scene during its creation by the <code>activeSceneManager</code>.</p>
 <p>Within the Main Menu scene the buttons are connected to a single <code>OnButtonPressed</code> function in the script.  When a button is pressed it passes the details of the test scene selected.  Where <code>OnButtonPressed</code> used to create and instance the test scene when called, it now simply emits the <code>SetActiveScene</code> signal and constructs a message using the details passed in.  The <code>activeSceneManager</code> does the heavy lifting and looks after the game state.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func OnButtonPressed(scenePath, sceneName):</span><br><span class="line">    emit_signal(<span class="string">"SetActiveScene"</span>, &#123; scenePath = scenePath, sceneName = sceneName &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func OnButtonPressed(scenePath, sceneName):</span><br><span class="line">    emit_signal(<span class="string">"SetActiveScene"</span>, { scenePath = scenePath, sceneName = sceneName })</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="Ready-to-Roll"><a href="#Ready-to-Roll" class="headerlink" title="Ready to Roll"></a>Ready to Roll</h1><p>Now everything is in place and we are ready to run the application.  Here’s a video of the application running on Windows (a desktop scenario):</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LuMQqfXGZ50" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">The Pause Menu on Windows Desktop</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LuMQqfXGZ50" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">The Pause Menu on Windows Desktop</span>
+
 <p>Here’s a video of the game running on Android phone.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/X-oq0xzY3z4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">The Pause Menu on Android Phone</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/X-oq0xzY3z4" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">The Pause Menu on Android Phone</span>
+
 <h1 id="Designing-to-Improve-the-Android-Experience"><a href="#Designing-to-Improve-the-Android-Experience" class="headerlink" title="Designing to Improve the Android Experience"></a>Designing to Improve the Android Experience</h1><p>Here’s a video showing the issue where Android doesn’t quit to highlight why it’s an issue.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/1wh8CR-lgOA" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Godot 3 can’t quit on Android!</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/1wh8CR-lgOA" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">Godot 3 can't quit on Android!</span>
+
 <p>Given I can’t force the app to close on Android at the moment, the only option I have is to employ clever design choices to counteract this woeful experience.  I’ve reflected on this issue for some time.  The best options I’ve come up with so far are to either change the button label from <code>Quit</code> to <code>Close</code> (or <code>Minimise</code>), and/or add another label to the Pause Menu explaining that you have to manually close down the app.  I would only want these changes to appear when running on Android to avoid breaking the current design for other platforms.  Further research is needed to discover how to achieve this, though I suspect adding an argument when exporting to Android will be the first thing to investigate.</p>
 <p>In any case I’m not happy with either of these options from an aesthetic point of view.  I like the symmetry of the current design with short four-letter words to describe intent.  I also like the current icons that accurately describe what the intention of the button is by mimicking real-world hardware devices.  Changing these to accommodate a functional shortfall on Android weakens the current design to the point at which I’m forced to consider a complete redesign for the Pause Menu.</p>
 <p>I’m deferring that line of thinking for another time.  The best outcome for me is that Godot will support force closing on Android in the future.  Given I’m not writing a releasable game just yet (I’m still testing Godot’s capabilities) I can afford to wait to see what happens.  Right now I have a menu that works for my current use case and I’ve implemented a nice navigation system that will stand up to future expansion of my app.</p>
 <p>The code from this article is up on Github as a Gist.</p>
-<p><a href="https://gist.github.com/ZodmanPerth/7dbb7b45fb103dafe6c3154c46901ba1" target="_blank" rel="noopener"><br><img src="github-gist.png" alt="See all the code on my Github Gist"><br></a></p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/ZodmanPerth/7dbb7b45fb103dafe6c3154c46901ba1"><img src="github-gist.png" alt="See all the code on my Github Gist"></a></p>
 <p>I’ll be back in the new year with more posts about my adventures in Godot development.  See you then!</p>
-<p><br></p>
+<br>
+
 <hr>
 <p><strong>Next post in this series</strong><br><a href="/2019/12/27/building-a-pause-menu-part-2/">Building a Pause Menu - Part 2</a> - The rewrite showcase</p>
 
@@ -348,7 +387,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/" data-id="ck9ez0bgt000u6kor56fzvj66" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/" data-id="cknayfrvg000khoore3wsc8m9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -451,7 +490,7 @@
     
         <section id="comments">
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </section>
     
@@ -466,6 +505,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/10/software-algorithms-for-k-combinations/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/10/software-algorithms-for-k-combinations/thumb.jpg)" alt="Software Algorithms for k-combinations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithms/">algorithms</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/">mathematics</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/k-combinations/">k-combinations</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2021/04/10/software-algorithms-for-k-combinations/" class="title">Software Algorithms for k-combinations</a></p>
+                            <p class="item-date"><time datetime="2021-04-09T23:42:02.000Z" itemprop="datePublished">2021-04-10</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -543,25 +601,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
-                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
-                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -571,7 +610,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/k-combinations/">k-combinations</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -580,7 +619,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -589,7 +628,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">Algorithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/" rel="tag">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/" rel="tag">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-gist/" rel="tag">GitHub Gist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/" rel="tag">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/" rel="tag">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mathematics/" rel="tag">Mathematics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/" rel="tag">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/" rel="tag">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/" rel="tag">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/" rel="tag">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/" rel="tag">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/" rel="tag">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/" rel="tag">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -601,19 +640,19 @@
             <ul>
                 
                     <li>
-                        <a href="https://godotengine.org/">Godot</a>
+                        <a target="_blank" rel="noopener" href="https://godotengine.org/">Godot</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/Microsoft/Win2D">Win2D</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
                     </li>
                 
                     <li>
-                        <a href="https://www.linqpad.net/">LINQPad</a>
+                        <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a>
                     </li>
                 
             </ul>
@@ -630,8 +669,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2021 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a target="_blank" rel="noopener" href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
@@ -657,14 +696,18 @@
 
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

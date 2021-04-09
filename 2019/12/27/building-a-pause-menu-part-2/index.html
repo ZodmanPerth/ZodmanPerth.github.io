@@ -7,18 +7,20 @@
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="That pause menu I’d finished building?  I gave it super-powers.">
-<meta name="keywords" content="Godot,GUI,Menu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a Pause Menu - Part 2">
 <meta property="og:url" content="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="That pause menu I’d finished building?  I gave it super-powers.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/living-with-elephants-foundation-300x300.png">
-<meta property="og:updated_time" content="2020-04-12T01:42:06.295Z">
+<meta property="article:published_time" content="2019-12-27T08:17:50.000Z">
+<meta property="article:modified_time" content="2021-04-09T09:11:45.697Z">
+<meta property="article:author" content="Carl Scarlett">
+<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="GUI">
+<meta property="article:tag" content="Menu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Building a Pause Menu - Part 2">
-<meta name="twitter:description" content="That pause menu I’d finished building?  I gave it super-powers.">
 <meta name="twitter:image" content="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/living-with-elephants-foundation-300x300.png">
     
 
@@ -30,23 +32,37 @@
         <link rel="icon" href="/css/images/logo.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body>
@@ -112,7 +128,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
         </div>
@@ -154,11 +172,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                17
+                20
                 <span>tags</span>
             </div>
         </div>
@@ -246,7 +264,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gui/">GUI</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/menu/">Menu</a>
+        <a class="tag-link-link" href="/tags/gui/" rel="tag">GUI</a>, <a class="tag-link-link" href="/tags/godot/" rel="tag">Godot</a>, <a class="tag-link-link" href="/tags/menu/" rel="tag">Menu</a>
     </div>
 
                     </div>
@@ -257,8 +275,10 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>That pause menu I’d finished building?  I gave it super-powers.<br><a id="more"></a></p>
-<p><br></p>
+            <p>That pause menu I’d finished building?  I gave it super-powers.</p>
+<span id="more"></span>
+<hr>
+<p><strong>Header Image:</strong> Untitled photo from an article about the <a target="_blank" rel="noopener" href="http://www.withelephants.org/">Living With Elephants Foundation</a></p>
 <hr>
 <p><strong>Previous posts in this series</strong><br><a href="/2018/12/30/building-a-pause-menu-part-1/">Building a Pause Menu - Part 1</a> - The first version</p>
 <hr>
@@ -268,23 +288,28 @@
 <p>That’s what I was hinting at with the last line of the post:</p>
 <blockquote><p>I’ll be back in the new year with more posts about my adventures in Godot development. See you then!</p>
 </blockquote>
+
 <p>When I wrote those words I was looking forward to shaking it up a little, with a new screen to build and a fresh blogging approach to try.</p>
 <h1 id="Life-Happens"><a href="#Life-Happens" class="headerlink" title="Life Happens"></a>Life Happens</h1><p>Here we are an <em>entire year later</em> and clearly things didn’t unfold as expected.  Numerous external factors de-railed my plans and periodically swept me further away from where I wanted to be.  Throughout the year I was frequently disappointed with my slow progress and inability to blog updates.</p>
 <p>I had to keep reminding myself how grateful I am to have no fixed end date for this project; an approach which circumvents the Crunch Culture plaguing the rest of the gaming industry. So while I frequently felt deflated at my lack of apparent progress, at least I wasn’t <em>crushing my mental health into oblivion</em> trying to meet impossible deadlines, or compromising my design by cutting features, or canning my project altogether.</p>
 <div class="admonition note"><p class="admonition-title">reflection</p><p>Even experienced developers have to give themselves time to adapt when adopting new technology.  What I’m trying to achieve in Godot without <em>any</em> modern gaming engine training or experience, with a vision that people describe as “overly ambitious”, tells me I need to give myself more space to learn and discover than I’ve done so far on this project.</p>
 </div>
+
 <h1 id="Baby-Steps"><a href="#Baby-Steps" class="headerlink" title="Baby Steps"></a>Baby Steps</h1><p>While there were times during the year when I was unable to do any work on the project, my resolve to continue held without wavering.  I may not have been achieving anywhere near the pace I wanted but I remained passionate about forging ahead.</p>
 <p>That’s the secret to getting anything done; no matter what happens just <code>keep moving forward</code>.</p>
 <p><img src="keep-moving-forward-the-robinsons.jpg" alt="&quot;The Robinsons&quot; movie nailed how to succeed at anything new"></p>
 <h1 id="So-What-Have-I-Done-This-Year"><a href="#So-What-Have-I-Done-This-Year" class="headerlink" title="So What Have I Done This Year?"></a>So What Have I Done This Year?</h1><p>Needless to say I overcame numerous and occasionally treacherous obstacles.  On reflection I’ve improved my Godot skills a long way and have achieved more than a glance at the final outcome provides.  I <em>do</em> wish I would learn to be more lenient with myself in the present when I’m stressed about my perceived lack of progress!</p>
 <p>It feels fantastic to finally be sharing the progress I made this year.  With so much to cover I’ve decided to jump right to the chase and show you the completed outcome of the year’s work.</p>
 <p>Here’s a video showing the new and improved Pause Menu I’ve built.  There’s still plenty of room for juice but the mechanics are all in place.  Have a watch and I’ll explain a few things on the other side.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/6uZF5jY8a5g" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">The final outcome: Pause Menu rewrite 2019!</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/6uZF5jY8a5g" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">The final outcome: Pause Menu rewrite 2019!</span>
+
 <p>With touch being the primary input mechanism for the game I’m building, I decided to embrace that fact and invent a selection mechanism I’ve never seen before.  This led me on a journey to create a procedural generation system for the UI, allowing me to compensate for different form factors in the various platforms and devices I’m targeting.</p>
 <p>I plan to cover the design philosophies, decision making, system development, and problem solving in a series of posts that extend this topic as a series.</p>
 <p>But that is for another time.</p>
 <p>I hope you enjoyed this glimpse of what I achieved in 2019.  I look forward to posting more soon.</p>
-<p><br></p>
+<br>
+
 <hr>
 <p><strong>Previous posts in this series</strong><br><a href="/2018/12/30/building-a-pause-menu-part-1/">Building a Pause Menu - Part 1</a> - The first version</p>
 <p><strong>Next post in this series</strong><br><a href="/2020/03/15/building-a-pause-menu-part-3/">Building a Pause Menu - Part 3</a> - Designing the new version</p>
@@ -298,7 +323,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/" data-id="ck9ez0bhm003x6korfqydv1qt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/" data-id="cknayfrv40008hoorb8pk1i34" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -401,7 +426,7 @@
     
         <section id="comments">
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </section>
     
@@ -416,6 +441,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/10/software-algorithms-for-k-combinations/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/10/software-algorithms-for-k-combinations/thumb.jpg)" alt="Software Algorithms for k-combinations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithms/">algorithms</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/">mathematics</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/k-combinations/">k-combinations</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2021/04/10/software-algorithms-for-k-combinations/" class="title">Software Algorithms for k-combinations</a></p>
+                            <p class="item-date"><time datetime="2021-04-09T23:42:02.000Z" itemprop="datePublished">2021-04-10</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -493,25 +537,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
-                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
-                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -521,7 +546,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/k-combinations/">k-combinations</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -530,7 +555,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -539,7 +564,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">Algorithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/" rel="tag">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/" rel="tag">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-gist/" rel="tag">GitHub Gist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/" rel="tag">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/" rel="tag">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mathematics/" rel="tag">Mathematics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/" rel="tag">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/" rel="tag">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/" rel="tag">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/" rel="tag">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/" rel="tag">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/" rel="tag">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/" rel="tag">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -551,19 +576,19 @@
             <ul>
                 
                     <li>
-                        <a href="https://godotengine.org/">Godot</a>
+                        <a target="_blank" rel="noopener" href="https://godotengine.org/">Godot</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/Microsoft/Win2D">Win2D</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
                     </li>
                 
                     <li>
-                        <a href="https://www.linqpad.net/">LINQPad</a>
+                        <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a>
                     </li>
                 
             </ul>
@@ -580,8 +605,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2021 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a target="_blank" rel="noopener" href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
@@ -607,14 +632,18 @@
 
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

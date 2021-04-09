@@ -7,18 +7,20 @@
     <meta name="google-site-verification" content="WyLBDFVmaejbUqIefBev5CcMRFKKh9doT7LQhgWkBgM" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Converting my accelerometer capability test from UWP to Godot 3.">
-<meta name="keywords" content="Godot,Sensor,GDScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Instrumenting the Accelerometer">
 <meta property="og:url" content="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/index.html">
 <meta property="og:site_name" content="Red Peregrine">
 <meta property="og:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/acceleration-256.png">
-<meta property="og:updated_time" content="2019-05-13T08:32:46.000Z">
+<meta property="article:published_time" content="2018-09-09T10:08:52.000Z">
+<meta property="article:modified_time" content="2021-04-09T09:00:44.768Z">
+<meta property="article:author" content="Carl Scarlett">
+<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="Sensor">
+<meta property="article:tag" content="GDScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Instrumenting the Accelerometer">
-<meta name="twitter:description" content="Converting my accelerometer capability test from UWP to Godot 3.">
 <meta name="twitter:image" content="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/acceleration-256.png">
     
 
@@ -30,23 +32,37 @@
         <link rel="icon" href="/css/images/logo.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body>
@@ -112,7 +128,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
         </div>
@@ -154,11 +172,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                17
+                20
                 <span>tags</span>
             </div>
         </div>
@@ -246,7 +264,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gdscript/">GDScript</a>, <a class="tag-link" href="/tags/godot/">Godot</a>, <a class="tag-link" href="/tags/sensor/">Sensor</a>
+        <a class="tag-link-link" href="/tags/gdscript/" rel="tag">GDScript</a>, <a class="tag-link-link" href="/tags/godot/" rel="tag">Godot</a>, <a class="tag-link-link" href="/tags/sensor/" rel="tag">Sensor</a>
     </div>
 
                     </div>
@@ -257,8 +275,12 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Converting my accelerometer capability test from UWP to Godot 3.<br><a id="more"></a></p>
-<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Having successfully ported my touch manipulation capability test from UWP to Godot 3 (the subject of <a href="/2018/08/21/say-gday-to-godot\">my last post</a>) it was time to prove the capability of another sensor using Godot; the accelerometer.  I haven’t posted about this test before (even on my <a href="https://www.youtube.com/channel/UCnH_0IE9-uVdAv5Ku1UazeQ" target="_blank" rel="noopener">you-tube channel</a>), so let me set the scene for you.</p>
+            <p>Converting my accelerometer capability test from UWP to Godot 3.</p>
+<span id="more"></span>
+<hr>
+<p><strong>Header Image:</strong> <a target="_blank" rel="noopener" href="https://singularityhub.com/2015/02/07/the-acceleration-of-acceleration-how-the-future-is-arriving-far-faster-than-expected/"><em>Shutterstock Image</em></a> (recoloured).</p>
+<hr>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Having successfully ported my touch manipulation capability test from UWP to Godot 3 (the subject of <a href="/2018/08/21/say-gday-to-godot%5C">my last post</a>) it was time to prove the capability of another sensor using Godot; the accelerometer.  I haven’t posted about this test before (even on my <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCnH_0IE9-uVdAv5Ku1UazeQ">you-tube channel</a>), so let me set the scene for you.</p>
 <p>The game I’m developing will be controlled by tilting a smartphone or tablet in the real world.  Even in their cheapest form, these devices tend to have an accelerometer sensor.  Some expensive ones have additional sensors such as gyroscopes and magnetometers which can also be used to determine/enhance how the device is tilted in space.  Though prior research and testing I discovered I can get the degree of control I need for the game I’m building using the accelerometer alone.  Initially this was revealed with a capability test (the remake of which is the subject of this post), but also later when I developed playable parts of the game on the previous game engine I was developing myself (see <a href="/2017/12/23/measuring-csharp-perf-with-benchmarkdotnet">my first post</a>).</p>
 <h1 id="Accelerometer-Crash-Course"><a href="#Accelerometer-Crash-Course" class="headerlink" title="Accelerometer Crash Course"></a>Accelerometer Crash Course</h1><p>Imagine the screen you’re reading this on is a device with an accelerometer.  The accelerometer in this device defines it’s movement through real world space using a 3D cartesian coordinate system.  It defines an x, y, and z axis through the screen as follows:</p>
 <ul>
@@ -268,38 +290,48 @@
 </ul>
 <div class="admonition note"><p class="admonition-title">Note</p><p>If you’re wondering, the origin of the axes (the point where all three axes intersect) is the top-left hand corner of the screen.  However that doesn’t matter when we are talking about readings from the accelerometer.</p>
 </div>
+
 <p>The accelerometer measures the acceleration of the device in real world space on these three axes at the time a reading is taken.  Readings from the accelerometer are split into x, y, and z values.  The accelerometer sensor is constantly measuring so it can provide values any time you take a reading.</p>
 <h1 id="The-Gravity-of-the-Situation"><a href="#The-Gravity-of-the-Situation" class="headerlink" title="The Gravity of the Situation"></a>The Gravity of the Situation</h1><p>The key thing to understand is that gravity is always affecting these readings.  Unless you’re lucky enough to be holding this device in outer-space or on another world, the force of Earth’s gravity is constantly accelerating the device towards the centre of the Earth.  If the device is placed on a stationary table and you read the accelerometer you’ll find a force of 9.8 meters per second towards the centre of the Earth being reflected in the results.  That’s the amount of force gravity is exerting on the device and the direction in which it is being exerted.</p>
 <p>This fact can be used to determine the orientation of the device in the real world, and therefore how much the device is tilting.  This amount of tilt is what is used to control the game.</p>
 <h1 id="Visualising-the-Reading"><a href="#Visualising-the-Reading" class="headerlink" title="Visualising the Reading"></a>Visualising the Reading</h1><p>For the purpose of this capability test, the screen is a 2D surface on which I want to show the 3D reading from the accelerometer sensor.  I chose to represent the x and y component of each reading as a line from the centre of the screen pointing in the same x and y direction, with a length reflecting the strength of the reading in that direction.  I also chose to draw a circle around the screen centre to indicate where a force of 9.8 metres per second is, so that if the screen was perfectly stationary and upright (where z == 0) the line would terminate at the circle.  This lets me demonstrate rotation around the device’s z axis.</p>
 <p>For showing the z value of the reading I needed to be creative.  I chose to represent the z component by changing the fill colour of the circle.  When the z reading is zero, the circle is transparent.  When the screen is facing the centre of the Earth, the circle is solid green.  When the screen is facing away from the centre of the Earth, the circle is solid red.  As the screen tilts towards and away from the centre of the Earth, the colour gradually changes between these three colour values.</p>
 <p>The end result is that it becomes easy to see which direction the centre of the Earth is on the device as you tilt it through space.  It’s quite difficult to explain in words, so let’s jump ahead and see a video of this in action after this capability test has been implemented.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/HXTu3S-CrmE" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot on my Android phone</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/HXTu3S-CrmE" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">Accelerometer capability test in Godot on my Android phone</span>
+
 <h1 id="Reading-the-Accelerometer-in-Godot"><a href="#Reading-the-Accelerometer-in-Godot" class="headerlink" title="Reading the Accelerometer in Godot"></a>Reading the Accelerometer in Godot</h1><p>In UWP the accelerometer sensor is exposed in the <code>Windows.Devices.Sensors</code>.  You define the interval at which readings will be taken, and an event handler that will receive each readings.  In the previous implementation of this capability test I wrapped this sensor object in a service that stored the values as readings came in, and the application simply read from this service when it is was ready to take a reading.</p>
 <p>In Godot 3, the accelerometer sensor is exposed as a function <code>get_accelerometer()</code> on the <code>Input</code> singleton, which returns a <code>Vector3</code> containing the x, y, and z values.  At the time I was coding, the Godot help system described the functionality of this method as:</p>
 <blockquote><p>If the device has an accelerometer, this will return the movement.</p>
 </blockquote>
-<p>I knew my Surface Pro (where I do all my coding) had an accelerometer from when I wrote my UWP version of the capability test.  When I read the sensor in Godot however, I was only getting zeros.  Confused and unable to figure it out myself, I turned to <a href="https://discordapp.com/invite/zH7NUgz" target="_blank" rel="noopener">Godot Discord</a> for help.</p>
+
+<p>I knew my Surface Pro (where I do all my coding) had an accelerometer from when I wrote my UWP version of the capability test.  When I read the sensor in Godot however, I was only getting zeros.  Confused and unable to figure it out myself, I turned to <a target="_blank" rel="noopener" href="https://discordapp.com/invite/zH7NUgz">Godot Discord</a> for help.</p>
 <p>Some friends there did some digging and found the <code>get_accelerometer()</code> method only returns values when you export your code and run it on a device where an implementation has been written.  Though it’s fortunate that both UWP and Android (my primary targets) have this implementation, being forced to export the code to test it every time is far from ideal.  Unless I came up with a plan, I wouldn’t have a tight development loop and progress on my entire game would be painstakingly slow.</p>
 <div class="admonition note"><p class="admonition-title">Making it better</p><p>The documentation totally misled me here but there’s a couple of things I can do to make it better.  The first is to submit a pull request on the documentation to write better text and prevent confusion.  The second is to request for the Godot development team (or community contributor) to implement accelerometer support within the editor (if the device supports it).  I plan to take an action on these.</p>
 </div>
+
 <h1 id="Tightening-the-Development-Loop"><a href="#Tightening-the-Development-Loop" class="headerlink" title="Tightening the Development Loop"></a>Tightening the Development Loop</h1><p>I wanted to simulate moving the device in real space while in the editor, but I knew <code>get_accelerometer()</code> would only return zeroes when running there.  However I could make an accelerometer sensor node (a facade) that exposed readings from <code>get_accelerometer()</code> when it was returning values, and create touch controls to manually update the values when <code>get_accelerometer()</code> wasn’t returning values.  Then if I only consume the facade my application would work in both scenarios.</p>
 <p>I designed a touchscreen vertical slider for the left edge of the screen whose value controlled the x and y readings on the sensor facade.  Dragging up and down the slider would change its value between 0 and 360, which I would transform into a 2D direction in x and y using sine and cosine trigonometric functions.  I allowed the slider to cycle through this range several times down the screen, and put a marker at every zero point.</p>
 <p>Similarly I designed a touchscreen horizontal slider for the bottom edge of the screen to change it’s value between -180 and 180 and use it to control the z reading on the sensor facade.</p>
 <p>Using what I had learned about touch input from my manipulations test to quickly knocked out <code>TouchSliderVertical</code> and <code>TouchSliderHorizontal</code> nodes.  I created an <code>AccelerometerSensor</code> node (the facade) that would read from <code>get_accelerometer()</code> a few times when it started up, and if it didn’t get a non-zero reading it would determine that the accelerometer sensor wasn’t present.  It would set a boolean flag to indicate if the sensor was available, and not read the sensor further if it determined it wasn’t there.  This flag was also used to disable the touch sliders if the sensor was available (so the sliders wouldn’t appear if they weren’t required).</p>
 <h1 id="Putting-it-all-Together"><a href="#Putting-it-all-Together" class="headerlink" title="Putting it all Together"></a>Putting it all Together</h1><p>Now it was time to put all this into a scene.  I built a <code>SensorDisplay</code> node to draw the line and the circle, using the readings from the <code>AccelerometerSensor</code> facade (node).  A script on the root node connected up all the necessary signals to marshall readings from the touch sliders to the facade, and to disable them if the sensor was present.  I even threw in a <code>DebugLabel</code> to show the state of the <code>AccelerometerSensor</code>.</p>
 <p>Here’s a video of it all hooked up and running from the Godot editor.  You can see the touch sliders in action,  how they modify the readings of the accelerometer facade, and thus drive the display.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LfvbE7FNmTQ" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running from the Editor</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/LfvbE7FNmTQ" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">Accelerometer capability test in Godot running from the Editor</span>
+
 <h1 id="Smoothing-Sensor-Readings-with-Filters"><a href="#Smoothing-Sensor-Readings-with-Filters" class="headerlink" title="Smoothing Sensor Readings with Filters"></a>Smoothing Sensor Readings with Filters</h1><p>I know from experience that raw readings from an accelerometer sensor are noisy and not suitable for using as input in most cases.  The way around this is to filter the readings to smooth out the values.</p>
 <p>There are many strategies that can be employed to smooth the data, and choosing the one that works for you takes some experimentation.  From previous efforts I’ve found a simple low-pass filter is adequate for my needs.  Such a filter uses both the previous value and the current reading, performs some simple mathematics and creates a new value.  This is remarkably easy to do, and given a good dampening <code>coefficient</code> (again found through trial and error) the readings become smoother and more useful.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">0.0</span></span><br><span class="line">var y = <span class="number">0.0</span></span><br><span class="line">var z = <span class="number">0.0</span></span><br><span class="line">var coefficient = <span class="number">0.35</span></span><br><span class="line"></span><br><span class="line">func _process(delta):</span><br><span class="line">  var reading = Input.get_accelerometer()</span><br><span class="line">    x = x + coefficient * (reading.x - x)</span><br><span class="line">    y = y + coefficient * (reading.y - y)</span><br><span class="line">    z = z + coefficient * (reading.z - z)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">0.0</span></span><br><span class="line">var y = <span class="number">0.0</span></span><br><span class="line">var z = <span class="number">0.0</span></span><br><span class="line">var coefficient = <span class="number">0.35</span></span><br><span class="line"></span><br><span class="line">func _process(delta):</span><br><span class="line">  var reading = Input.get_accelerometer()</span><br><span class="line">    x = x + coefficient * (reading.x - x)</span><br><span class="line">    y = y + coefficient * (reading.y - y)</span><br><span class="line">    z = z + coefficient * (reading.z - z)</span><br></pre></td></tr></tbody></table></figure>
 <p><span class="caption">A simple low-pass filter to smooth readings from the accelerometer</span></p>
 <div class="admonition note"><p class="admonition-title">GDScript vs C#</p><p>It’s worth comparing the implementation of this filter with the implementation from my previous capability test in C# on UWP.  In the previous test I separated the accelerometer facade and the smoothing function, then replicated values in a view model and synchronised them with the sensors own <code>ReadingChanged</code> event and the <code>INotifyPropertyChanged</code> event.  The implementation was spread across multiple files, and while technically and architecturally acceptable, the simplicity of the implementation in GDScript gives me comfort and confidence in moving ahead on the Godot platform.</p>
 </div>
+
 <h1 id="Exporting-to-Target-Platforms"><a href="#Exporting-to-Target-Platforms" class="headerlink" title="Exporting to Target Platforms"></a>Exporting to Target Platforms</h1><p>You’ve already seen the end result on Android in the video earlier in this post.  While exporting to my phone (another device) may feel more complex, it’s actually the easier export path.  Once setup, the Android export is as simple as clicking a button in Godot and it’s all done for you.</p>
 <p>Exporting to UWP is more difficult as Godot doesn’t handle bumping up the version number or completely signing the exported file out of the box.  It does handle signing with a developer key automatically on export which is something, however to run the result on Windows you also need to sign the resulting file with a certificate to create a trusted executable.  I currently do the non-Godot actions on the command line, and I plan to take some time to automate this with script in the future.</p>
 <p>Despite the clunky export process, once you have the executable it works just as well as the Android version.</p>
-<p><div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/x_SJiU7rkOY" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe></div></div><br><span class="caption">Accelerometer capability test in Godot running on my Surface Pro</span></p>
+<div class="video-container"><div class="owl-media owl-video owl-youtube"><iframe src="//www.youtube.com/embed/x_SJiU7rkOY" frameborder="0" scrolling="no" border="0" framespacing="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div>
+<span class="caption">Accelerometer capability test in Godot running on my Surface Pro</span>
+
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Although it wasn’t as issue-free a journey as I was expecting the result is pretty satisfying.  I was again impressed with the ease at which the Godot solution came together, and hopefully making the accelerometer work when running from the editor can be added to the platform in the future to make the developer experience even better.</p>
 <p>Coding this capability test in Godot was all too easy and the challenges I encountered were relatively simple to resolve.  I was helped greatly with my experience having built this test before, however it’s encouraging to know that if you know what you want to build then building it in Godot is a pleasurable and productive experience.</p>
 
@@ -312,7 +344,7 @@
 
 </div>
 
-    <a data-url="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/" data-id="ck9ez0bgp000q6kor93p2r2kx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/" data-id="cknayfrv30006hoordi9gesrf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -415,7 +447,7 @@
     
         <section id="comments">
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </section>
     
@@ -430,6 +462,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/10/software-algorithms-for-k-combinations/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2021/04/10/software-algorithms-for-k-combinations/thumb.jpg)" alt="Software Algorithms for k-combinations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithms/">algorithms</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/">mathematics</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mathematics/k-combinations/">k-combinations</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/">tests</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/tests/performance/">performance</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/zodproj/">zodproj</a></p>
+                            <p class="item-title"><a href="/2021/04/10/software-algorithms-for-k-combinations/" class="title">Software Algorithms for k-combinations</a></p>
+                            <p class="item-date"><time datetime="2021-04-09T23:42:02.000Z" itemprop="datePublished">2021-04-10</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -507,25 +558,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/11/10/prevent-vs-recompile-uwp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/11/10/prevent-vs-recompile-uwp/frustration-240x240.png)" alt="Preventing Visual Studio Recompiles in UWP" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/developer/">developer</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/flow/">flow</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/developer/productivity/">productivity</a></p>
-                            <p class="item-title"><a href="/2018/11/10/prevent-vs-recompile-uwp/" class="title">Preventing Visual Studio Recompiles in UWP</a></p>
-                            <p class="item-date"><time datetime="2018-11-10T03:58:42.000Z" itemprop="datePublished">2018-11-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -535,7 +567,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/design/process/">process</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/">developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/developer/flow/">flow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/developer/productivity/">productivity</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/">gamedev</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/gameengine/">gameengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/">indiedev</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/gamedev/indiedev/gameengine/">gameengine</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/godot/">godot</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/godot/gdscript/">gdscript</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/k-combinations/">k-combinations</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/series/">series</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/series/pausemenu/">PauseMenu</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tests/">tests</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tests/performance/">performance</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/zodproj/">zodproj</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -544,7 +576,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -553,7 +585,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/">BenchmarkDotNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/">gameblog</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithms/" rel="tag">Algorithms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/benchmarkdotnet/" rel="tag">BenchmarkDotNet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdscript/" rel="tag">GDScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">GUI</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game-maker/" rel="tag">Game Maker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-gist/" rel="tag">GitHub Gist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">Godot</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linqpad/" rel="tag">LINQPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msbuild/" rel="tag">MSBuild</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mathematics/" rel="tag">Mathematics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/menu/" rel="tag">Menu</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/" rel="tag">Sensor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwp/" rel="tag">UWP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/" rel="tag">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unreal/" rel="tag">Unreal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visual-studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/win2d/" rel="tag">Win2d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gameblog/" rel="tag">gameblog</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -565,19 +597,19 @@
             <ul>
                 
                     <li>
-                        <a href="https://godotengine.org/">Godot</a>
+                        <a target="_blank" rel="noopener" href="https://godotengine.org/">Godot</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/Microsoft/Win2D">Win2D</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/Microsoft/Win2D">Win2D</a>
                     </li>
                 
                     <li>
-                        <a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
+                        <a target="_blank" rel="noopener" href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a>
                     </li>
                 
                     <li>
-                        <a href="https://www.linqpad.net/">LINQPad</a>
+                        <a target="_blank" rel="noopener" href="https://www.linqpad.net/">LINQPad</a>
                     </li>
                 
             </ul>
@@ -594,8 +626,8 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 Carl Scarlett<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
+            &copy; 2021 Carl Scarlett<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a target="_blank" rel="noopener" href="http://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a> with modifications by Carl Scarlett
         </div>
     </div>
 </footer>
@@ -621,14 +653,18 @@
 
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

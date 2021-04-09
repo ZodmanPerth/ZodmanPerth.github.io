@@ -2,14 +2,23 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://www.redperegrine.net</loc>
+        <loc>https://www.redperegrine.net/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
+
+    <url>
+        <loc>https://www.redperegrine.net/2021/04/10/software-algorithms-for-k-combinations/</loc>
+        <lastmod>2021-04-09T23:42:41.473Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
     <url>
         <loc>https://www.redperegrine.net/2020/04/25/building-a-pause-menu-part-4/</loc>
-        <lastmod>2020-04-25T01:02:46.376Z</lastmod>
+        <lastmod>2021-04-09T09:18:34.816Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +26,7 @@
 
     <url>
         <loc>https://www.redperegrine.net/2020/03/15/building-a-pause-menu-part-3/</loc>
-        <lastmod>2020-04-25T00:55:39.703Z</lastmod>
+        <lastmod>2021-04-09T09:14:02.882Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,7 +34,31 @@
 
     <url>
         <loc>https://www.redperegrine.net/2019/12/27/building-a-pause-menu-part-2/</loc>
-        <lastmod>2020-04-12T01:42:06.295Z</lastmod>
+        <lastmod>2021-04-09T09:11:45.697Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</loc>
+        <lastmod>2021-04-09T09:00:44.768Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.redperegrine.net/2018/08/21/say-gday-to-godot/</loc>
+        <lastmod>2021-04-09T08:55:29.659Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</loc>
+        <lastmod>2021-04-09T08:51:24.011Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,7 +66,15 @@
 
     <url>
         <loc>https://www.redperegrine.net/2018/12/30/building-a-pause-menu-part-1/</loc>
-        <lastmod>2020-04-12T01:32:31.192Z</lastmod>
+        <lastmod>2021-04-08T08:26:24.893Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.redperegrine.net/2018/09/21/menu-all-gui/</loc>
+        <lastmod>2021-04-08T08:26:02.030Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -42,38 +83,6 @@
     <url>
         <loc>https://www.redperegrine.net/2017/12/10/measuring-csharp-perf-with-benchmarkdotnet/</loc>
         <lastmod>2019-05-13T08:33:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.redperegrine.net/2018/05/02/choosing-a-new-game-engine/</loc>
-        <lastmod>2019-05-13T08:32:56.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.redperegrine.net/2018/08/21/say-gday-to-godot/</loc>
-        <lastmod>2019-05-13T08:32:52.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.redperegrine.net/2018/09/03/instrumenting-the-accelerometer/</loc>
-        <lastmod>2019-05-13T08:32:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.redperegrine.net/2018/09/21/menu-all-gui/</loc>
-        <lastmod>2019-05-13T08:32:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
